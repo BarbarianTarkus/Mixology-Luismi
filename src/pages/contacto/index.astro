@@ -6,436 +6,401 @@ export const prerender = true;
 
 const title = "Contacto — Luismi Mixology";
 const description =
-    "Contacta con Luismi Mixology para reservas, presupuestos y consultas sobre nuestros servicios de coctelería a domicilio.";
+  "Contacta con Luismi Mixology para reservas, presupuestos y consultas sobre nuestros servicios de coctelería a domicilio.";
 const pageUrl = "https://example.com/contacto";
 const pageImage = "/images/hero-large.jpg";
 ---
 
 <BaseLayout
-    title={title}
-    description={description}
-    url={pageUrl}
-    image={pageImage}
+  title={title}
+  description={description}
+  url={pageUrl}
+  image={pageImage}
 >
-    <Header />
+  <Header />
 
-    <main class="page-container" role="main">
-        <section class="intro-section">
-            <h1 class="intro-title">Contacto</h1>
-            <p class="intro-desc">
-                ¿Listo para planear tu evento? Rellena el formulario o utiliza
-                uno de los métodos de contacto para recibir una propuesta
-                personalizada.
-            </p>
-        </section>
+  <main class="page-container" role="main">
+    <section class="intro-section">
+      <h1 class="intro-title">Contacto</h1>
+      <p class="intro-desc">
+        ¿Listo para planear tu evento? Rellena el formulario o utiliza uno de
+        los métodos de contacto para recibir una propuesta personalizada.
+      </p>
+    </section>
 
-        <div class="contact-grid">
-            <!-- Contact details -->
-            <aside class="contact-info-card">
-                <h2 class="info-card-title">
-                    Información de contacto
-                </h2>
+    <div class="contact-grid">
+      <!-- Contact details -->
+      <aside class="contact-info-card">
+        <h2 class="info-card-title">Información de contacto</h2>
 
-                <p class="info-card-desc">
-                    Llámanos, envíanos un WhatsApp o un correo y te
-                    responderemos en menos de 24h.
-                </p>
+        <p class="info-card-desc">
+          Llámanos, envíanos un WhatsApp o un correo y te responderemos en menos
+          de 24h.
+        </p>
 
-                <ul class="contact-list">
-                    <li class="contact-item">
-                        <span class="material-symbols-outlined contact-icon"
-                            >call</span
-                        >
-                        <a
-                            class="contact-link-primary"
-                            href="tel:+1234567890">+1 234 567 890</a
-                        >
-                    </li>
+        <ul class="contact-list">
+          <li class="contact-item">
+            <span class="material-symbols-outlined contact-icon">call</span>
+            <a class="contact-link-primary" href="tel:+1234567890"
+              >+1 234 567 890</a
+            >
+          </li>
 
-                    <li class="contact-item">
-                        <span class="material-symbols-outlined contact-icon"
-                            >chat</span
-                        >
-                        <a
-                            class="contact-link-primary"
-                            href="https://wa.me/1234567890"
-                            target="_blank"
-                            rel="noopener noreferrer">Contactar por WhatsApp</a
-                        >
-                    </li>
+          <li class="contact-item">
+            <span class="material-symbols-outlined contact-icon">chat</span>
+            <a
+              class="contact-link-primary"
+              href="https://wa.me/1234567890"
+              target="_blank"
+              rel="noopener noreferrer">Contactar por WhatsApp</a
+            >
+          </li>
 
-                    <li class="contact-item">
-                        <span class="material-symbols-outlined contact-icon"
-                            >mail</span
-                        >
-                        <a
-                            class="contact-link-secondary"
-                            href="mailto:info@example.com">info@example.com</a
-                        >
-                    </li>
+          <li class="contact-item">
+            <span class="material-symbols-outlined contact-icon">mail</span>
+            <a class="contact-link-secondary" href="mailto:info@example.com"
+              >info@example.com</a
+            >
+          </li>
 
-                    <li class="contact-item-align-start">
-                        <span class="material-symbols-outlined contact-icon"
-                            >place</span
-                        >
-                        <address class="contact-address">
-                            Calle Ejemplo 123, Ciudad, Provincia<br />
-                            Código Postal 00000
-                        </address>
-                    </li>
-                </ul>
+          <li class="contact-item-align-start">
+            <span class="material-symbols-outlined contact-icon">place</span>
+            <address class="contact-address">
+              Calle Ejemplo 123, Ciudad, Provincia<br />
+              Código Postal 00000
+            </address>
+          </li>
+        </ul>
 
-                <div class="schedule-section">
-                    <h3 class="schedule-title">Horario</h3>
-                    <p class="schedule-desc">
-                        Lun - Vie: 09:00 - 18:00 · Sáb: 10:00 - 14:00
-                    </p>
-                </div>
-            </aside>
-
-            <!-- Contact form -->
-            <section class="contact-form-card">
-                <h2 class="info-card-title">
-                    Envíanos un mensaje
-                </h2>
-                <p class="info-card-desc">
-                    Cuéntanos fecha, número de invitados y tipo de servicio para
-                    obtener un presupuesto rápido.
-                </p>
-
-                <form id="contact-form" class="contact-form">
-                    <div class="form-row">
-                        <label class="form-field">
-                            <span class="field-label"
-                                >Nombre</span
-                            >
-                            <input
-                                required
-                                name="name"
-                                type="text"
-                                placeholder="Tu nombre"
-                                class="form-input"
-                            />
-                        </label>
-
-                        <label class="form-field">
-                            <span class="field-label"
-                                >Teléfono</span
-                            >
-                            <input
-                                required
-                                name="phone"
-                                type="tel"
-                                placeholder="+34 600 000 000"
-                                class="form-input"
-                            />
-                        </label>
-                    </div>
-
-                    <label class="form-field">
-                        <span class="field-label"
-                            >Correo electrónico</span
-                        >
-                        <input
-                            required
-                            name="email"
-                            type="email"
-                            placeholder="tu@correo.com"
-                            class="form-input"
-                        />
-                    </label>
-
-                    <label class="form-field">
-                        <span class="field-label"
-                            >Detalles del evento</span
-                        >
-                        <textarea
-                            required
-                            name="message"
-                            rows="6"
-                            placeholder="Fecha, número de invitados, ubicación, servicio solicitado..."
-                            class="form-textarea"
-                        ></textarea>
-                    </label>
-
-                    <div class="form-actions">
-                        <button
-                            type="submit"
-                            class="btn-submit"
-                        >
-                            <span class="material-symbols-outlined btn-icon">send</span>
-                            Enviar mensaje
-                        </button>
-
-                        <button
-                            id="clear-btn"
-                            type="button"
-                            class="btn-clear"
-                        >
-                            Limpiar
-                        </button>
-                    </div>
-
-                    <p
-                        id="form-status"
-                        class="form-status"
-                        aria-live="polite"
-                    >
-                    </p>
-                </form>
-
-                <script type="module">
-                    const form = document.getElementById("contact-form");
-                    const status = document.getElementById("form-status");
-                    const clearBtn = document.getElementById("clear-btn");
-
-                    if (form) {
-                        form.addEventListener("submit", (e) => {
-                            e.preventDefault();
-                            const fd = new FormData(form);
-                            const name = fd.get("name") || "";
-                            const phone = fd.get("phone") || "";
-                            const email = fd.get("email") || "";
-                            const message = fd.get("message") || "";
-
-                            const subject = encodeURIComponent(
-                                `Contacto web - ${name}`,
-                            );
-                            const bodyLines = [
-                                `Nombre: ${name}`,
-                                `Teléfono: ${phone}`,
-                                `Email: ${email}`,
-                                "",
-                                "Mensaje:",
-                                message,
-                            ];
-                            const body = encodeURIComponent(
-                                bodyLines.join("\n"),
-                            );
-
-                            const mailto = `mailto:info@example.com?subject=${subject}&body=${body}`;
-
-                            try {
-                                window.location.href = mailto;
-                                status.textContent =
-                                    "Se abrió tu cliente de correo. Si no, usa la dirección info@example.com para enviarnos el mensaje.";
-                            } catch (err) {
-                                status.textContent =
-                                    "No se ha podido abrir el cliente de correo. Envíanos un email a info@example.com.";
-                            }
-                        });
-                    }
-
-                    if (clearBtn) {
-                        clearBtn.addEventListener("click", () => {
-                            form.reset();
-                            status.textContent = "";
-                        });
-                    }
-                </script>
-            </section>
+        <div class="schedule-section">
+          <h3 class="schedule-title">Horario</h3>
+          <p class="schedule-desc">
+            Lun - Vie: 09:00 - 18:00 · Sáb: 10:00 - 14:00
+          </p>
         </div>
-    </main>
+      </aside>
+
+      <!-- Contact form -->
+      <section class="contact-form-card">
+        <h2 class="info-card-title">Envíanos un mensaje</h2>
+        <p class="info-card-desc">
+          Cuéntanos fecha, número de invitados y tipo de servicio para obtener
+          un presupuesto rápido.
+        </p>
+
+        <form id="contact-form" class="contact-form">
+          <div class="form-row">
+            <label class="form-field">
+              <span class="field-label">Nombre</span>
+              <input
+                required
+                name="name"
+                type="text"
+                placeholder="Tu nombre"
+                class="form-input"
+              />
+            </label>
+
+            <label class="form-field">
+              <span class="field-label">Teléfono</span>
+              <input
+                required
+                name="phone"
+                type="tel"
+                placeholder="+34 600 000 000"
+                class="form-input"
+              />
+            </label>
+          </div>
+
+          <label class="form-field">
+            <span class="field-label">Correo electrónico</span>
+            <input
+              required
+              name="email"
+              type="email"
+              placeholder="tu@correo.com"
+              class="form-input"
+            />
+          </label>
+
+          <label class="form-field">
+            <span class="field-label">Detalles del evento</span>
+            <textarea
+              required
+              name="message"
+              rows="6"
+              placeholder="Fecha, número de invitados, ubicación, servicio solicitado..."
+              class="form-textarea"></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-submit">
+              <span class="material-symbols-outlined btn-icon">send</span>
+              Enviar mensaje
+            </button>
+
+            <button id="clear-btn" type="button" class="btn-clear">
+              Limpiar
+            </button>
+          </div>
+
+          <p id="form-status" class="form-status" aria-live="polite"></p>
+        </form>
+
+        <script type="module">
+          const form = document.getElementById("contact-form");
+          const status = document.getElementById("form-status");
+          const clearBtn = document.getElementById("clear-btn");
+
+          if (form) {
+            form.addEventListener("submit", (e) => {
+              e.preventDefault();
+              const fd = new FormData(form);
+              const name = fd.get("name") || "";
+              const phone = fd.get("phone") || "";
+              const email = fd.get("email") || "";
+              const message = fd.get("message") || "";
+
+              const subject = encodeURIComponent(`Contacto web - ${name}`);
+              const bodyLines = [
+                `Nombre: ${name}`,
+                `Teléfono: ${phone}`,
+                `Email: ${email}`,
+                "",
+                "Mensaje:",
+                message,
+              ];
+              const body = encodeURIComponent(bodyLines.join("\n"));
+
+              const mailto = `mailto:info@example.com?subject=${subject}&body=${body}`;
+
+              try {
+                window.location.href = mailto;
+                status.textContent =
+                  "Se abrió tu cliente de correo. Si no, usa la dirección info@example.com para enviarnos el mensaje.";
+              } catch (err) {
+                status.textContent =
+                  "No se ha podido abrir el cliente de correo. Envíanos un email a info@example.com.";
+              }
+            });
+          }
+
+          if (clearBtn) {
+            clearBtn.addEventListener("click", () => {
+              form.reset();
+              status.textContent = "";
+            });
+          }
+        </script>
+      </section>
+    </div>
+  </main>
 </BaseLayout>
 
 <style>
-    .page-container {
-        max-width: var(--max-width-4xl);
-        margin-inline: auto;
-        padding-inline: 1rem;
-        padding-block: 4rem;
-    }
+  .page-container {
+    max-width: var(--max-width-4xl);
+    margin-inline: auto;
+    padding-inline: 1rem;
+    padding-block: 4rem;
+  }
 
-    .intro-section {
-        text-align: center;
-        margin-bottom: 3rem;
-    }
+  .intro-section {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
 
-    .intro-title {
-        color: var(--color-white);
-        font-size: 2.25rem;
-        font-weight: 800;
-    }
+  .intro-title {
+    color: var(--color-white);
+    font-size: 2.25rem;
+    font-weight: 800;
+  }
 
-    .intro-desc {
-        margin-top: 0.75rem;
-        color: var(--color-muted-beige);
-        max-width: var(--max-width-2xl);
-        margin-inline: auto;
-    }
+  .intro-desc {
+    margin-top: 0.75rem;
+    color: var(--color-muted-beige);
+    max-width: var(--max-width-2xl);
+    margin-inline: auto;
+  }
 
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
     .contact-grid {
-        display: grid;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        gap: 2rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+  }
 
-    @media (min-width: 768px) {
-        .contact-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-    }
+  .contact-info-card,
+  .contact-form-card {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+  }
 
-    .contact-info-card, .contact-form-card {
-        background-color: var(--color-card-bg);
-        border: 1px solid var(--color-card-border);
-        border-radius: var(--radius-xl);
-        padding: 1.5rem;
-    }
+  .info-card-title {
+    color: var(--color-white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
 
-    .info-card-title {
-        color: var(--color-white);
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-    }
+  .info-card-desc {
+    color: var(--color-muted-beige);
+    margin-bottom: 1rem;
+  }
 
-    .info-card-desc {
-        color: var(--color-muted-beige);
-        margin-bottom: 1rem;
-    }
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 
-    .contact-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
 
-    .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
+  .contact-item-align-start {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
 
-    .contact-item-align-start {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-    }
+  .contact-icon {
+    color: var(--color-primary);
+  }
 
-    .contact-icon {
-        color: var(--color-primary);
-    }
+  .contact-link-primary {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
 
-    .contact-link-primary {
-        color: var(--color-primary);
-        font-weight: 600;
-    }
+  .contact-link-secondary {
+    color: var(--color-muted-beige);
+  }
 
-    .contact-link-secondary {
-        color: var(--color-muted-beige);
-    }
+  .contact-address {
+    font-style: normal;
+    color: var(--color-muted-beige);
+  }
 
-    .contact-address {
-        font-style: normal;
-        color: var(--color-muted-beige);
-    }
+  .schedule-section {
+    margin-top: 1.5rem;
+  }
 
-    .schedule-section {
-        margin-top: 1.5rem;
-    }
+  .schedule-title {
+    color: var(--color-white);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
 
-    .schedule-title {
-        color: var(--color-white);
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-    }
+  .schedule-desc {
+    color: var(--color-muted-beige);
+    font-size: 0.875rem;
+  }
 
-    .schedule-desc {
-        color: var(--color-muted-beige);
-        font-size: 0.875rem;
-    }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-    .contact-form {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+  }
 
+  @media (min-width: 640px) {
     .form-row {
-        display: grid;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+  }
 
-    @media (min-width: 640px) {
-        .form-row {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-    }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .form-field {
-        display: flex;
-        flex-direction: column;
-    }
+  .field-label {
+    color: var(--color-muted-beige);
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
 
-    .field-label {
-        color: var(--color-muted-beige);
-        font-size: 0.875rem;
-        margin-bottom: 0.25rem;
-    }
+  .form-input,
+  .form-textarea {
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-default);
+    background-color: rgba(34, 30, 16, 0.6);
+    border: 1px solid #3b3420;
+    color: var(--color-white);
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+  }
 
-    .form-input, .form-textarea {
-        padding: 0.5rem 0.75rem;
-        border-radius: var(--radius-default);
-        background-color: rgba(34, 30, 16, 0.6);
-        border: 1px solid #3b3420;
-        color: var(--color-white);
-        transition: border-color 0.2s, box-shadow 0.2s;
-    }
+  .form-input:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+  }
 
-    .form-input:focus, .form-textarea:focus {
-        outline: none;
-        border-color: var(--color-primary);
-        box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
-    }
+  .form-textarea {
+    resize: vertical;
+  }
 
-    .form-textarea {
-        resize: vertical;
-    }
+  .form-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
 
-    .form-actions {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-top: 0.5rem;
-    }
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary);
+    color: var(--color-background-dark);
+    font-weight: 700;
+    box-shadow: var(--shadow-primary-soft);
+    border: none;
+    cursor: pointer;
+  }
 
-    .btn-submit {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        border-radius: var(--radius-full);
-        background-color: var(--color-primary);
-        color: var(--color-background-dark);
-        font-weight: 700;
-        box-shadow: var(--shadow-primary-soft);
-        border: none;
-        cursor: pointer;
-    }
+  .btn-clear {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-default);
+    background-color: transparent;
+    border: 1px solid #3b3420;
+    color: var(--color-muted-beige);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
 
-    .btn-clear {
-        padding: 0.5rem 1rem;
-        border-radius: var(--radius-default);
-        background-color: transparent;
-        border: 1px solid #3b3420;
-        color: var(--color-muted-beige);
-        cursor: pointer;
-        transition: color 0.2s;
-    }
+  .btn-clear:hover {
+    color: var(--color-primary);
+  }
 
-    .btn-clear:hover {
-        color: var(--color-primary);
-    }
+  .btn-icon {
+    font-size: 20px;
+  }
 
-    .btn-icon {
-        font-size: 20px;
-    }
-
-    .form-status {
-        font-size: 0.875rem;
-        color: var(--color-muted-beige);
-        margin-top: 0.75rem;
-    }
+  .form-status {
+    font-size: 0.875rem;
+    color: var(--color-muted-beige);
+    margin-top: 0.75rem;
+  }
 </style>

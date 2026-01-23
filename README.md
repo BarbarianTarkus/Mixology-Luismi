@@ -35,11 +35,13 @@ This README contains project-specific instructions, notes, and suggestions for c
      ```
 
 2. Start the local dev server:
+
    ```bash
    npm run dev
    ```
 
 3. Build the static site:
+
    ```bash
    npm run build
    ```
@@ -136,6 +138,7 @@ Any static host works. A few quick notes:
 ---
 
 If you want, I can:
+
 - Add a simple component structure (header, hero, footer) and move the page markup into components.
 - Convert the Tailwind CDN usage into a local Tailwind + PostCSS setup and adjust `index.astro` accordingly.
 - Add meta tags and a base layout file.

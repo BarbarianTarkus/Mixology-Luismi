@@ -6,338 +6,322 @@ export const prerender = true;
 
 const title = "Luismi Mixology";
 const description =
-    "Descubre nuestros cócteles estrella: recetas de autor para eventos y celebraciones. Old Fashioned, Mojito y Espresso Martini, entre otros.";
+  "Descubre nuestros cócteles estrella: recetas de autor para eventos y celebraciones. Old Fashioned, Mojito y Espresso Martini, entre otros.";
 const pageUrl = "/";
 const pageImage = "/images/hero-large.jpg";
 
 const cocktails = [
-    {
-        id: "01",
-        title: "Old Fashioned Gold",
-        desc: "Bourbon premium, amargo de angostura, terrón de azúcar y piel de naranja.",
-        image: "/images/cocktail-1.jpg",
-        alt: "Old Fashioned Gold closeup in a glass with orange peel",
-    },
-    {
-        id: "02",
-        title: "Signature Mojito",
-        desc: "Ron añejo, hierbabuena fresca, lima infusionada y un toque secreto del bartender.",
-        image: "/images/cocktail-2.jpg",
-        alt: "Signature Mojito served with mint leaves and lime",
-    },
-    {
-        id: "03",
-        title: "Espresso Velvet",
-        desc: "Vodka premium, licor de café artesanal y un shot de espresso recién tostado.",
-        image: "/images/cocktail-3.jpg",
-        alt: "Espresso Velvet in a coupe glass with coffee crema",
-    },
-    // Additional examples to expand the page for SEO value
-    {
-        id: "04",
-        title: "Citrus Fizz",
-        desc: "Gin infusionado con cítricos, clara de huevo y soda para un final efervescente.",
-        image: "/images/cocktail-1.jpg",
-        alt: "Citrus Fizz with foam and orange zest",
-    },
-    {
-        id: "05",
-        title: "Smoky Negroni",
-        desc: "Versión ahumada del clásico Negroni con bitter artesanal y vermut envejecido.",
-        image: "/images/cocktail-2.jpg",
-        alt: "Smoky Negroni with a large ice cube and orange twist",
-    },
+  {
+    id: "01",
+    title: "Old Fashioned Gold",
+    desc: "Bourbon premium, amargo de angostura, terrón de azúcar y piel de naranja.",
+    image: "/images/cocktail-1.jpg",
+    alt: "Old Fashioned Gold closeup in a glass with orange peel",
+  },
+  {
+    id: "02",
+    title: "Signature Mojito",
+    desc: "Ron añejo, hierbabuena fresca, lima infusionada y un toque secreto del bartender.",
+    image: "/images/cocktail-2.jpg",
+    alt: "Signature Mojito served with mint leaves and lime",
+  },
+  {
+    id: "03",
+    title: "Espresso Velvet",
+    desc: "Vodka premium, licor de café artesanal y un shot de espresso recién tostado.",
+    image: "/images/cocktail-3.jpg",
+    alt: "Espresso Velvet in a coupe glass with coffee crema",
+  },
+  // Additional examples to expand the page for SEO value
+  {
+    id: "04",
+    title: "Citrus Fizz",
+    desc: "Gin infusionado con cítricos, clara de huevo y soda para un final efervescente.",
+    image: "/images/cocktail-1.jpg",
+    alt: "Citrus Fizz with foam and orange zest",
+  },
+  {
+    id: "05",
+    title: "Smoky Negroni",
+    desc: "Versión ahumada del clásico Negroni con bitter artesanal y vermut envejecido.",
+    image: "/images/cocktail-2.jpg",
+    alt: "Smoky Negroni with a large ice cube and orange twist",
+  },
 ];
 ---
 
 <BaseLayout
-    title={title}
-    description={description}
-    url={pageUrl}
-    image={pageImage}
+  title={title}
+  description={description}
+  url={pageUrl}
+  image={pageImage}
 >
-    <Header />
+  <Header />
 
-    <main class="page-container" role="main">
-        <!-- Page intro -->
-        <section class="intro-section">
-            <h1 class="intro-title">
-                Top Cócteles
-            </h1>
-            <p class="intro-desc">
-                Nuestra selección de cócteles de autor, pensada para eventos y
-                celebraciones. Cada receta puede adaptarse a tus gustos y a las
-                necesidades de tu evento.
-            </p>
-        </section>
+  <main class="page-container" role="main">
+    <!-- Page intro -->
+    <section class="intro-section">
+      <h1 class="intro-title">Top Cócteles</h1>
+      <p class="intro-desc">
+        Nuestra selección de cócteles de autor, pensada para eventos y
+        celebraciones. Cada receta puede adaptarse a tus gustos y a las
+        necesidades de tu evento.
+      </p>
+    </section>
 
-        <!-- Cocktails grid -->
-        <section
-            id="cocteles"
-            class="cocktails-grid"
-            aria-label="Listado de cócteles"
-        >
-            {
-                cocktails.map((c) => (
-                    <article
-                        class="cocktail-card"
-                        key={c.id}
-                        aria-labelledby={`cocktail-${c.id}-title`}
-                    >
-                        <div
-                            class="cocktail-image"
-                            role="img"
-                            aria-label={c.alt}
-                            style={`background-image: url('${c.image}');`}
-                        />
-                        <div class="cocktail-content">
-                            <div class="cocktail-header">
-                                <h3
-                                    id={`cocktail-${c.id}-title`}
-                                    class="cocktail-title"
-                                >
-                                    {c.title}
-                                </h3>
-                                <span class="cocktail-id">
-                                    {c.id}
-                                </span>
-                            </div>
-                            <p class="cocktail-desc">{c.desc}</p>
+    <!-- Cocktails grid -->
+    <section
+      id="cocteles"
+      class="cocktails-grid"
+      aria-label="Listado de cócteles"
+    >
+      {
+        cocktails.map((c) => (
+          <article
+            class="cocktail-card"
+            key={c.id}
+            aria-labelledby={`cocktail-${c.id}-title`}
+          >
+            <div
+              class="cocktail-image"
+              role="img"
+              aria-label={c.alt}
+              style={`background-image: url('${c.image}');`}
+            />
+            <div class="cocktail-content">
+              <div class="cocktail-header">
+                <h3 id={`cocktail-${c.id}-title`} class="cocktail-title">
+                  {c.title}
+                </h3>
+                <span class="cocktail-id">{c.id}</span>
+              </div>
+              <p class="cocktail-desc">{c.desc}</p>
 
-                            <div class="cocktail-actions">
-                                <a
-                                    class="btn-primary-sm"
-                                    href="https://wa.me/1234567890"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label={`Contactar por ${c.title}`}
-                                >
-                                    <span class="material-symbols-outlined btn-icon">
-                                        chat
-                                    </span>
-                                    Reservar
-                                </a>
-
-                                <button
-                                    class="btn-outline-sm"
-                                    type="button"
-                                >
-                                    <span class="material-symbols-outlined btn-icon">
-                                        info
-                                    </span>
-                                    Ver receta
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-                ))
-            }
-        </section>
-
-        <!-- Call to action -->
-        <section class="cta-section">
-            <div class="cta-box">
-                <h2 class="cta-title">
-                    ¿Quieres estos cócteles en tu evento?
-                </h2>
-                <p class="cta-desc">
-                    Contacta con nosotros para una propuesta personalizada y
-                    presupuesto en 24 horas.
-                </p>
+              <div class="cocktail-actions">
                 <a
-                    class="btn-primary-lg"
-                    href="https://wa.me/1234567890"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Contactar por WhatsApp"
+                  class="btn-primary-sm"
+                  href="https://wa.me/1234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Contactar por ${c.title}`}
                 >
-                    <span class="material-symbols-outlined btn-icon">chat</span>
-                    Contactar por WhatsApp
+                  <span class="material-symbols-outlined btn-icon">chat</span>
+                  Reservar
                 </a>
+
+                <button class="btn-outline-sm" type="button">
+                  <span class="material-symbols-outlined btn-icon">info</span>
+                  Ver receta
+                </button>
+              </div>
             </div>
-        </section>
-    </main>
+          </article>
+        ))
+      }
+    </section>
+
+    <!-- Call to action -->
+    <section class="cta-section">
+      <div class="cta-box">
+        <h2 class="cta-title">¿Quieres estos cócteles en tu evento?</h2>
+        <p class="cta-desc">
+          Contacta con nosotros para una propuesta personalizada y presupuesto
+          en 24 horas.
+        </p>
+        <a
+          class="btn-primary-lg"
+          href="https://wa.me/1234567890"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Contactar por WhatsApp"
+        >
+          <span class="material-symbols-outlined btn-icon">chat</span>
+          Contactar por WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
 </BaseLayout>
 
 <style>
-    .page-container {
-        max-width: var(--max-width-6xl);
-        margin-inline: auto;
-        padding-inline: 1rem;
-        padding-bottom: 6rem;
-    }
+  .page-container {
+    max-width: var(--max-width-6xl);
+    margin-inline: auto;
+    padding-inline: 1rem;
+    padding-bottom: 6rem;
+  }
 
-    .intro-section {
-        padding-top: 2.5rem;
-        padding-bottom: 2rem;
-        text-align: center;
-    }
+  .intro-section {
+    padding-top: 2.5rem;
+    padding-bottom: 2rem;
+    text-align: center;
+  }
 
+  .intro-title {
+    color: var(--color-white);
+    font-size: 2.25rem;
+    font-weight: 800;
+  }
+
+  @media (min-width: 768px) {
     .intro-title {
-        color: var(--color-white);
-        font-size: 2.25rem;
-        font-weight: 800;
+      font-size: 3rem;
     }
+  }
 
-    @media (min-width: 768px) {
-        .intro-title {
-            font-size: 3rem;
-        }
-    }
+  .intro-desc {
+    margin-top: 0.75rem;
+    color: var(--color-muted-beige);
+    max-width: var(--max-width-2xl);
+    margin-inline: auto;
+  }
 
-    .intro-desc {
-        margin-top: 0.75rem;
-        color: var(--color-muted-beige);
-        max-width: var(--max-width-2xl);
-        margin-inline: auto;
-    }
+  .cocktails-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+  }
 
+  @media (min-width: 640px) {
     .cocktails-grid {
-        display: grid;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        gap: 1.5rem;
-        padding: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+  }
 
-    @media (min-width: 640px) {
-        .cocktails-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+  @media (min-width: 768px) {
+    .cocktails-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+  }
 
-    @media (min-width: 768px) {
-        .cocktails-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-    }
+  .cocktail-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+  }
 
-    .cocktail-card {
-        position: relative;
-        overflow: hidden;
-        border-radius: var(--radius-xl);
-        background-color: var(--color-card-bg);
-        border: 1px solid var(--color-card-border);
-    }
+  .cocktail-image {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
 
+  @media (min-width: 768px) {
     .cocktail-image {
-        aspect-ratio: 16 / 9;
-        width: 100%;
-        background-size: cover;
-        background-position: center;
+      aspect-ratio: 4 / 3;
     }
+  }
 
-    @media (min-width: 768px) {
-        .cocktail-image {
-            aspect-ratio: 4 / 3;
-        }
-    }
+  .cocktail-content {
+    padding: 1rem;
+  }
 
-    .cocktail-content {
-        padding: 1rem;
-    }
+  .cocktail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.25rem;
+  }
 
-    .cocktail-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 0.25rem;
-    }
+  .cocktail-title {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
 
-    .cocktail-title {
-        color: var(--color-primary);
-        font-size: 1.25rem;
-        font-weight: 700;
-    }
+  .cocktail-id {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    font-family: monospace;
+  }
 
-    .cocktail-id {
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 0.75rem;
-        font-family: monospace;
-    }
+  .cocktail-desc {
+    color: var(--color-muted-beige);
+    font-size: 0.875rem;
+  }
 
-    .cocktail-desc {
-        color: var(--color-muted-beige);
-        font-size: 0.875rem;
-    }
+  .cocktail-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.75rem;
+  }
 
-    .cocktail-actions {
-        margin-top: 1rem;
-        display: flex;
-        gap: 0.75rem;
-    }
+  .btn-primary-sm {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary);
+    color: var(--color-background-dark);
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-primary-soft);
+  }
 
-    .btn-primary-sm {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 0.75rem;
-        border-radius: var(--radius-full);
-        background-color: var(--color-primary);
-        color: var(--color-background-dark);
-        font-size: 0.875rem;
-        font-weight: 600;
-        box-shadow: var(--shadow-primary-soft);
-    }
+  .btn-outline-sm {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-full);
+    background-color: transparent;
+    border: 1px solid var(--color-card-border);
+    color: var(--color-muted-beige);
+    font-size: 0.875rem;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
 
-    .btn-outline-sm {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 0.75rem;
-        border-radius: var(--radius-full);
-        background-color: transparent;
-        border: 1px solid var(--color-card-border);
-        color: var(--color-muted-beige);
-        font-size: 0.875rem;
-        transition: color 0.2s;
-        cursor: pointer;
-    }
+  .btn-outline-sm:hover {
+    color: var(--color-primary);
+  }
 
-    .btn-outline-sm:hover {
-        color: var(--color-primary);
-    }
+  .btn-icon {
+    font-size: 20px;
+  }
 
-    .btn-icon {
-        font-size: 20px;
-    }
+  .cta-section {
+    margin-top: 3rem;
+    text-align: center;
+    padding-inline: 1rem;
+  }
 
-    .cta-section {
-        margin-top: 3rem;
-        text-align: center;
-        padding-inline: 1rem;
-    }
+  .cta-box {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+  }
 
-    .cta-box {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        background-color: var(--color-card-bg);
-        border: 1px solid var(--color-card-border);
-        border-radius: var(--radius-xl);
-        padding: 2rem;
-    }
+  .cta-title {
+    color: var(--color-white);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
 
-    .cta-title {
-        color: var(--color-white);
-        font-size: 1.5rem;
-        font-weight: 700;
-    }
+  .cta-desc {
+    color: var(--color-muted-beige);
+    max-width: 32rem;
+  }
 
-    .cta-desc {
-        color: var(--color-muted-beige);
-        max-width: 32rem;
-    }
-
-    .btn-primary-lg {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.75rem 1.5rem;
-        border-radius: var(--radius-full);
-        background-color: var(--color-primary);
-        color: var(--color-background-dark);
-        font-weight: 700;
-        box-shadow: var(--shadow-primary-soft);
-    }
+  .btn-primary-lg {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary);
+    color: var(--color-background-dark);
+    font-weight: 700;
+    box-shadow: var(--shadow-primary-soft);
+  }
 </style>

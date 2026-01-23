@@ -1,252 +1,248 @@
 ---
 export interface NavItem {
-    href: string;
-    label: string;
+  href: string;
+  label: string;
 }
 
 export interface Props {
-    title?: string;
-    nav?: NavItem[];
+  title?: string;
+  nav?: NavItem[];
 }
 
 const {
-    title = "Luismi Mixology",
-    nav = [
-        { href: "/servicios", label: "Servicios" },
-        { href: "/cocteles", label: "Cócteles" },
-        { href: "/contacto", label: "Contacto" },
-    ],
+  title = "Luismi Mixology",
+  nav = [
+    { href: "/servicios", label: "Servicios" },
+    { href: "/cocteles", label: "Cócteles" },
+    { href: "/contacto", label: "Contacto" },
+  ],
 } = Astro.props;
 ---
 
 <header class="header">
-    <div class="header-container">
-        <!-- Left: icon -->
-        <div class="header-icon" aria-hidden="true">
-            <span class="material-symbols-outlined icon-size">wine_bar</span>
-        </div>
-
-        <!-- Center: title -->
-        <h1 class="header-title">
-            {title}
-        </h1>
-
-        <!-- Right: navigation + mobile button -->
-        <div class="header-actions">
-            <nav
-                class="desktop-nav"
-                role="navigation"
-                aria-label="Main navigation"
-            >
-                {
-                    nav.map((item) => (
-                        <a class="nav-link" href={item.href}>
-                            {item.label}
-                        </a>
-                    ))
-                }
-            </nav>
-
-            <div class="mobile-toggle">
-                <button
-                    id="mobile-menu-button"
-                    aria-label="Abrir menú"
-                    aria-expanded="false"
-                    class="menu-button"
-                >
-                    <span class="material-symbols-outlined">menu</span>
-                </button>
-            </div>
-        </div>
+  <div class="header-container">
+    <!-- Left: icon -->
+    <div class="header-icon" aria-hidden="true">
+      <span class="material-symbols-outlined icon-size">wine_bar</span>
     </div>
 
-    <!-- Mobile menu (hidden by default) -->
-    <nav id="mobile-menu" class="mobile-nav hidden">
-        <div class="mobile-nav-container">
-            {
-                nav.map((item) => (
-                    <a class="mobile-nav-link" href={item.href}>
-                        {item.label}
-                    </a>
-                ))
-            }
-        </div>
-    </nav>
+    <!-- Center: title -->
+    <h1 class="header-title">
+      {title}
+    </h1>
 
-    <script>
-        // lightweight mobile menu toggle
-        (function () {
-            if (typeof window === "undefined") return;
-            document.addEventListener("DOMContentLoaded", function () {
-                var btn = document.getElementById("mobile-menu-button");
-                var menu = document.getElementById("mobile-menu");
-                if (!btn || !menu) return;
+    <!-- Right: navigation + mobile button -->
+    <div class="header-actions">
+      <nav class="desktop-nav" role="navigation" aria-label="Main navigation">
+        {
+          nav.map((item) => (
+            <a class="nav-link" href={item.href}>
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
 
-                btn.addEventListener("click", function () {
-                    var expanded = btn.getAttribute("aria-expanded") === "true";
-                    btn.setAttribute("aria-expanded", String(!expanded));
-                    menu.classList.toggle("hidden");
-                });
-            });
-        })();
-    </script>
+      <div class="mobile-toggle">
+        <button
+          id="mobile-menu-button"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          class="menu-button"
+        >
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </div>
+  </div>
 
-    <noscript>
-        <img
-            src="/images/hero-large.jpg"
-            alt="Mixologist preparing a colorful cocktail in a dark setting"
-            class="sr-only"
-        />
-        <img
-            src="/images/cocktail-1.jpg"
-            alt="Old Fashioned Gold closeup"
-            class="sr-only"
-        />
-        <img
-            src="/images/cocktail-2.jpg"
-            alt="Signature Mojito with mint and lime"
-            class="sr-only"
-        />
-        <img
-            src="/images/cocktail-3.jpg"
-            alt="Espresso Velvet in a coupe glass"
-            class="sr-only"
-        />
-    </noscript>
+  <!-- Mobile menu (hidden by default) -->
+  <nav id="mobile-menu" class="mobile-nav hidden">
+    <div class="mobile-nav-container">
+      {
+        nav.map((item) => (
+          <a class="mobile-nav-link" href={item.href}>
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+
+  <script>
+    // lightweight mobile menu toggle
+    (function () {
+      if (typeof window === "undefined") return;
+      document.addEventListener("DOMContentLoaded", function () {
+        var btn = document.getElementById("mobile-menu-button");
+        var menu = document.getElementById("mobile-menu");
+        if (!btn || !menu) return;
+
+        btn.addEventListener("click", function () {
+          var expanded = btn.getAttribute("aria-expanded") === "true";
+          btn.setAttribute("aria-expanded", String(!expanded));
+          menu.classList.toggle("hidden");
+        });
+      });
+    })();
+  </script>
+
+  <noscript>
+    <img
+      src="/images/hero-large.jpg"
+      alt="Mixologist preparing a colorful cocktail in a dark setting"
+      class="sr-only"
+    />
+    <img
+      src="/images/cocktail-1.jpg"
+      alt="Old Fashioned Gold closeup"
+      class="sr-only"
+    />
+    <img
+      src="/images/cocktail-2.jpg"
+      alt="Signature Mojito with mint and lime"
+      class="sr-only"
+    />
+    <img
+      src="/images/cocktail-3.jpg"
+      alt="Espresso Velvet in a coupe glass"
+      class="sr-only"
+    />
+  </noscript>
 </header>
 
 <style>
-    .header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background-color: rgba(34, 30, 16, 0.95);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--color-card-bg);
-    }
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: rgba(34, 30, 16, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-card-bg);
+  }
 
-    .header-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
-        max-width: var(--max-width-6xl);
-        margin-inline: auto;
-    }
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    max-width: var(--max-width-6xl);
+    margin-inline: auto;
+  }
 
-    .header-icon {
-        color: var(--color-primary);
-        display: flex;
-        width: 2.5rem;
-        height: 2.5rem;
-        flex-shrink: 0;
-        align-items: center;
-        justify-content: center;
-    }
+  .header-icon {
+    color: var(--color-primary);
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .icon-size {
-        font-size: 32px;
-    }
+  .icon-size {
+    font-size: 32px;
+  }
 
-    .header-title {
-        color: var(--color-white);
-        font-size: 1.125rem;
-        font-weight: 700;
-        line-height: 1.25;
-        letter-spacing: 0.1em;
-        flex: 1;
-        text-align: center;
-        text-transform: uppercase;
-    }
+  .header-title {
+    color: var(--color-white);
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.1em;
+    flex: 1;
+    text-align: center;
+    text-transform: uppercase;
+  }
 
-    .header-actions {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 
+  .desktop-nav {
+    display: none;
+    align-items: center;
+    gap: 1.5rem;
+    margin-left: 1rem;
+  }
+
+  @media (min-width: 768px) {
     .desktop-nav {
-        display: none;
-        align-items: center;
-        gap: 1.5rem;
-        margin-left: 1rem;
+      display: flex;
     }
+  }
 
-    @media (min-width: 768px) {
-        .desktop-nav {
-            display: flex;
-        }
-    }
+  .nav-link {
+    color: var(--color-muted-beige);
+    transition: color 0.2s;
+  }
 
-    .nav-link {
-        color: var(--color-muted-beige);
-        transition: color 0.2s;
-    }
+  .nav-link:hover {
+    color: var(--color-primary);
+  }
 
-    .nav-link:hover {
-        color: var(--color-primary);
-    }
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+  }
 
-    .mobile-toggle {
-        display: flex;
-        align-items: center;
-    }
+  .menu-button {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    height: 2.5rem;
+    background-color: transparent;
+    color: var(--color-white);
+    padding: 0;
+    border: none;
+  }
 
+  @media (min-width: 768px) {
     .menu-button {
-        display: flex;
-        cursor: pointer;
-        align-items: center;
-        justify-content: center;
-        border-radius: var(--radius-lg);
-        height: 2.5rem;
-        background-color: transparent;
-        color: var(--color-white);
-        padding: 0;
-        border: none;
+      display: none;
     }
+  }
 
-    @media (min-width: 768px) {
-        .menu-button {
-            display: none;
-        }
-    }
+  .mobile-nav {
+    border-top: 1px solid var(--color-card-bg);
+    background-color: rgba(34, 30, 16, 0.95);
+  }
 
+  @media (min-width: 768px) {
     .mobile-nav {
-        border-top: 1px solid var(--color-card-bg);
-        background-color: rgba(34, 30, 16, 0.95);
+      display: none;
     }
+  }
 
-    @media (min-width: 768px) {
-        .mobile-nav {
-            display: none;
-        }
-    }
+  .mobile-nav.hidden {
+    display: none;
+  }
 
-    .mobile-nav.hidden {
-        display: none;
-    }
+  .mobile-nav-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    max-width: var(--max-width-6xl);
+    margin-inline: auto;
+  }
 
-    .mobile-nav-container {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        padding: 0.75rem 1rem;
-        max-width: var(--max-width-6xl);
-        margin-inline: auto;
-    }
+  .mobile-nav-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-default);
+    color: var(--color-muted-beige);
+    transition: all 0.2s;
+  }
 
-    .mobile-nav-link {
-        display: block;
-        width: 100%;
-        text-align: left;
-        padding: 0.5rem 0.75rem;
-        border-radius: var(--radius-default);
-        color: var(--color-muted-beige);
-        transition: all 0.2s;
-    }
-
-    .mobile-nav-link:hover {
-        color: var(--color-primary);
-        background-color: rgba(52, 45, 24, 0.4);
-    }
+  .mobile-nav-link:hover {
+    color: var(--color-primary);
+    background-color: rgba(52, 45, 24, 0.4);
+  }
 </style>

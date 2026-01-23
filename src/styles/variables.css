@@ -1,41 +1,42 @@
 :root {
-    /* Colors */
-    --color-primary: #f2b90d;
-    --color-primary-rgb: 242, 185, 13;
-    --color-background-light: #f8f8f5;
-    --color-background-dark: #221e10;
-    --color-muted-beige: #cbbc90;
-    --color-card-bg: #342d18;
-    --color-card-border: #685a31;
-    --color-white: #ffffff;
-    --color-black: #000000;
+  /* Colors */
+  --color-primary: #f2b90d;
+  --color-primary-rgb: 242, 185, 13;
+  --color-background-light: #f8f8f5;
+  --color-background-dark: #221e10;
+  --color-muted-beige: #cbbc90;
+  --color-card-bg: #342d18;
+  --color-card-border: #685a31;
+  --color-white: #ffffff;
+  --color-black: #000000;
 
-    /* Fonts */
-    --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  /* Fonts */
+  --font-display:
+    "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-    /* Border Radius */
-    --radius-default: 0.25rem;
-    --radius-lg: 0.5rem;
-    --radius-xl: 0.75rem;
-    --radius-full: 9999px;
+  /* Border Radius */
+  --radius-default: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
 
-    /* Shadows */
-    --shadow-primary-soft: 0 10px 20px rgba(var(--color-primary-rgb), 0.12);
+  /* Shadows */
+  --shadow-primary-soft: 0 10px 20px rgba(var(--color-primary-rgb), 0.12);
 
-    /* Max Widths */
-    --max-width-6xl: 72rem;
-    --max-width-4xl: 56rem;
-    --max-width-2xl: 42rem;
+  /* Max Widths */
+  --max-width-6xl: 72rem;
+  --max-width-4xl: 56rem;
+  --max-width-2xl: 42rem;
 
-    /* Spacing (Scale) */
-    --spacing-1: 0.25rem;
-    --spacing-2: 0.5rem;
-    --spacing-3: 0.75rem;
-    --spacing-4: 1rem;
-    --spacing-6: 1.5rem;
-    --spacing-8: 2rem;
-    --spacing-10: 2.5rem;
-    --spacing-12: 3rem;
-    --spacing-16: 4rem;
-    --spacing-24: 6rem;
+  /* Spacing (Scale) */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-24: 6rem;
 }

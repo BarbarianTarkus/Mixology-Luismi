@@ -1,12 +1,13 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import ServiceCard from '../../components/ServiceCard.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
 
 export const prerender = true;
 
 const title = "Servicios — Mixology Pro";
-const description = "Servicios de coctelería a domicilio: barras móviles, bodas, masterclasses y soluciones corporativas con mixología de autor.";
+const description =
+  "Servicios de coctelería a domicilio: barras móviles, bodas, masterclasses y soluciones corporativas con mixología de autor.";
 const pageUrl = "https://example.com/servicios";
 const pageImage = "/images/hero-large.jpg";
 
@@ -14,37 +15,48 @@ const services = [
   {
     icon: "celebration",
     title: "Fiestas Privadas",
-    description: "Barras móviles y atención personalizada para grupos selectos. Montaje, servicio y desmontaje adaptado a tu evento."
+    description:
+      "Barras móviles y atención personalizada para grupos selectos. Montaje, servicio y desmontaje adaptado a tu evento.",
   },
   {
     icon: "favorite",
     title: "Bodas",
-    description: "Coctelería premium diseñada para tu gran día: cócteles a medida, barras temáticas y servicio discreto y profesional."
+    description:
+      "Coctelería premium diseñada para tu gran día: cócteles a medida, barras temáticas y servicio discreto y profesional.",
   },
   {
     icon: "school",
     title: "Masterclasses",
-    description: "Sesiones prácticas y teóricas con nuestros bartenders: desde iniciación hasta técnicas avanzadas y creación de recetas."
+    description:
+      "Sesiones prácticas y teóricas con nuestros bartenders: desde iniciación hasta técnicas avanzadas y creación de recetas.",
   },
   {
     icon: "work",
     title: "Eventos Corporativos",
-    description: "Soluciones de coctelería corporativa: showcooking, cócteles de marca y barras para ferias, lanzamientos y cenas de empresa."
+    description:
+      "Soluciones de coctelería corporativa: showcooking, cócteles de marca y barras para ferias, lanzamientos y cenas de empresa.",
   },
   {
     icon: "local_bar",
     title: "Alquiler de Barras",
-    description: "Barras móviles de diseño, equipadas y con personal cualificado para integrarse con tu decoración y logística."
+    description:
+      "Barras móviles de diseño, equipadas y con personal cualificado para integrarse con tu decoración y logística.",
   },
   {
     icon: "support",
     title: "Consultoría & Diseño de Carta",
-    description: "Asesoramiento en selección de bebidas, creación de cartas personalizadas y formación para tu equipo."
-  }
+    description:
+      "Asesoramiento en selección de bebidas, creación de cartas personalizadas y formación para tu equipo.",
+  },
 ];
 ---
 
-<BaseLayout title={title} description={description} url={pageUrl} image={pageImage}>
+<BaseLayout
+  title={title}
+  description={description}
+  url={pageUrl}
+  image={pageImage}
+>
   <Header />
 
   <main class="page-container" role="main">
@@ -52,7 +64,9 @@ const services = [
     <section class="intro-section">
       <h1 class="intro-title">Nuestros Servicios</h1>
       <p class="intro-desc">
-        Ofrecemos soluciones completas de mixología para eventos privados, corporativos y formaciones. Elige el servicio que mejor se adapta a tu experiencia.
+        Ofrecemos soluciones completas de mixología para eventos privados,
+        corporativos y formaciones. Elige el servicio que mejor se adapta a tu
+        experiencia.
       </p>
       <div class="intro-actions">
         <a
@@ -69,13 +83,23 @@ const services = [
     </section>
 
     <!-- Services Grid -->
-    <section id="servicios-list" aria-labelledby="servicios-heading" class="services-section">
+    <section
+      id="servicios-list"
+      aria-labelledby="servicios-heading"
+      class="services-section"
+    >
       <h2 id="servicios-heading" class="sr-only">Listado de Servicios</h2>
 
       <div class="services-grid">
-        {services.map((s) => (
-          <ServiceCard icon={s.icon} title={s.title} description={s.description} />
-        ))}
+        {
+          services.map((s) => (
+            <ServiceCard
+              icon={s.icon}
+              title={s.title}
+              description={s.description}
+            />
+          ))
+        }
       </div>
     </section>
 
@@ -86,8 +110,10 @@ const services = [
           <div class="details-main">
             <h3 class="details-title">Por qué elegir Mixology Pro</h3>
             <p class="details-desc">
-              Combinamos ingredientes seleccionados, personal altamente formado y un enfoque de atención al detalle que asegura que cada bebida sea una experiencia.
-              Ofrecemos coordinación logística, menús personalizados y servicio profesional acorde al tono de tu evento.
+              Combinamos ingredientes seleccionados, personal altamente formado
+              y un enfoque de atención al detalle que asegura que cada bebida
+              sea una experiencia. Ofrecemos coordinación logística, menús
+              personalizados y servicio profesional acorde al tono de tu evento.
             </p>
             <ul class="details-list">
               <li>Material y equipamiento premium</li>
@@ -101,14 +127,12 @@ const services = [
             <div class="aside-box">
               <h4 class="aside-title">Presupuesto rápido</h4>
               <p class="aside-desc">
-                Dinos fecha, número de invitados y tipo de servicio y te devolvemos una propuesta en 24h.
+                Dinos fecha, número de invitados y tipo de servicio y te
+                devolvemos una propuesta en 24h.
               </p>
             </div>
 
-            <a
-              class="btn-primary-full"
-              href="/contacto"
-            >
+            <a class="btn-primary-full" href="/contacto">
               <span class="material-symbols-outlined btn-icon">call</span>
               Solicitar presupuesto
             </a>
