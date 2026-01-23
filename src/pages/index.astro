@@ -23,7 +23,7 @@ const contactData = contactEntry.data;
 
 const cocktails = await getCollection("cocktails");
 const topCocktails = cocktails
-    .sort((a, b) => a.data.id.localeCompare(b.data.id))
+    .sort((a, b) => a.slug.localeCompare(b.slug))
     .slice(0, 3);
 
 const pageTitle = "Luismi Mixology";

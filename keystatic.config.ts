@@ -22,11 +22,6 @@ export default config({
       format: { contentField: "recipe" },
       schema: {
         title: fields.slug({ name: { label: "Nombre del Cóctel" } }),
-        id: fields.text({
-          label: "ID / Orden",
-          description: "Ej: 01, 02. Determina la posición en la lista.",
-          validation: { length: { min: 2 } },
-        }),
         desc: fields.text({
           label: "Descripción corta",
           multiline: true,

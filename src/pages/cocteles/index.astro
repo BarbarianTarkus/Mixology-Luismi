@@ -15,9 +15,8 @@ const pageUrl = "/";
 
 const cocktailsEntries = await getCollection("cocktails");
 const cocktails = cocktailsEntries
-  .sort((a, b) => a.data.id.localeCompare(b.data.id))
+  .sort((a, b) => a.slug.localeCompare(b.slug))
   .map(c => ({
-    id: c.data.id,
     title: c.data.title,
     desc: c.data.desc,
     image: c.data.image || "",

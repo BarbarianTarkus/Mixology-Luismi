@@ -5,7 +5,6 @@ const cocktails = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      id: z.string(),
       desc: z.string(),
       image: image(),
       alt: z.string().optional(),
