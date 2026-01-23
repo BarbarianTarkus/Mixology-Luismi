@@ -35,7 +35,7 @@ export default config({
         image: fields.image({
           label: "Imagen Principal",
           directory: "src/assets/images/cocktails",
-          publicPath: "/src/assets/images/cocktails/",
+          publicPath: "@assets/images/cocktails/",
           validation: { isRequired: true },
         }),
         alt: fields.text({ label: "Texto alternativo (SEO)" }),
@@ -44,7 +44,7 @@ export default config({
           options: {
             image: {
               directory: "src/assets/images/cocktails",
-              publicPath: "/src/assets/images/cocktails/",
+              publicPath: "@assets/images/cocktails/",
             },
           },
         }),
@@ -89,7 +89,7 @@ export default config({
         heroImage: fields.image({
           label: "Imagen de Fondo (Hero)",
           directory: "src/assets/images/home",
-          publicPath: "/src/assets/images/home/",
+          publicPath: "@assets/images/home/",
         }),
       },
     }),
