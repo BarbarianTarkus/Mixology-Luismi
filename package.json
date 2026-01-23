@@ -12,6 +12,7 @@
     "lint": "eslint \"src/**/*.{js,astro}\""
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
     "astro": "^5.16.14"
   },
   "devDependencies": {
@@ -19,6 +20,7 @@
     "eslint": "^9.39.2",
     "eslint-plugin-astro": "^1.5.0",
     "prettier": "3.8.1",
-    "prettier-plugin-astro": "0.14.1"
+    "prettier-plugin-astro": "0.14.1",
+    "wrangler": "^4.60.0"
   }
 }
