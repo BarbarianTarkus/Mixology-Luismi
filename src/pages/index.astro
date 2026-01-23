@@ -48,7 +48,7 @@ const cocktails = [
 >
     <Header title={pageTitle} nav={[{ href: '#servicios', label: 'Servicios' }, { href: '#cocteles', label: 'Cócteles' }, { href: '#contacto', label: 'Contacto' }]} />
 
-    <main class="max-w-6xl px-4 mx-auto pb-24" role="main">
+    <main class="main-content" role="main">
         <!-- Hero -->
         <Hero
             title="Coctelería Exclusiva en tu Evento"
@@ -60,20 +60,17 @@ const cocktails = [
         />
 
         <!-- Services header -->
-        <section class="px-4 pt-10 pb-2" aria-labelledby="services-heading">
-            <h2
-                id="services-heading"
-                class="text-white text-[24px] font-extrabold leading-tight tracking-[-0.015em]"
-            >
+        <section class="section-header" aria-labelledby="services-heading">
+            <h2 id="services-heading" class="section-title">
                 Nuestros Servicios
             </h2>
-            <div class="h-1 w-12 bg-primary mt-2 rounded-full"></div>
+            <div class="title-underline"></div>
         </section>
 
         <!-- Services grid -->
         <section
             id="servicios"
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4"
+            class="services-grid"
             aria-label="Servicios"
         >
             <ServiceCard
@@ -94,46 +91,40 @@ const cocktails = [
         </section>
 
         <!-- Cocktails header -->
-        <section class="px-4 pt-10 pb-2" aria-labelledby="cocktails-heading">
-            <h2
-                id="cocktails-heading"
-                class="text-white text-[24px] font-extrabold leading-tight tracking-[-0.015em]"
-            >
+        <section class="section-header" aria-labelledby="cocktails-heading">
+            <h2 id="cocktails-heading" class="section-title">
                 Top 3 Cócteles
             </h2>
-            <div class="h-1 w-12 bg-primary mt-2 rounded-full"></div>
+            <div class="title-underline"></div>
         </section>
 
         <!-- Cocktails grid -->
         <section
             id="cocteles"
-            class="p-4 grid grid-cols-1 md:grid-cols-3 gap-6"
+            class="cocktails-grid"
             aria-label="Top cocktails"
         >
             {
                 cocktails.map((c) => (
-                    <article
-                        class="group relative overflow-hidden rounded-xl bg-card-bg border border-card-border"
-                        key={c.id}
-                    >
+                    <article class="cocktail-card" key={c.id}>
                         <div
-                            class="aspect-[16/9] md:aspect-[4/3] w-full bg-cover bg-center"
+                            class="cocktail-image"
                             role="img"
                             aria-label={c.title}
                             style={`background-image: url('${c.image}');`}
                         />
                         <!-- Hidden, accessible image fallback for non-CSS / assistive tech -->
                         <img src={c.image} alt={c.title} class="sr-only" />
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-primary text-xl font-bold">
+                        <div class="cocktail-info">
+                            <div class="cocktail-header">
+                                <h3 class="cocktail-title">
                                     {c.title}
                                 </h3>
-                                <span class="text-white/50 text-xs font-mono">
+                                <span class="cocktail-id">
                                     {c.id}
                                 </span>
                             </div>
-                            <p class="text-muted-beige text-sm">{c.desc}</p>
+                            <p class="cocktail-desc">{c.desc}</p>
                         </div>
                     </article>
                 ))
@@ -141,56 +132,43 @@ const cocktails = [
         </section>
 
         <!-- Contact / Footer -->
-        <footer
-            id="contacto"
-            class="mt-10 px-6 py-10 border-t border-[#342d18] bg-black/20 text-center"
-            role="contentinfo"
-        >
-            <div class="flex flex-col gap-6 max-w-2xl mx-auto">
-                <div class="flex flex-col gap-2">
-                    <h4 class="text-white font-bold text-lg">
+        <footer id="contacto" class="page-footer" role="contentinfo">
+            <div class="footer-container">
+                <div class="footer-cta">
+                    <h4 class="footer-cta-title">
                         ¿Listo para tu próximo evento?
                     </h4>
-                    <a
-                        class="text-primary text-xl font-bold flex items-center justify-center gap-2"
-                        href="tel:+1234567890"
-                    >
+                    <a class="footer-phone" href="tel:+1234567890">
                         <span class="material-symbols-outlined">call</span>
                         +1 234 567 890
                     </a>
                 </div>
 
-                <div class="flex justify-center gap-6">
+                <div class="footer-socials">
                     <a
-                        class="text-[#cbbc90] hover:text-primary"
+                        class="social-link"
                         href="#"
                         aria-label="Social - brand"
                     >
-                        <span class="material-symbols-outlined text-[28px]"
-                            >brand_awareness</span
-                        >
+                        <span class="material-symbols-outlined social-icon">brand_awareness</span>
                     </a>
                     <a
-                        class="text-[#cbbc90] hover:text-primary"
+                        class="social-link"
                         href="#"
                         aria-label="Instagram"
                     >
-                        <span class="material-symbols-outlined text-[28px]"
-                            >photo_camera</span
-                        >
+                        <span class="material-symbols-outlined social-icon">photo_camera</span>
                     </a>
                     <a
-                        class="text-[#cbbc90] hover:text-primary"
+                        class="social-link"
                         href="mailto:info@example.com"
                         aria-label="Email"
                     >
-                        <span class="material-symbols-outlined text-[28px]"
-                            >mail</span
-                        >
+                        <span class="material-symbols-outlined social-icon">mail</span>
                     </a>
                 </div>
 
-                <p class="text-[#cbbc90]/50 text-xs">
+                <p class="footer-copy">
                     © 2024 Mixology Pro Services. Todos los derechos reservados.
                 </p>
             </div>
@@ -198,15 +176,229 @@ const cocktails = [
     </main>
 
     <!-- Floating Action Button for Mobile -->
-    <div class="fixed bottom-6 right-6 z-50 md:hidden">
+    <div class="fab-container">
         <a
-            class="bg-primary text-background-dark size-14 rounded-full flex items-center justify-center shadow-2xl shadow-primary/40 active:scale-95 transition-transform"
+            class="fab"
             href="https://wa.me/1234567890"
             aria-label="Contactar por WhatsApp"
             rel="noopener noreferrer"
             target="_blank"
         >
-            <span class="material-symbols-outlined text-[32px]">chat</span>
+            <span class="material-symbols-outlined fab-icon">chat</span>
         </a>
     </div>
 </BaseLayout>
+
+<style>
+    .main-content {
+        max-width: var(--max-width-6xl);
+        padding-inline: 1rem;
+        margin-inline: auto;
+        padding-bottom: 6rem;
+    }
+
+    .section-header {
+        padding-inline: 1rem;
+        padding-top: 2.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .section-title {
+        color: var(--color-white);
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 1.25;
+        letter-spacing: -0.015em;
+    }
+
+    .title-underline {
+        height: 4px;
+        width: 3rem;
+        background-color: var(--color-primary);
+        margin-top: 0.5rem;
+        border-radius: var(--radius-full);
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    @media (min-width: 640px) {
+        .services-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (min-width: 768px) {
+        .services-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    .cocktails-grid {
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .cocktails-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    .cocktail-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-xl);
+        background-color: var(--color-card-bg);
+        border: 1px solid var(--color-card-border);
+        transition: transform 0.2s;
+    }
+
+    .cocktail-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .cocktail-image {
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    @media (min-width: 768px) {
+        .cocktail-image {
+            aspect-ratio: 4 / 3;
+        }
+    }
+
+    .cocktail-info {
+        padding: 1rem;
+    }
+
+    .cocktail-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 0.25rem;
+    }
+
+    .cocktail-title {
+        color: var(--color-primary);
+        font-size: 1.25rem;
+        font-weight: 700;
+    }
+
+    .cocktail-id {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.75rem;
+        font-family: monospace;
+    }
+
+    .cocktail-desc {
+        color: var(--color-muted-beige);
+        font-size: 0.875rem;
+    }
+
+    .page-footer {
+        margin-top: 2.5rem;
+        padding-inline: 1.5rem;
+        padding-block: 2.5rem;
+        border-top: 1px solid var(--color-card-bg);
+        background-color: rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: var(--max-width-2xl);
+        margin-inline: auto;
+    }
+
+    .footer-cta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .footer-cta-title {
+        color: var(--color-white);
+        font-weight: 700;
+        font-size: 1.125rem;
+    }
+
+    .footer-phone {
+        color: var(--color-primary);
+        font-size: 1.25rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .footer-socials {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .social-link {
+        color: var(--color-muted-beige);
+        transition: color 0.2s;
+    }
+
+    .social-link:hover {
+        color: var(--color-primary);
+    }
+
+    .social-icon {
+        font-size: 28px;
+    }
+
+    .footer-copy {
+        color: rgba(203, 188, 144, 0.5);
+        font-size: 0.75rem;
+    }
+
+    .fab-container {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        z-index: 50;
+    }
+
+    @media (min-width: 768px) {
+        .fab-container {
+            display: none;
+        }
+    }
+
+    .fab {
+        background-color: var(--color-primary);
+        color: var(--color-background-dark);
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: var(--radius-full);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 25px 50px -12px rgba(var(--color-primary-rgb), 0.4);
+        transition: transform 0.2s;
+    }
+
+    .fab:active {
+        transform: scale(0.95);
+    }
+
+    .fab-icon {
+        font-size: 32px;
+    }
+</style>

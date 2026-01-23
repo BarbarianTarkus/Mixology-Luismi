@@ -3,62 +3,56 @@ export interface NavItem {
     href: string;
     label: string;
 }
-export let title: string = "Luismi Mixology";
-/**
- * Default navigation uses site routes (pages) instead of hash anchors.
- * You can override `nav` by passing a `nav` prop when using this component.
- */
-export let nav: NavItem[] = [
-    { href: "/servicios", label: "Servicios" },
-    { href: "/cocteles", label: "Cócteles" },
-    { href: "/contacto", label: "Contacto" },
-];
+
+export interface Props {
+    title?: string;
+    nav?: NavItem[];
+}
+
+const {
+    title = "Luismi Mixology",
+    nav = [
+        { href: "/servicios", label: "Servicios" },
+        { href: "/cocteles", label: "Cócteles" },
+        { href: "/contacto", label: "Contacto" },
+    ],
+} = Astro.props;
 ---
 
-<header
-    class="sticky top-0 z-50 bg-background-dark/95 backdrop-blur-md border-b border-[#342d18]"
->
-    <div class="flex items-center p-4 justify-between max-w-6xl mx-auto px-4">
+<header class="header">
+    <div class="header-container">
         <!-- Left: icon -->
-        <div
-            class="text-primary flex size-10 shrink-0 items-center justify-center"
-            aria-hidden="true"
-        >
-            <span class="material-symbols-outlined text-[32px]">wine_bar</span>
+        <div class="header-icon" aria-hidden="true">
+            <span class="material-symbols-outlined icon-size">wine_bar</span>
         </div>
 
         <!-- Center: title -->
-        <h1
-            class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center uppercase tracking-widest"
-        >
+        <h1 class="header-title">
             {title}
         </h1>
 
         <!-- Right: navigation + mobile button -->
-        <div class="flex items-center gap-4">
+        <div class="header-actions">
             <nav
-                class="hidden md:flex items-center gap-6 ml-4"
+                class="desktop-nav"
                 role="navigation"
                 aria-label="Main navigation"
             >
                 {
                     nav.map((item) => (
-                        <a
-                            class="text-[#cbbc90] hover:text-primary"
-                            href={item.href}
-                        >
+                        <a class="nav-link" href={item.href}>
                             {item.label}
                         </a>
                     ))
                 }
             </nav>
 
-            <div class="flex items-center">
+            <div class="mobile-toggle">
                 <button
                     id="mobile-menu-button"
                     aria-label="Abrir menú"
                     aria-expanded="false"
-                    class="flex cursor-pointer items-center justify-center rounded-lg h-10 bg-transparent text-white p-0 md:hidden"
+                    class="menu-button"
                 >
                     <span class="material-symbols-outlined">menu</span>
                 </button>
@@ -67,17 +61,11 @@ export let nav: NavItem[] = [
     </div>
 
     <!-- Mobile menu (hidden by default) -->
-    <nav
-        id="mobile-menu"
-        class="md:hidden hidden border-t border-[#342d18] bg-background-dark/95"
-    >
-        <div class="flex flex-col gap-2 px-4 py-3 max-w-6xl mx-auto">
+    <nav id="mobile-menu" class="mobile-nav hidden">
+        <div class="mobile-nav-container">
             {
                 nav.map((item) => (
-                    <a
-                        class="block w-full text-left px-3 py-2 rounded-md text-[#cbbc90] hover:text-primary hover:bg-[#342d18]/40"
-                        href={item.href}
-                    >
+                    <a class="mobile-nav-link" href={item.href}>
                         {item.label}
                     </a>
                 ))
@@ -103,11 +91,6 @@ export let nav: NavItem[] = [
         })();
     </script>
 
-    <!--
-      Provide non-JS / crawler-friendly fallbacks for background-image sections.
-      These images are visually hidden with the `sr-only` utility but available
-      to screen readers and bots (mirrors the original design images).
-    -->
     <noscript>
         <img
             src="/images/hero-large.jpg"
@@ -131,3 +114,139 @@ export let nav: NavItem[] = [
         />
     </noscript>
 </header>
+
+<style>
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background-color: rgba(34, 30, 16, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--color-card-bg);
+    }
+
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        max-width: var(--max-width-6xl);
+        margin-inline: auto;
+    }
+
+    .header-icon {
+        color: var(--color-primary);
+        display: flex;
+        width: 2.5rem;
+        height: 2.5rem;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .icon-size {
+        font-size: 32px;
+    }
+
+    .header-title {
+        color: var(--color-white);
+        font-size: 1.125rem;
+        font-weight: 700;
+        line-height: 1.25;
+        letter-spacing: 0.1em;
+        flex: 1;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .desktop-nav {
+        display: none;
+        align-items: center;
+        gap: 1.5rem;
+        margin-left: 1rem;
+    }
+
+    @media (min-width: 768px) {
+        .desktop-nav {
+            display: flex;
+        }
+    }
+
+    .nav-link {
+        color: var(--color-muted-beige);
+        transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+        color: var(--color-primary);
+    }
+
+    .mobile-toggle {
+        display: flex;
+        align-items: center;
+    }
+
+    .menu-button {
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-lg);
+        height: 2.5rem;
+        background-color: transparent;
+        color: var(--color-white);
+        padding: 0;
+        border: none;
+    }
+
+    @media (min-width: 768px) {
+        .menu-button {
+            display: none;
+        }
+    }
+
+    .mobile-nav {
+        border-top: 1px solid var(--color-card-bg);
+        background-color: rgba(34, 30, 16, 0.95);
+    }
+
+    @media (min-width: 768px) {
+        .mobile-nav {
+            display: none;
+        }
+    }
+
+    .mobile-nav.hidden {
+        display: none;
+    }
+
+    .mobile-nav-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        max-width: var(--max-width-6xl);
+        margin-inline: auto;
+    }
+
+    .mobile-nav-link {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 0.5rem 0.75rem;
+        border-radius: var(--radius-default);
+        color: var(--color-muted-beige);
+        transition: all 0.2s;
+    }
+
+    .mobile-nav-link:hover {
+        color: var(--color-primary);
+        background-color: rgba(52, 45, 24, 0.4);
+    }
+</style>

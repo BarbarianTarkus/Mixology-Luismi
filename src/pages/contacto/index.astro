@@ -19,96 +19,94 @@ const pageImage = "/images/hero-large.jpg";
 >
     <Header />
 
-    <main class="max-w-4xl mx-auto px-4 py-16" role="main">
-        <section class="text-center mb-12">
-            <h1 class="text-white text-4xl font-extrabold">Contacto</h1>
-            <p class="mt-3 text-muted-beige max-w-2xl mx-auto">
+    <main class="page-container" role="main">
+        <section class="intro-section">
+            <h1 class="intro-title">Contacto</h1>
+            <p class="intro-desc">
                 ¿Listo para planear tu evento? Rellena el formulario o utiliza
                 uno de los métodos de contacto para recibir una propuesta
                 personalizada.
             </p>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="contact-grid">
             <!-- Contact details -->
-            <aside class="bg-card-bg border border-card-border rounded-xl p-6">
-                <h2 class="text-white text-2xl font-bold mb-3">
+            <aside class="contact-info-card">
+                <h2 class="info-card-title">
                     Información de contacto
                 </h2>
 
-                <p class="text-muted-beige mb-4">
+                <p class="info-card-desc">
                     Llámanos, envíanos un WhatsApp o un correo y te
                     responderemos en menos de 24h.
                 </p>
 
-                <ul class="space-y-3">
-                    <li class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-primary"
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <span class="material-symbols-outlined contact-icon"
                             >call</span
                         >
                         <a
-                            class="text-primary font-semibold"
+                            class="contact-link-primary"
                             href="tel:+1234567890">+1 234 567 890</a
                         >
                     </li>
 
-                    <li class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-primary"
+                    <li class="contact-item">
+                        <span class="material-symbols-outlined contact-icon"
                             >chat</span
                         >
                         <a
-                            class="text-primary font-semibold"
+                            class="contact-link-primary"
                             href="https://wa.me/1234567890"
                             target="_blank"
                             rel="noopener noreferrer">Contactar por WhatsApp</a
                         >
                     </li>
 
-                    <li class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-primary"
+                    <li class="contact-item">
+                        <span class="material-symbols-outlined contact-icon"
                             >mail</span
                         >
                         <a
-                            class="text-muted-beige"
+                            class="contact-link-secondary"
                             href="mailto:info@example.com">info@example.com</a
                         >
                     </li>
 
-                    <li class="flex items-start gap-3">
-                        <span class="material-symbols-outlined text-primary"
+                    <li class="contact-item-align-start">
+                        <span class="material-symbols-outlined contact-icon"
                             >place</span
                         >
-                        <address class="not-italic text-muted-beige">
+                        <address class="contact-address">
                             Calle Ejemplo 123, Ciudad, Provincia<br />
                             Código Postal 00000
                         </address>
                     </li>
                 </ul>
 
-                <div class="mt-6">
-                    <h3 class="text-white font-semibold mb-2">Horario</h3>
-                    <p class="text-muted-beige text-sm">
+                <div class="schedule-section">
+                    <h3 class="schedule-title">Horario</h3>
+                    <p class="schedule-desc">
                         Lun - Vie: 09:00 - 18:00 · Sáb: 10:00 - 14:00
                     </p>
                 </div>
             </aside>
 
             <!-- Contact form -->
-            <section
-                class="bg-card-bg border border-card-border rounded-xl p-6"
-            >
-                <h2 class="text-white text-2xl font-bold mb-3">
+            <section class="contact-form-card">
+                <h2 class="info-card-title">
                     Envíanos un mensaje
                 </h2>
-                <p class="text-muted-beige mb-4">
+                <p class="info-card-desc">
                     Cuéntanos fecha, número de invitados y tipo de servicio para
                     obtener un presupuesto rápido.
                 </p>
 
-                <form id="contact-form" class="flex flex-col gap-4" on:submit>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <label class="flex flex-col">
-                            <span class="text-muted-beige text-sm mb-1"
+                <form id="contact-form" class="contact-form">
+                    <div class="form-row">
+                        <label class="form-field">
+                            <span class="field-label"
                                 >Nombre</span
                             >
                             <input
@@ -116,12 +114,12 @@ const pageImage = "/images/hero-large.jpg";
                                 name="name"
                                 type="text"
                                 placeholder="Tu nombre"
-                                class="px-3 py-2 rounded-md bg-background-dark/60 border border-[#3b3420] text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                                class="form-input"
                             />
                         </label>
 
-                        <label class="flex flex-col">
-                            <span class="text-muted-beige text-sm mb-1"
+                        <label class="form-field">
+                            <span class="field-label"
                                 >Teléfono</span
                             >
                             <input
@@ -129,13 +127,13 @@ const pageImage = "/images/hero-large.jpg";
                                 name="phone"
                                 type="tel"
                                 placeholder="+34 600 000 000"
-                                class="px-3 py-2 rounded-md bg-background-dark/60 border border-[#3b3420] text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                                class="form-input"
                             />
                         </label>
                     </div>
 
-                    <label class="flex flex-col">
-                        <span class="text-muted-beige text-sm mb-1"
+                    <label class="form-field">
+                        <span class="field-label"
                             >Correo electrónico</span
                         >
                         <input
@@ -143,12 +141,12 @@ const pageImage = "/images/hero-large.jpg";
                             name="email"
                             type="email"
                             placeholder="tu@correo.com"
-                            class="px-3 py-2 rounded-md bg-background-dark/60 border border-[#3b3420] text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                            class="form-input"
                         />
                     </label>
 
-                    <label class="flex flex-col">
-                        <span class="text-muted-beige text-sm mb-1"
+                    <label class="form-field">
+                        <span class="field-label"
                             >Detalles del evento</span
                         >
                         <textarea
@@ -156,23 +154,23 @@ const pageImage = "/images/hero-large.jpg";
                             name="message"
                             rows="6"
                             placeholder="Fecha, número de invitados, ubicación, servicio solicitado..."
-                            class="px-3 py-2 rounded-md bg-background-dark/60 border border-[#3b3420] text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                            class="form-textarea"
                         ></textarea>
                     </label>
 
-                    <div class="flex items-center gap-3 mt-2">
+                    <div class="form-actions">
                         <button
                             type="submit"
-                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-background-dark font-bold shadow-primary-soft"
+                            class="btn-submit"
                         >
-                            <span class="material-symbols-outlined">send</span>
+                            <span class="material-symbols-outlined btn-icon">send</span>
                             Enviar mensaje
                         </button>
 
                         <button
                             id="clear-btn"
                             type="button"
-                            class="px-4 py-2 rounded-md bg-transparent border border-[#3b3420] text-muted-beige hover:text-primary"
+                            class="btn-clear"
                         >
                             Limpiar
                         </button>
@@ -180,15 +178,13 @@ const pageImage = "/images/hero-large.jpg";
 
                     <p
                         id="form-status"
-                        class="text-sm text-muted-beige mt-3"
+                        class="form-status"
                         aria-live="polite"
                     >
                     </p>
                 </form>
 
                 <script type="module">
-                    // Lightweight client-side mailto fallback to avoid requiring a backend.
-                    // The form constructs a mailto: link with the collected data and opens it.
                     const form = document.getElementById("contact-form");
                     const status = document.getElementById("form-status");
                     const clearBtn = document.getElementById("clear-btn");
@@ -219,7 +215,6 @@ const pageImage = "/images/hero-large.jpg";
 
                             const mailto = `mailto:info@example.com?subject=${subject}&body=${body}`;
 
-                            // Open user's mail client. If blocked, show fallback message.
                             try {
                                 window.location.href = mailto;
                                 status.textContent =
@@ -242,3 +237,205 @@ const pageImage = "/images/hero-large.jpg";
         </div>
     </main>
 </BaseLayout>
+
+<style>
+    .page-container {
+        max-width: var(--max-width-4xl);
+        margin-inline: auto;
+        padding-inline: 1rem;
+        padding-block: 4rem;
+    }
+
+    .intro-section {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .intro-title {
+        color: var(--color-white);
+        font-size: 2.25rem;
+        font-weight: 800;
+    }
+
+    .intro-desc {
+        margin-top: 0.75rem;
+        color: var(--color-muted-beige);
+        max-width: var(--max-width-2xl);
+        margin-inline: auto;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+        .contact-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    .contact-info-card, .contact-form-card {
+        background-color: var(--color-card-bg);
+        border: 1px solid var(--color-card-border);
+        border-radius: var(--radius-xl);
+        padding: 1.5rem;
+    }
+
+    .info-card-title {
+        color: var(--color-white);
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+    }
+
+    .info-card-desc {
+        color: var(--color-muted-beige);
+        margin-bottom: 1rem;
+    }
+
+    .contact-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .contact-item-align-start {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .contact-icon {
+        color: var(--color-primary);
+    }
+
+    .contact-link-primary {
+        color: var(--color-primary);
+        font-weight: 600;
+    }
+
+    .contact-link-secondary {
+        color: var(--color-muted-beige);
+    }
+
+    .contact-address {
+        font-style: normal;
+        color: var(--color-muted-beige);
+    }
+
+    .schedule-section {
+        margin-top: 1.5rem;
+    }
+
+    .schedule-title {
+        color: var(--color-white);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .schedule-desc {
+        color: var(--color-muted-beige);
+        font-size: 0.875rem;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+        .form-row {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    .form-field {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .field-label {
+        color: var(--color-muted-beige);
+        font-size: 0.875rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .form-input, .form-textarea {
+        padding: 0.5rem 0.75rem;
+        border-radius: var(--radius-default);
+        background-color: rgba(34, 30, 16, 0.6);
+        border: 1px solid #3b3420;
+        color: var(--color-white);
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+    }
+
+    .form-textarea {
+        resize: vertical;
+    }
+
+    .form-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+    }
+
+    .btn-submit {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-full);
+        background-color: var(--color-primary);
+        color: var(--color-background-dark);
+        font-weight: 700;
+        box-shadow: var(--shadow-primary-soft);
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-clear {
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-default);
+        background-color: transparent;
+        border: 1px solid #3b3420;
+        color: var(--color-muted-beige);
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+
+    .btn-clear:hover {
+        color: var(--color-primary);
+    }
+
+    .btn-icon {
+        font-size: 20px;
+    }
+
+    .form-status {
+        font-size: 0.875rem;
+        color: var(--color-muted-beige);
+        margin-top: 0.75rem;
+    }
+</style>

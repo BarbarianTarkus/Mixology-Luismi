@@ -2,16 +2,10 @@
 /**
  * BaseLayout.astro
  *
- * Provides the HTML document shell, meta tags and loads the local Tailwind CSS bundle.
+ * Provides the HTML document shell, meta tags and loads the global CSS.
  *
  * Notes:
- * - This layout expects a compiled Tailwind CSS file at `src/styles.css`.
- *   Create `src/styles.css` and include the Tailwind directives:
- *     @tailwind base;
- *     @tailwind components;
- *     @tailwind utilities;
- *
- * - Ensure Tailwind is configured and built (dev dependencies already added in package.json).
+ * - This layout loads `src/styles/global.css`.
  *
  * Props:
  *  - title: Page title (default: Luismi Mixology — Coctelería)
@@ -27,11 +21,12 @@ export interface Props {
     image?: string;
 }
 
-export let title: string = "Luismi Mixology — Coctelería";
-export let description: string =
-    "Servicio de coctelería a domicilio con mixología de autor, barras móviles premium y masterclasses.";
-export let url: string = "https://example.com";
-export let image: string = "/images/hero-large.jpg";
+const {
+    title = "Luismi Mixology — Coctelería",
+    description = "Servicio de coctelería a domicilio con mixología de autor, barras móviles premium y masterclasses.",
+    url = "https://example.com",
+    image = "/images/hero-large.jpg",
+} = Astro.props;
 
 import "../styles/global.css";
 ---
@@ -85,9 +80,7 @@ import "../styles/global.css";
         <meta name="generator" content="Astro" />
     </head>
 
-    <body
-        class="bg-background-light dark:bg-background-dark text-white font-display"
-    >
+    <body>
         <!-- Page content -->
         <slot />
 

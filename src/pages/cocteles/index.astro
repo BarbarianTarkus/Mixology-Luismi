@@ -58,13 +58,13 @@ const cocktails = [
 >
     <Header />
 
-    <main class="max-w-6xl mx-auto px-4 pb-24" role="main">
+    <main class="page-container" role="main">
         <!-- Page intro -->
-        <section class="pt-10 pb-8 text-center">
-            <h1 class="text-white text-4xl md:text-5xl font-extrabold">
+        <section class="intro-section">
+            <h1 class="intro-title">
                 Top Cócteles
             </h1>
-            <p class="mt-3 text-muted-beige max-w-2xl mx-auto">
+            <p class="intro-desc">
                 Nuestra selección de cócteles de autor, pensada para eventos y
                 celebraciones. Cada receta puede adaptarse a tus gustos y a las
                 necesidades de tu evento.
@@ -74,58 +74,55 @@ const cocktails = [
         <!-- Cocktails grid -->
         <section
             id="cocteles"
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4"
+            class="cocktails-grid"
             aria-label="Listado de cócteles"
         >
             {
                 cocktails.map((c) => (
                     <article
-                        class="group relative overflow-hidden rounded-xl bg-card-bg border border-card-border"
+                        class="cocktail-card"
                         key={c.id}
                         aria-labelledby={`cocktail-${c.id}-title`}
                     >
                         <div
-                            class="aspect-[16/9] md:aspect-[4/3] w-full bg-cover bg-center"
+                            class="cocktail-image"
                             role="img"
                             aria-label={c.alt}
                             style={`background-image: url('${c.image}');`}
                         />
-                        <div class="p-4">
-                            <div class="flex justify-between items-start mb-1">
+                        <div class="cocktail-content">
+                            <div class="cocktail-header">
                                 <h3
                                     id={`cocktail-${c.id}-title`}
-                                    class="text-primary text-xl font-bold"
+                                    class="cocktail-title"
                                 >
                                     {c.title}
                                 </h3>
-                                <span class="text-white/50 text-xs font-mono">
+                                <span class="cocktail-id">
                                     {c.id}
                                 </span>
                             </div>
-                            <p class="text-muted-beige text-sm">{c.desc}</p>
+                            <p class="cocktail-desc">{c.desc}</p>
 
-                            <div class="mt-4 flex gap-3">
+                            <div class="cocktail-actions">
                                 <a
-                                    class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-primary text-background-dark text-sm font-semibold shadow-primary-soft"
+                                    class="btn-primary-sm"
                                     href="https://wa.me/1234567890"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label={`Contactar por ${c.title}`}
                                 >
-                                    <span class="material-symbols-outlined">
+                                    <span class="material-symbols-outlined btn-icon">
                                         chat
                                     </span>
                                     Reservar
                                 </a>
 
                                 <button
-                                    class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-transparent border border-[#685a31] text-muted-beige text-sm hover:text-primary"
+                                    class="btn-outline-sm"
                                     type="button"
-                                    on:click={() => {
-                                        /* placeholder: progressive enhancement could open recipe modal */
-                                    }}
                                 >
-                                    <span class="material-symbols-outlined">
+                                    <span class="material-symbols-outlined btn-icon">
                                         info
                                     </span>
                                     Ver receta
@@ -138,28 +135,209 @@ const cocktails = [
         </section>
 
         <!-- Call to action -->
-        <section class="mt-12 text-center px-4">
-            <div
-                class="inline-flex flex-col items-center gap-4 bg-card-bg border border-card-border rounded-xl p-8"
-            >
-                <h2 class="text-white text-2xl font-bold">
+        <section class="cta-section">
+            <div class="cta-box">
+                <h2 class="cta-title">
                     ¿Quieres estos cócteles en tu evento?
                 </h2>
-                <p class="text-muted-beige max-w-xl">
+                <p class="cta-desc">
                     Contacta con nosotros para una propuesta personalizada y
                     presupuesto en 24 horas.
                 </p>
                 <a
-                    class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-background-dark font-bold shadow-primary-soft"
+                    class="btn-primary-lg"
                     href="https://wa.me/1234567890"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Contactar por WhatsApp"
                 >
-                    <span class="material-symbols-outlined">chat</span>
+                    <span class="material-symbols-outlined btn-icon">chat</span>
                     Contactar por WhatsApp
                 </a>
             </div>
         </section>
     </main>
 </BaseLayout>
+
+<style>
+    .page-container {
+        max-width: var(--max-width-6xl);
+        margin-inline: auto;
+        padding-inline: 1rem;
+        padding-bottom: 6rem;
+    }
+
+    .intro-section {
+        padding-top: 2.5rem;
+        padding-bottom: 2rem;
+        text-align: center;
+    }
+
+    .intro-title {
+        color: var(--color-white);
+        font-size: 2.25rem;
+        font-weight: 800;
+    }
+
+    @media (min-width: 768px) {
+        .intro-title {
+            font-size: 3rem;
+        }
+    }
+
+    .intro-desc {
+        margin-top: 0.75rem;
+        color: var(--color-muted-beige);
+        max-width: var(--max-width-2xl);
+        margin-inline: auto;
+    }
+
+    .cocktails-grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    @media (min-width: 640px) {
+        .cocktails-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (min-width: 768px) {
+        .cocktails-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    .cocktail-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-xl);
+        background-color: var(--color-card-bg);
+        border: 1px solid var(--color-card-border);
+    }
+
+    .cocktail-image {
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    @media (min-width: 768px) {
+        .cocktail-image {
+            aspect-ratio: 4 / 3;
+        }
+    }
+
+    .cocktail-content {
+        padding: 1rem;
+    }
+
+    .cocktail-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 0.25rem;
+    }
+
+    .cocktail-title {
+        color: var(--color-primary);
+        font-size: 1.25rem;
+        font-weight: 700;
+    }
+
+    .cocktail-id {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.75rem;
+        font-family: monospace;
+    }
+
+    .cocktail-desc {
+        color: var(--color-muted-beige);
+        font-size: 0.875rem;
+    }
+
+    .cocktail-actions {
+        margin-top: 1rem;
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .btn-primary-sm {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: var(--radius-full);
+        background-color: var(--color-primary);
+        color: var(--color-background-dark);
+        font-size: 0.875rem;
+        font-weight: 600;
+        box-shadow: var(--shadow-primary-soft);
+    }
+
+    .btn-outline-sm {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: var(--radius-full);
+        background-color: transparent;
+        border: 1px solid var(--color-card-border);
+        color: var(--color-muted-beige);
+        font-size: 0.875rem;
+        transition: color 0.2s;
+        cursor: pointer;
+    }
+
+    .btn-outline-sm:hover {
+        color: var(--color-primary);
+    }
+
+    .btn-icon {
+        font-size: 20px;
+    }
+
+    .cta-section {
+        margin-top: 3rem;
+        text-align: center;
+        padding-inline: 1rem;
+    }
+
+    .cta-box {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        background-color: var(--color-card-bg);
+        border: 1px solid var(--color-card-border);
+        border-radius: var(--radius-xl);
+        padding: 2rem;
+    }
+
+    .cta-title {
+        color: var(--color-white);
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .cta-desc {
+        color: var(--color-muted-beige);
+        max-width: 32rem;
+    }
+
+    .btn-primary-lg {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--radius-full);
+        background-color: var(--color-primary);
+        color: var(--color-background-dark);
+        font-weight: 700;
+        box-shadow: var(--shadow-primary-soft);
+    }
+</style>

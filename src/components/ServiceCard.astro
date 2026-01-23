@@ -9,8 +9,6 @@
  *  - title: string
  *  - description: string
  *
- * This variant intentionally mirrors the original design's exact token usage
- * (colors and borders) to keep visual parity with the reference HTML.
  */
 export interface Props {
     icon?: string;
@@ -18,9 +16,11 @@ export interface Props {
     description?: string;
 }
 
-export let icon: string = "celebration";
-export let title: string = "Servicio";
-export let description: string = "Descripción breve del servicio.";
+const {
+    icon = "celebration",
+    title = "Servicio",
+    description = "Descripción breve del servicio.",
+} = Astro.props;
 
 /**
  * Create a simple id from the title for accessibility (aria-labelledby).
@@ -33,25 +33,73 @@ const id = String(title)
 ---
 
 <article
-    class="flex flex-row items-center gap-4 rounded-xl border border-[#685a31] bg-[#342d18]/50 p-5"
+    class="service-card"
     role="article"
     aria-labelledby={`service-${id}`}
 >
-    <div class="bg-primary/10 p-3 rounded-lg flex-shrink-0" aria-hidden="true">
-        <span class="material-symbols-outlined text-primary text-[32px]"
+    <div class="service-icon-container" aria-hidden="true">
+        <span class="material-symbols-outlined service-icon"
             >{icon}</span
         >
     </div>
 
-    <div class="flex flex-col gap-1">
+    <div class="service-content">
         <h3
             id={`service-${id}`}
-            class="text-white text-lg font-bold leading-tight"
+            class="service-title"
         >
             {title}
         </h3>
-        <p class="text-[#cbbc90] text-sm font-normal leading-normal">
+        <p class="service-description">
             {description}
         </p>
     </div>
 </article>
+
+<style>
+    .service-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--color-card-border);
+        background-color: rgba(52, 45, 24, 0.5);
+        padding: 1.25rem;
+    }
+
+    .service-icon-container {
+        background-color: rgba(var(--color-primary-rgb), 0.1);
+        padding: 0.75rem;
+        border-radius: var(--radius-lg);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .service-icon {
+        color: var(--color-primary);
+        font-size: 32px;
+    }
+
+    .service-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .service-title {
+        color: var(--color-white);
+        font-size: 1.125rem;
+        font-weight: 700;
+        line-height: 1.25;
+    }
+
+    .service-description {
+        color: var(--color-muted-beige);
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1.5;
+    }
+</style>
