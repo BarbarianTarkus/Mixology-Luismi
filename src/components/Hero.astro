@@ -40,6 +40,16 @@ export let ctaHref: string = "https://wa.me/1234567890";
 export let imageUrl: string = "/images/hero-large.jpg";
 ---
 
+<style>
+    .hero-image {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(34, 30, 16, 0.95) 100%),
+            var(--hero-image);
+        min-height: 520px;
+        border-radius: 10px 10px 0px 0px;
+    }
+</style>
+
 <section class="@container">
     <div class="p-0">
         <div
@@ -83,10 +93,11 @@ export let imageUrl: string = "/images/hero-large.jpg";
 
             <!-- Image Column for md+ -->
             <div
-                class="hidden md:block md:w-1/2 bg-cover bg-center"
+                id="hero-image"
+                class="hidden md:block md:w-1/2 hero-image bg-cover bg-center"
                 role="img"
                 aria-label="Mixologist preparing a colorful cocktail in a dark setting"
-                style={`background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(34, 30, 16, 0.95) 100%), url('${imageUrl}'); min-height:520px;`}
+                style={`--hero-image: url('${imageUrl}');`}
             >
             </div>
         </div>
