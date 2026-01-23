@@ -1,18 +1,19 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 
 const cocktails = defineCollection({
-  type: 'content',
-  schema: ({ image }) => z.object({
-    title: z.string(),
-    id: z.string(),
-    desc: z.string(),
-    image: image().optional(),
-    alt: z.string().optional(),
-  }),
+  type: "content",
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      id: z.string(),
+      desc: z.string(),
+      image: image().optional(),
+      alt: z.string().optional(),
+    }),
 });
 
 const services = defineCollection({
-  type: 'data',
+  type: "data",
   schema: z.object({
     title: z.string(),
     icon: z.string(),
@@ -21,17 +22,18 @@ const services = defineCollection({
 });
 
 const home = defineCollection({
-  type: 'data',
-  schema: ({ image }) => z.object({
-    heroEyebrow: z.string(),
-    heroTitle: z.string(),
-    heroDescription: z.string(),
-    heroImage: image().optional(),
-  }),
+  type: "data",
+  schema: ({ image }) =>
+    z.object({
+      heroEyebrow: z.string(),
+      heroTitle: z.string(),
+      heroDescription: z.string(),
+      heroImage: image().optional(),
+    }),
 });
 
 const contact = defineCollection({
-  type: 'data',
+  type: "data",
   schema: z.object({
     phone: z.string(),
     phoneUrl: z.string(),
