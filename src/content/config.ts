@@ -7,7 +7,7 @@ const cocktails = defineCollection({
       title: z.string(),
       id: z.string(),
       desc: z.string(),
-      image: image().optional(),
+       image: image().optional(),
       alt: z.string().optional(),
     }),
 });
@@ -28,7 +28,7 @@ const home = defineCollection({
       heroEyebrow: z.string(),
       heroTitle: z.string(),
       heroDescription: z.string(),
-      heroImage: image().optional(),
+       heroImage: image().optional(),
     }),
 });
 
