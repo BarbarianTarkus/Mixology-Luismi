@@ -1,154 +1,244 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
 
 export const prerender = true;
 
-const title = 'Contacto — Mixology Pro';
-const description = 'Contacta con Mixology Pro para reservas, presupuestos y consultas sobre nuestros servicios de coctelería a domicilio.';
-const pageUrl = 'https://example.com/contacto';
-const pageImage = '/images/hero-large.jpg';
+const title = "Contacto — Luismi Mixology";
+const description =
+    "Contacta con Luismi Mixology para reservas, presupuestos y consultas sobre nuestros servicios de coctelería a domicilio.";
+const pageUrl = "https://example.com/contacto";
+const pageImage = "/images/hero-large.jpg";
 ---
-<BaseLayout title={title} description={description} url={pageUrl} image={pageImage}>
-  <Header />
 
-  <main class="max-w-4xl mx-auto px-4 py-16" role="main">
-    <section class="text-center mb-12">
-      <h1 class="text-white text-4xl font-extrabold">Contacto</h1>
-      <p class="mt-3 text-muted-beige max-w-2xl mx-auto">
-        ¿Listo para planear tu evento? Rellena el formulario o utiliza uno de los métodos de contacto para recibir una propuesta personalizada.
-      </p>
-    </section>
+<BaseLayout
+    title={title}
+    description={description}
+    url={pageUrl}
+    image={pageImage}
+>
+    <Header />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <!-- Contact details -->
-      <aside class="bg-card-bg border border-card-border rounded-xl p-6">
-        <h2 class="text-white text-2xl font-bold mb-3">Información de contacto</h2>
+    <main class="max-w-4xl mx-auto px-4 py-16" role="main">
+        <section class="text-center mb-12">
+            <h1 class="text-white text-4xl font-extrabold">Contacto</h1>
+            <p class="mt-3 text-muted-beige max-w-2xl mx-auto">
+                ¿Listo para planear tu evento? Rellena el formulario o utiliza
+                uno de los métodos de contacto para recibir una propuesta
+                personalizada.
+            </p>
+        </section>
 
-        <p class="text-muted-beige mb-4">
-          Llámanos, envíanos un WhatsApp o un correo y te responderemos en menos de 24h.
-        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Contact details -->
+            <aside class="bg-card-bg border border-card-border rounded-xl p-6">
+                <h2 class="text-white text-2xl font-bold mb-3">
+                    Información de contacto
+                </h2>
 
-        <ul class="space-y-3">
-          <li class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-primary">call</span>
-            <a class="text-primary font-semibold" href="tel:+1234567890">+1 234 567 890</a>
-          </li>
+                <p class="text-muted-beige mb-4">
+                    Llámanos, envíanos un WhatsApp o un correo y te
+                    responderemos en menos de 24h.
+                </p>
 
-          <li class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-primary">chat</span>
-            <a class="text-primary font-semibold" href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">Contactar por WhatsApp</a>
-          </li>
+                <ul class="space-y-3">
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary"
+                            >call</span
+                        >
+                        <a
+                            class="text-primary font-semibold"
+                            href="tel:+1234567890">+1 234 567 890</a
+                        >
+                    </li>
 
-          <li class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-primary">mail</span>
-            <a class="text-muted-beige" href="mailto:info@example.com">info@example.com</a>
-          </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary"
+                            >chat</span
+                        >
+                        <a
+                            class="text-primary font-semibold"
+                            href="https://wa.me/1234567890"
+                            target="_blank"
+                            rel="noopener noreferrer">Contactar por WhatsApp</a
+                        >
+                    </li>
 
-          <li class="flex items-start gap-3">
-            <span class="material-symbols-outlined text-primary">place</span>
-            <address class="not-italic text-muted-beige">
-              Calle Ejemplo 123, Ciudad, Provincia<br />
-              Código Postal 00000
-            </address>
-          </li>
-        </ul>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary"
+                            >mail</span
+                        >
+                        <a
+                            class="text-muted-beige"
+                            href="mailto:info@example.com">info@example.com</a
+                        >
+                    </li>
 
-        <div class="mt-6">
-          <h3 class="text-white font-semibold mb-2">Horario</h3>
-          <p class="text-muted-beige text-sm">Lun - Vie: 09:00 - 18:00 · Sáb: 10:00 - 14:00</p>
+                    <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary"
+                            >place</span
+                        >
+                        <address class="not-italic text-muted-beige">
+                            Calle Ejemplo 123, Ciudad, Provincia<br />
+                            Código Postal 00000
+                        </address>
+                    </li>
+                </ul>
+
+                <div class="mt-6">
+                    <h3 class="text-white font-semibold mb-2">Horario</h3>
+                    <p class="text-muted-beige text-sm">
+                        Lun - Vie: 09:00 - 18:00 · Sáb: 10:00 - 14:00
+                    </p>
+                </div>
+            </aside>
+
+            <!-- Contact form -->
+            <section
+                class="bg-card-bg border border-card-border rounded-xl p-6"
+            >
+                <h2 class="text-white text-2xl font-bold mb-3">
+                    Envíanos un mensaje
+                </h2>
+                <p class="text-muted-beige mb-4">
+                    Cuéntanos fecha, número de invitados y tipo de servicio para
+                    obtener un presupuesto rápido.
+                </p>
+
+                <form id="contact-form" class="flex flex-col gap-4" on:submit>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <label class="flex flex-col">
+                            <span class="text-muted-beige text-sm mb-1"
+                                >Nombre</span
+                            >
+                            <input
+                                required
+                                name="name"
+                                type="text"
+                                placeholder="Tu nombre"
+                                class="px-3 py-2 rounded-md bg-background-dark/60 border border-[#3b3420] text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                            />
+                        </label>
+
+                        <label class="flex flex-col">
+                            <span class="text-muted-beige text-sm mb-1"
+                                >Teléfono</span
+                            >
+                            <input
+                                required
+                                name="phone"
+                                type="tel"
+                                placeholder="+34 600 000 000"
+                                class="px-3 py-2 rounded-md bg-background-dark/60 border border-[#3b3420] text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                            />
+                        </label>
+                    </div>
+
+                    <label class="flex flex-col">
+                        <span class="text-muted-beige text-sm mb-1"
+                            >Correo electrónico</span
+                        >
+                        <input
+                            required
+                            name="email"
+                            type="email"
+                            placeholder="tu@correo.com"
+                            class="px-3 py-2 rounded-md bg-background-dark/60 border border-[#3b3420] text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                        />
+                    </label>
+
+                    <label class="flex flex-col">
+                        <span class="text-muted-beige text-sm mb-1"
+                            >Detalles del evento</span
+                        >
+                        <textarea
+                            required
+                            name="message"
+                            rows="6"
+                            placeholder="Fecha, número de invitados, ubicación, servicio solicitado..."
+                            class="px-3 py-2 rounded-md bg-background-dark/60 border border-[#3b3420] text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                        ></textarea>
+                    </label>
+
+                    <div class="flex items-center gap-3 mt-2">
+                        <button
+                            type="submit"
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-background-dark font-bold shadow-primary-soft"
+                        >
+                            <span class="material-symbols-outlined">send</span>
+                            Enviar mensaje
+                        </button>
+
+                        <button
+                            id="clear-btn"
+                            type="button"
+                            class="px-4 py-2 rounded-md bg-transparent border border-[#3b3420] text-muted-beige hover:text-primary"
+                        >
+                            Limpiar
+                        </button>
+                    </div>
+
+                    <p
+                        id="form-status"
+                        class="text-sm text-muted-beige mt-3"
+                        aria-live="polite"
+                    >
+                    </p>
+                </form>
+
+                <script type="module">
+                    // Lightweight client-side mailto fallback to avoid requiring a backend.
+                    // The form constructs a mailto: link with the collected data and opens it.
+                    const form = document.getElementById("contact-form");
+                    const status = document.getElementById("form-status");
+                    const clearBtn = document.getElementById("clear-btn");
+
+                    if (form) {
+                        form.addEventListener("submit", (e) => {
+                            e.preventDefault();
+                            const fd = new FormData(form);
+                            const name = fd.get("name") || "";
+                            const phone = fd.get("phone") || "";
+                            const email = fd.get("email") || "";
+                            const message = fd.get("message") || "";
+
+                            const subject = encodeURIComponent(
+                                `Contacto web - ${name}`,
+                            );
+                            const bodyLines = [
+                                `Nombre: ${name}`,
+                                `Teléfono: ${phone}`,
+                                `Email: ${email}`,
+                                "",
+                                "Mensaje:",
+                                message,
+                            ];
+                            const body = encodeURIComponent(
+                                bodyLines.join("\n"),
+                            );
+
+                            const mailto = `mailto:info@example.com?subject=${subject}&body=${body}`;
+
+                            // Open user's mail client. If blocked, show fallback message.
+                            try {
+                                window.location.href = mailto;
+                                status.textContent =
+                                    "Se abrió tu cliente de correo. Si no, usa la dirección info@example.com para enviarnos el mensaje.";
+                            } catch (err) {
+                                status.textContent =
+                                    "No se ha podido abrir el cliente de correo. Envíanos un email a info@example.com.";
+                            }
+                        });
+                    }
+
+                    if (clearBtn) {
+                        clearBtn.addEventListener("click", () => {
+                            form.reset();
+                            status.textContent = "";
+                        });
+                    }
+                </script>
+            </section>
         </div>
-      </aside>
-
-      <!-- Contact form -->
-      <section class="bg-card-bg border border-card-border rounded-xl p-6">
-        <h2 class="text-white text-2xl font-bold mb-3">Envíanos un mensaje</h2>
-        <p class="text-muted-beige mb-4">Cuéntanos fecha, número de invitados y tipo de servicio para obtener un presupuesto rápido.</p>
-
-        <form id="contact-form" class="flex flex-col gap-4" on:submit>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <label class="flex flex-col">
-              <span class="text-muted-beige text-sm mb-1">Nombre</span>
-              <input required name="name" type="text" placeholder="Tu nombre" class="px-3 py-2 rounded-md bg-background-dark/60 border border-[#3b3420] text-white focus:outline-none focus:ring-2 focus:ring-primary" />
-            </label>
-
-            <label class="flex flex-col">
-              <span class="text-muted-beige text-sm mb-1">Teléfono</span>
-              <input required name="phone" type="tel" placeholder="+34 600 000 000" class="px-3 py-2 rounded-md bg-background-dark/60 border border-[#3b3420] text-white focus:outline-none focus:ring-2 focus:ring-primary" />
-            </label>
-          </div>
-
-          <label class="flex flex-col">
-            <span class="text-muted-beige text-sm mb-1">Correo electrónico</span>
-            <input required name="email" type="email" placeholder="tu@correo.com" class="px-3 py-2 rounded-md bg-background-dark/60 border border-[#3b3420] text-white focus:outline-none focus:ring-2 focus:ring-primary" />
-          </label>
-
-          <label class="flex flex-col">
-            <span class="text-muted-beige text-sm mb-1">Detalles del evento</span>
-            <textarea required name="message" rows="6" placeholder="Fecha, número de invitados, ubicación, servicio solicitado..." class="px-3 py-2 rounded-md bg-background-dark/60 border border-[#3b3420] text-white focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
-          </label>
-
-          <div class="flex items-center gap-3 mt-2">
-            <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-background-dark font-bold shadow-primary-soft">
-              <span class="material-symbols-outlined">send</span>
-              Enviar mensaje
-            </button>
-
-            <button id="clear-btn" type="button" class="px-4 py-2 rounded-md bg-transparent border border-[#3b3420] text-muted-beige hover:text-primary">
-              Limpiar
-            </button>
-          </div>
-
-          <p id="form-status" class="text-sm text-muted-beige mt-3" aria-live="polite"></p>
-        </form>
-
-        <script type="module">
-          // Lightweight client-side mailto fallback to avoid requiring a backend.
-          // The form constructs a mailto: link with the collected data and opens it.
-          const form = document.getElementById('contact-form');
-          const status = document.getElementById('form-status');
-          const clearBtn = document.getElementById('clear-btn');
-
-          if (form) {
-            form.addEventListener('submit', (e) => {
-              e.preventDefault();
-              const fd = new FormData(form);
-              const name = fd.get('name') || '';
-              const phone = fd.get('phone') || '';
-              const email = fd.get('email') || '';
-              const message = fd.get('message') || '';
-
-              const subject = encodeURIComponent(`Contacto web - ${name}`);
-              const bodyLines = [
-                `Nombre: ${name}`,
-                `Teléfono: ${phone}`,
-                `Email: ${email}`,
-                '',
-                'Mensaje:',
-                message
-              ];
-              const body = encodeURIComponent(bodyLines.join('\n'));
-
-              const mailto = `mailto:info@example.com?subject=${subject}&body=${body}`;
-
-              // Open user's mail client. If blocked, show fallback message.
-              try {
-                window.location.href = mailto;
-                status.textContent = 'Se abrió tu cliente de correo. Si no, usa la dirección info@example.com para enviarnos el mensaje.';
-              } catch (err) {
-                status.textContent = 'No se ha podido abrir el cliente de correo. Envíanos un email a info@example.com.';
-              }
-            });
-          }
-
-          if (clearBtn) {
-            clearBtn.addEventListener('click', () => {
-              form.reset();
-              status.textContent = '';
-            });
-          }
-        </script>
-      </section>
-    </div>
-  </main>
+    </main>
 </BaseLayout>

@@ -14,7 +14,7 @@
  * - Ensure Tailwind is configured and built (dev dependencies already added in package.json).
  *
  * Props:
- *  - title: Page title (default: Mixology Pro — Coctelería)
+ *  - title: Page title (default: Luismi Mixology — Coctelería)
  *  - description: Meta description (default: short summary)
  *  - url: Canonical / page URL (used for OG tags)
  *  - image: Social preview image path (defaults to /images/hero-large.jpg)
@@ -27,7 +27,7 @@ export interface Props {
     image?: string;
 }
 
-export let title: string = "Mixology Pro — Coctelería";
+export let title: string = "Luismi Mixology — Coctelería";
 export let description: string =
     "Servicio de coctelería a domicilio con mixología de autor, barras móviles premium y masterclasses.";
 export let url: string = "https://example.com";
@@ -53,7 +53,7 @@ import "../styles/global.css";
         <meta property="og:description" content={description} />
         <meta property="og:url" content={url} />
         <meta property="og:image" content={image} />
-        <meta property="og:image:alt" content="Mixology Pro — Coctelería" />
+        <meta property="og:image:alt" content="Luismi Mixology — Coctelería" />
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image" />

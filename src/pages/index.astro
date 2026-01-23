@@ -6,7 +6,7 @@ import ServiceCard from "../components/ServiceCard.astro";
 
 export const prerender = true;
 
-const pageTitle = "Mixology Pro — Coctelería Exclusiva";
+const pageTitle = "Luismi Mixology";
 const pageDescription =
     "Servicio de coctelería a domicilio con mixología de autor, barras móviles premium y masterclasses.";
 
@@ -46,7 +46,7 @@ const cocktails = [
     image={heroImage}
     url="https://example.com"
 >
-    <Header title="Mixology Pro" />
+    <Header title={pageTitle} nav={[{ href: '#servicios', label: 'Servicios' }, { href: '#cocteles', label: 'Cócteles' }, { href: '#contacto', label: 'Contacto' }]} />
 
     <main class="max-w-6xl px-4 mx-auto pb-24" role="main">
         <!-- Hero -->
@@ -122,6 +122,8 @@ const cocktails = [
                             aria-label={c.title}
                             style={`background-image: url('${c.image}');`}
                         />
+                        <!-- Hidden, accessible image fallback for non-CSS / assistive tech -->
+                        <img src={c.image} alt={c.title} class="sr-only" />
                         <div class="p-4">
                             <div class="flex justify-between items-start mb-1">
                                 <h3 class="text-primary text-xl font-bold">

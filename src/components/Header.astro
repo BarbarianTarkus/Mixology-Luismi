@@ -3,7 +3,7 @@ export interface NavItem {
     href: string;
     label: string;
 }
-export let title: string = "Mixology Pro";
+export let title: string = "Luismi Mixology";
 /**
  * Default navigation uses site routes (pages) instead of hash anchors.
  * You can override `nav` by passing a `nav` prop when using this component.
@@ -102,4 +102,32 @@ export let nav: NavItem[] = [
             });
         })();
     </script>
+
+    <!--
+      Provide non-JS / crawler-friendly fallbacks for background-image sections.
+      These images are visually hidden with the `sr-only` utility but available
+      to screen readers and bots (mirrors the original design images).
+    -->
+    <noscript>
+        <img
+            src="/images/hero-large.jpg"
+            alt="Mixologist preparing a colorful cocktail in a dark setting"
+            class="sr-only"
+        />
+        <img
+            src="/images/cocktail-1.jpg"
+            alt="Old Fashioned Gold closeup"
+            class="sr-only"
+        />
+        <img
+            src="/images/cocktail-2.jpg"
+            alt="Signature Mojito with mint and lime"
+            class="sr-only"
+        />
+        <img
+            src="/images/cocktail-3.jpg"
+            alt="Espresso Velvet in a coupe glass"
+            class="sr-only"
+        />
+    </noscript>
 </header>

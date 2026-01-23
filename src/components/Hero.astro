@@ -3,6 +3,7 @@
  * Hero.astro
  *
  * Re-implementation of the hero section from the design.
+ *
  * Props:
  *  - title: main heading
  *  - eyebrow: small uppercase label above title
@@ -10,9 +11,6 @@
  *  - ctaText: call-to-action text
  *  - ctaHref: call-to-action link (default: WhatsApp link placeholder)
  *  - imageUrl: path to hero image (recommended to place large image under /public/images/)
- *
- * The component keeps the same layout and Tailwind classes from the reference
- * so styles remain consistent when using the local Tailwind setup.
  *
  * Example usage:
  * <Hero
@@ -22,54 +20,75 @@
  *   ctaText="Contactar por WhatsApp"
  *   ctaHref="https://wa.me/1234567890"
  *   imageUrl="/images/hero-1.jpg"
-/>
+ * />
  */
----
 export interface Props {
-  title?: string;
-  eyebrow?: string;
-  description?: string;
-  ctaText?: string;
-  ctaHref?: string;
-  imageUrl?: string;
+    title?: string;
+    eyebrow?: string;
+    description?: string;
+    ctaText?: string;
+    ctaHref?: string;
+    imageUrl?: string;
 }
 
 export let title: string = "Coctelería Exclusiva en tu Evento";
 export let eyebrow: string = "Servicio Premium a Domicilio";
-export let description: string = "Elevamos la experiencia de tus celebraciones con mixología de autor y barras móviles de lujo.";
+export let description: string =
+    "Elevamos la experiencia de tus celebraciones con mixología de autor y barras móviles de lujo.";
 export let ctaText: string = "Contactar por WhatsApp";
 export let ctaHref: string = "https://wa.me/1234567890";
 export let imageUrl: string = "/images/hero-large.jpg";
 ---
-<section class="@container">
-  <div class="p-0">
-    <div class="flex min-h-[520px] flex-col md:flex-row gap-6 bg-cover bg-center bg-no-repeat items-center md:items-stretch justify-center p-6 text-center">
-      <!-- Text Column -->
-      <div class="w-full md:w-1/2 p-6 text-center md:text-left flex flex-col justify-center gap-3">
-        <span class="text-primary text-xs font-bold uppercase tracking-[0.2em]">{eyebrow}</span>
-        <h1 class="text-white text-4xl sm:text-5xl md:text-6xl font-black leading-tight tracking-[-0.033em]">
-          {title}
-        </h1>
-        <p class="text-[#cbbc90] text-base md:text-lg font-normal leading-relaxed max-w-sm mx-auto md:mx-0">
-          {description}
-        </p>
-        <div class="mt-4">
-          <a
-            class="flex mt-4 min-w-[220px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-6 bg-primary text-background-dark text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/20"
-            href={ctaHref}
-            rel="noopener noreferrer"
-            target="_blank"
-            aria-label={ctaText}
-          >
-            <span class="material-symbols-outlined mr-2">chat</span>
-            <span class="truncate">{ctaText}</span>
-          </a>
-        </div>
-      </div>
 
-      <!-- Image Column for md+ -->
-      <div class="hidden md:block md:w-1/2 bg-cover bg-center" role="img" aria-label="Mixologist preparing a colorful cocktail in a dark setting" style={`background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(34, 30, 16, 0.95) 100%), url('${imageUrl}'); min-height:520px;`}>
-      </div>
+<section class="@container">
+    <div class="p-0">
+        <div
+            class="flex min-h-[520px] flex-col md:flex-row gap-6 bg-cover bg-center bg-no-repeat items-center md:items-stretch justify-center p-6 text-center"
+        >
+            <!-- Text Column -->
+            <div
+                class="w-full md:w-1/2 p-6 text-center md:text-left flex flex-col justify-center gap-3"
+            >
+                <span
+                    class="text-primary text-xs font-bold uppercase tracking-[0.2em]"
+                >
+                    {eyebrow}
+                </span>
+
+                <h1
+                    class="text-white text-4xl sm:text-5xl md:text-6xl font-black leading-tight tracking-[-0.033em]"
+                >
+                    {title}
+                </h1>
+
+                <p
+                    class="text-[#cbbc90] text-base md:text-lg font-normal leading-relaxed max-w-sm mx-auto md:mx-0"
+                >
+                    {description}
+                </p>
+
+                <div class="mt-4">
+                    <a
+                        class="flex mt-4 min-w-[220px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-6 bg-primary text-background-dark text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/20"
+                        href={ctaHref}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        aria-label={ctaText}
+                    >
+                        <span class="material-symbols-outlined mr-2">chat</span>
+                        <span class="truncate">{ctaText}</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Image Column for md+ -->
+            <div
+                class="hidden md:block md:w-1/2 bg-cover bg-center"
+                role="img"
+                aria-label="Mixologist preparing a colorful cocktail in a dark setting"
+                style={`background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(34, 30, 16, 0.95) 100%), url('${imageUrl}'); min-height:520px;`}
+            >
+            </div>
+        </div>
     </div>
-  </div>
 </section>
