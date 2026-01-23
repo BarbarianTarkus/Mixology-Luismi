@@ -5,60 +5,29 @@ import Services from "../../components/Services.astro";
 import WhyChooseUs from "../../components/WhyChooseUs.astro";
 import ContactFAB from "../../components/ContactFAB.astro";
 import Footer from "../../components/Footer.astro";
+import { getEntry } from "astro:content";
 
 export const prerender = true;
+
+const homeEntry = await getEntry("home", "index");
+const contactEntry = await getEntry("contact", "index");
+
+if (!homeEntry || !contactEntry) {
+    throw new Error("Missing home or contact content");
+}
 
 const title = "Servicios — Mixology Pro";
 const description =
   "Servicios de coctelería a domicilio: barras móviles, bodas, masterclasses y soluciones corporativas con mixología de autor.";
 const pageUrl = "https://example.com/servicios";
-const pageImage = "/images/hero-large.jpg";
-
-const services = [
-  {
-    icon: "celebration",
-    title: "Fiestas Privadas",
-    description:
-      "Barras móviles y atención personalizada para grupos selectos. Montaje, servicio y desmontaje adaptado a tu evento.",
-  },
-  {
-    icon: "favorite",
-    title: "Bodas",
-    description:
-      "Coctelería premium diseñada para tu gran día: cócteles a medida, barras temáticas y servicio discreto y profesional.",
-  },
-  {
-    icon: "school",
-    title: "Masterclasses",
-    description:
-      "Sesiones prácticas y teóricas con nuestros bartenders: desde iniciación hasta técnicas avanzadas y creación de recetas.",
-  },
-  {
-    icon: "work",
-    title: "Eventos Corporativos",
-    description:
-      "Soluciones de coctelería corporativa: showcooking, cócteles de marca y barras para ferias, lanzamientos y cenas de empresa.",
-  },
-  {
-    icon: "local_bar",
-    title: "Alquiler de Barras",
-    description:
-      "Barras móviles de diseño, equipadas y con personal cualificado para integrarse con tu decoración y logística.",
-  },
-  {
-    icon: "support",
-    title: "Consultoría & Diseño de Carta",
-    description:
-      "Asesoramiento en selección de bebidas, creación de cartas personalizadas y formación para tu equipo.",
-  },
-];
+const pageImage = homeEntry.data.heroImage;
 ---
 
 <BaseLayout
   title={title}
   description={description}
   url={pageUrl}
-  image={pageImage}
+  image={pageImage || ""}
 >
   <Header />
 
@@ -73,7 +42,7 @@ const services = [
       </p>
       <div class="intro-actions">
         <a
-          href="https://wa.me/1234567890"
+          href={contactEntry.data.whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           class="btn-primary-lg"
@@ -93,7 +62,7 @@ const services = [
     >
       <h2 id="servicios-heading" class="sr-only">Listado de Servicios</h2>
 
-      <Services services={services} />
+      <Services />
     </section>
 
     <!-- Detail / Why choose us -->

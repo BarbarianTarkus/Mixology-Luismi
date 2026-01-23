@@ -1,4 +1,10 @@
 ---
+import { getEntry } from "astro:content";
+const contactEntry = await getEntry("contact", "index");
+if (!contactEntry) {
+    throw new Error("Missing contact content");
+}
+const { email: contactEmail } = contactEntry.data;
 ---
 <section class="contact-form-card">
     <h2 class="info-card-title">Envíanos un mensaje</h2>
@@ -67,7 +73,7 @@
         <p id="form-status" class="form-status" aria-live="polite"></p>
     </form>
 
-    <script type="module">
+    <script type="module" define:vars={{ contactEmail }}>
         const form = document.getElementById("contact-form");
         const status = document.getElementById("form-status");
         const clearBtn = document.getElementById("clear-btn");
@@ -92,15 +98,15 @@
                 ];
                 const body = encodeURIComponent(bodyLines.join("\n"));
 
-                const mailto = `mailto:info@example.com?subject=${subject}&body=${body}`;
+                const mailto = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
 
                 try {
                     window.location.href = mailto;
                     status.textContent =
-                        "Se abrió tu cliente de correo. Si no, usa la dirección info@example.com para enviarnos el mensaje.";
+                        `Se abrió tu cliente de correo. Si no, usa la dirección ${contactEmail} para enviarnos el mensaje.`;
                 } catch (err) {
                     status.textContent =
-                        "No se ha podido abrir el cliente de correo. Envíanos un email a info@example.com.";
+                        `No se ha podido abrir el cliente de correo. Envíanos un email a ${contactEmail}.`;
                 }
             });
         }

@@ -1,4 +1,10 @@
 ---
+import { getEntry } from "astro:content";
+const contactEntry = await getEntry("contact", "index");
+if (!contactEntry) {
+    throw new Error("Missing contact content");
+}
+const { phone, phoneUrl, email, instagramUrl } = contactEntry.data;
 ---
 <footer id="contacto" class="page-footer" role="contentinfo" transition:animate="fade">
     <div class="footer-container">
@@ -6,9 +12,9 @@
             <h4 class="footer-cta-title">
                 ¿Listo para tu próximo evento?
             </h4>
-            <a class="footer-phone" href="tel:+1234567890">
+            <a class="footer-phone" href={phoneUrl}>
                 <span class="material-symbols-outlined">call</span>
-                +1 234 567 890
+                {phone}
             </a>
         </div>
 
@@ -22,14 +28,14 @@
             </a>
             <a
                 class="social-link"
-                href="#"
+                href={instagramUrl}
                 aria-label="Instagram"
             >
                 <span class="material-symbols-outlined social-icon">photo_camera</span>
             </a>
             <a
                 class="social-link"
-                href="mailto:info@example.com"
+                href={`mailto:${email}`}
                 aria-label="Email"
             >
                 <span class="material-symbols-outlined social-icon">mail</span>

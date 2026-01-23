@@ -1,4 +1,10 @@
 ---
+import { getEntry } from "astro:content";
+const contactEntry = await getEntry("contact", "index");
+if (!contactEntry) {
+    throw new Error("Missing contact content");
+}
+const { phone, phoneUrl, whatsappUrl, email, address, schedule } = contactEntry.data;
 ---
 <aside class="contact-info-card">
     <h2 class="info-card-title">Información de contacto</h2>
@@ -11,14 +17,14 @@
     <ul class="contact-list">
         <li class="contact-item">
             <span class="material-symbols-outlined contact-icon">call</span>
-            <a class="contact-link-primary" href="tel:+1234567890">+1 234 567 890</a>
+            <a class="contact-link-primary" href={phoneUrl}>{phone}</a>
         </li>
 
         <li class="contact-item">
             <span class="material-symbols-outlined contact-icon">chat</span>
             <a
                 class="contact-link-primary"
-                href="https://wa.me/1234567890"
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 >Contactar por WhatsApp</a
@@ -27,16 +33,17 @@
 
         <li class="contact-item">
             <span class="material-symbols-outlined contact-icon">mail</span>
-            <a class="contact-link-secondary" href="mailto:info@example.com"
-                >info@example.com</a
+            <a class="contact-link-secondary" href={`mailto:${email}`}
+                >{email}</a
             >
         </li>
 
         <li class="contact-item-align-start">
             <span class="material-symbols-outlined contact-icon">place</span>
             <address class="contact-address">
-                Calle Ejemplo 123, Ciudad, Provincia<br />
-                Código Postal 00000
+                {address.split('\n').map((line, i) => (
+                    <Fragment key={i}>{line}<br /></Fragment>
+                ))}
             </address>
         </li>
     </ul>
@@ -44,7 +51,7 @@
     <div class="schedule-section">
         <h3 class="schedule-title">Horario</h3>
         <p class="schedule-desc">
-            Lun - Vie: 09:00 - 18:00 · Sáb: 10:00 - 14:00
+            {schedule}
         </p>
     </div>
 </aside>

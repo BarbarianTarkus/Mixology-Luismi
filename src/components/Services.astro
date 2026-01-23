@@ -1,5 +1,6 @@
 ---
 import ServiceCard from "./ServiceCard.astro";
+import { getCollection } from "astro:content";
 
 export interface Service {
     icon: string;
@@ -11,25 +12,16 @@ export interface Props {
     services?: Service[];
 }
 
-const {
-    services = [
-        {
-            icon: "celebration",
-            title: "Fiestas Privadas",
-            description: "Barras móviles y atención personalizada para grupos selectos.",
-        },
-        {
-            icon: "favorite",
-            title: "Bodas",
-            description: "Servicio de coctelería premium diseñado para tu gran día.",
-        },
-        {
-            icon: "school",
-            title: "Masterclasses",
-            description: "Aprende a preparar los mejores cócteles con nuestros expertos.",
-        },
-    ],
-} = Astro.props;
+let { services } = Astro.props;
+
+if (!services) {
+    const servicesCollection = await getCollection("services");
+    services = servicesCollection.map((s) => ({
+        icon: s.data.icon,
+        title: s.data.title,
+        description: s.data.description,
+    }));
+}
 ---
 
 <div class="services-grid" transition:animate="fade">

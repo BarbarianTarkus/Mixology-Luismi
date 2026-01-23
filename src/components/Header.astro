@@ -81,9 +81,9 @@ const {
         if (!btn || !menu) return;
 
         btn.addEventListener("click", function () {
-          var expanded = btn.getAttribute("aria-expanded") === "true";
-          btn.setAttribute("aria-expanded", String(!expanded));
-          menu.classList.toggle("hidden");
+          var expanded = btn!.getAttribute("aria-expanded") === "true";
+          btn!.setAttribute("aria-expanded", String(!expanded));
+          menu!.classList.toggle("hidden");
         });
       });
     })();

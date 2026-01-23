@@ -4,6 +4,7 @@ import Header from "../../components/Header.astro";
 import CocktailCard from "../../components/CocktailCard.astro";
 import ContactFAB from "../../components/ContactFAB.astro";
 import Footer from "../../components/Footer.astro";
+import { getCollection, getEntry } from "astro:content";
 
 export const prerender = true;
 
@@ -11,53 +12,34 @@ const title = "Luismi Mixology";
 const description =
   "Descubre nuestros cócteles estrella: recetas de autor para eventos y celebraciones. Old Fashioned, Mojito y Espresso Martini, entre otros.";
 const pageUrl = "/";
-const pageImage = "/images/hero-large.jpg";
 
-const cocktails = [
-  {
-    id: "01",
-    title: "Old Fashioned Gold",
-    desc: "Bourbon premium, amargo de angostura, terrón de azúcar y piel de naranja.",
-    image: "/images/cocktail-1.jpg",
-    alt: "Old Fashioned Gold closeup in a glass with orange peel",
-  },
-  {
-    id: "02",
-    title: "Signature Mojito",
-    desc: "Ron añejo, hierbabuena fresca, lima infusionada y un toque secreto del bartender.",
-    image: "/images/cocktail-2.jpg",
-    alt: "Signature Mojito served with mint leaves and lime",
-  },
-  {
-    id: "03",
-    title: "Espresso Velvet",
-    desc: "Vodka premium, licor de café artesanal y un shot de espresso recién tostado.",
-    image: "/images/cocktail-3.jpg",
-    alt: "Espresso Velvet in a coupe glass with coffee crema",
-  },
-  // Additional examples to expand the page for SEO value
-  {
-    id: "04",
-    title: "Citrus Fizz",
-    desc: "Gin infusionado con cítricos, clara de huevo y soda para un final efervescente.",
-    image: "/images/cocktail-1.jpg",
-    alt: "Citrus Fizz with foam and orange zest",
-  },
-  {
-    id: "05",
-    title: "Smoky Negroni",
-    desc: "Versión ahumada del clásico Negroni con bitter artesanal y vermut envejecido.",
-    image: "/images/cocktail-2.jpg",
-    alt: "Smoky Negroni with a large ice cube and orange twist",
-  },
-];
+const cocktailsEntries = await getCollection("cocktails");
+const cocktails = cocktailsEntries
+  .sort((a, b) => a.data.id.localeCompare(b.data.id))
+  .map(c => ({
+    id: c.data.id,
+    title: c.data.title,
+    desc: c.data.desc,
+    image: c.data.image || "",
+    alt: c.data.alt,
+    slug: c.slug,
+  }));
+
+const homeEntry = await getEntry("home", "index");
+const contactEntry = await getEntry("contact", "index");
+
+if (!homeEntry || !contactEntry) {
+    throw new Error("Missing home or contact content");
+}
+
+const pageImage = homeEntry.data.heroImage;
 ---
 
 <BaseLayout
   title={title}
   description={description}
   url={pageUrl}
-  image={pageImage}
+  image={pageImage || ""}
 >
   <Header />
 
@@ -80,7 +62,7 @@ const cocktails = [
     >
       {
         cocktails.map((c) => (
-          <CocktailCard {...c} showActions={true} />
+          <CocktailCard {...c} showActions={true} whatsappUrl={contactEntry.data.whatsappUrl} />
         ))
       }
     </section>
@@ -95,7 +77,7 @@ const cocktails = [
         </p>
         <a
           class="btn-primary-lg"
-          href="https://wa.me/1234567890"
+          href={contactEntry.data.whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Contactar por WhatsApp"

@@ -1,0 +1,150 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ContactFAB from "../../components/ContactFAB.astro";
+import { Image } from "astro:assets";
+import { getCollection, getEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const cocktails = await getCollection("cocktails");
+  return cocktails.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const contactEntry = await getEntry("contact", "index");
+
+if (!contactEntry) {
+    throw new Error("Missing contact content");
+}
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.desc} image={entry.data.image}>
+  <Header />
+
+  <main class="cocktail-detail-container">
+    <div class="cocktail-detail-card">
+      <div class="cocktail-detail-image-container">
+        {entry.data.image && (
+          <Image 
+            src={entry.data.image} 
+            alt={entry.data.alt || entry.data.title} 
+            class="cocktail-detail-image-file"
+          />
+        )}
+      </div>
+      <div class="cocktail-detail-content">
+        <h1 class="cocktail-detail-title">{entry.data.title}</h1>
+        <p class="cocktail-detail-desc">{entry.data.desc}</p>
+        
+        <div class="cocktail-recipe-content">
+          <h2>Receta y Preparación</h2>
+          <Content />
+        </div>
+
+        <div class="cocktail-detail-actions">
+          <a href={contactEntry.data.whatsappUrl} target="_blank" class="btn-primary">
+            Reservar para mi evento
+          </a>
+          <a href="/cocteles" class="btn-outline">
+            Volver a la carta
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+  <ContactFAB />
+</BaseLayout>
+
+<style>
+  .cocktail-detail-container {
+    max-width: var(--max-width-4xl);
+    margin-inline: auto;
+    padding: 2rem 1rem;
+    min-height: 80vh;
+  }
+
+  .cocktail-detail-card {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+  }
+
+  .cocktail-detail-image-container {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .cocktail-detail-image-file {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cocktail-detail-content {
+    padding: 2rem;
+  }
+
+  .cocktail-detail-title {
+    color: var(--color-primary);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .cocktail-detail-desc {
+    color: var(--color-muted-beige);
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+
+  .cocktail-recipe-content {
+    color: var(--color-white);
+    line-height: 1.6;
+  }
+
+  .cocktail-recipe-content h2 {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+  .cocktail-detail-actions {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-background-dark);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .btn-outline {
+    border: 1px solid var(--color-card-border);
+    color: var(--color-muted-beige);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .btn-outline:hover {
+    color: var(--color-primary);
+  }
+</style>

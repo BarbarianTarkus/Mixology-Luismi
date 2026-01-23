@@ -7,59 +7,46 @@ import CocktailCard from "../components/CocktailCard.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import ContactFAB from "../components/ContactFAB.astro";
 import Footer from "../components/Footer.astro";
+import { getEntry, getCollection } from "astro:content";
 
 export const prerender = true;
+
+const homeEntry = await getEntry("home", "index");
+const contactEntry = await getEntry("contact", "index");
+
+if (!homeEntry || !contactEntry) {
+    throw new Error("Missing home or contact content");
+}
+
+const homeData = homeEntry.data;
+const contactData = contactEntry.data;
+
+const cocktails = await getCollection("cocktails");
+const topCocktails = cocktails
+    .sort((a, b) => a.data.id.localeCompare(b.data.id))
+    .slice(0, 3);
 
 const pageTitle = "Luismi Mixology";
 const pageDescription =
     "Servicio de coctelería a domicilio con mixología de autor, barras móviles premium y masterclasses.";
-
-/**
- * Local images used by the page. Make sure these exist under /public/images/
- * - hero-large.jpg
- * - cocktail-1.jpg
- * - cocktail-2.jpg
- * - cocktail-3.jpg
- */
-const heroImage = "/images/hero-large.jpg";
-const cocktails = [
-    {
-        id: "01",
-        title: "Old Fashioned Gold",
-        desc: "Bourbon premium, amargo de angostura, terrón de azúcar y piel de naranja.",
-        image: "/images/cocktail-1.jpg",
-    },
-    {
-        id: "02",
-        title: "Signature Mojito",
-        desc: "Ron añejo, hierbabuena fresca, lima infusionada y un toque secreto del bartender.",
-        image: "/images/cocktail-2.jpg",
-    },
-    {
-        id: "03",
-        title: "Espresso Velvet",
-        desc: "Vodka premium, licor de café artesanal y un shot de espresso recién tostado.",
-        image: "/images/cocktail-3.jpg",
-    },
-];
 ---
 
 <BaseLayout
     title={pageTitle}
     description={pageDescription}
-    image={heroImage}
+    image={homeData.heroImage}
     url="https://example.com"
 >
     <Header />
     <main class="main-content" role="main">
         <!-- Hero -->
         <Hero
-            title="Coctelería Exclusiva en tu Evento"
-            eyebrow="Servicio Premium a Domicilio"
-            description="Elevamos la experiencia de tus celebraciones con mixología de autor y barras móviles de lujo."
+            title={homeData.heroTitle}
+            eyebrow={homeData.heroEyebrow}
+            description={homeData.heroDescription}
             ctaText="Contactar por WhatsApp"
-            ctaHref="https://wa.me/1234567890"
-            imageUrl={heroImage}
+            ctaHref={contactData.whatsappUrl}
+            imageUrl={homeData.heroImage}
         />
 
         <!-- Services header -->
@@ -80,8 +67,16 @@ const cocktails = [
             aria-label="Top cocktails"
         >
             {
-                cocktails.map((c) => (
-                    <CocktailCard {...c} />
+                topCocktails.map((c) => (
+                    <CocktailCard
+                        id={c.data.id}
+                        title={c.data.title}
+                        desc={c.data.desc}
+                        image={c.data.image || ""}
+                        alt={c.data.alt}
+                        whatsappUrl={contactData.whatsappUrl}
+                        slug={c.slug}
+                    />
                 ))
             }
         </section>

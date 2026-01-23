@@ -1,15 +1,25 @@
 ---
+import { getEntry } from "astro:content";
+
 export interface Props {
     href?: string;
     ariaLabel?: string;
     icon?: string;
 }
 
-const {
-    href = "https://wa.me/1234567890",
+let {
+    href,
     ariaLabel = "Contactar por WhatsApp",
     icon = "chat",
 } = Astro.props;
+
+if (!href) {
+    const contactEntry = await getEntry("contact", "index");
+    if (!contactEntry) {
+        throw new Error("Missing contact content");
+    }
+    href = contactEntry.data.whatsappUrl;
+}
 ---
 
 <div class="fab-container" transition:persist>

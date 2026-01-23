@@ -1,12 +1,15 @@
 ---
+import { Image } from "astro:assets";
+
 export interface Props {
     id: string;
     title: string;
     desc: string;
-    image: string;
+    image: any;
     alt?: string;
     showActions?: boolean;
     whatsappUrl?: string;
+    slug?: string;
 }
 
 const {
@@ -17,6 +20,7 @@ const {
     alt = title,
     showActions = false,
     whatsappUrl = "https://wa.me/1234567890",
+    slug,
 } = Astro.props;
 ---
 
@@ -25,20 +29,22 @@ const {
     aria-labelledby={`cocktail-${id}-title`}
     transition:name={`cocktail-card-${id}`}
 >
-    <div
-        class="cocktail-image"
-        role="img"
-        aria-label={alt}
-        style={`background-image: url('${image}');`}
-        transition:name={`cocktail-image-${id}`}
-    />
-    <!-- Hidden, accessible image fallback for non-CSS assistive tech -->
-    <img src={image} alt={alt} class="sr-only" />
+    <a href={slug ? `/cocteles/${slug}` : "#"} class="cocktail-image-link">
+        <div class="cocktail-image-container" transition:name={`cocktail-image-${id}`}>
+            {image && (
+                <Image 
+                    src={image} 
+                    alt={alt} 
+                    class="cocktail-image-file"
+                />
+            )}
+        </div>
+    </a>
     
     <div class="cocktail-content" transition:animate="fade">
         <div class="cocktail-header">
             <h3 id={`cocktail-${id}-title`} class="cocktail-title">
-                {title}
+                {slug ? <a href={`/cocteles/${slug}`}>{title}</a> : title}
             </h3>
             <span class="cocktail-id">{id}</span>
         </div>
@@ -57,10 +63,12 @@ const {
                     Reservar
                 </a>
 
-                <button class="btn-outline-sm" type="button">
-                    <span class="material-symbols-outlined btn-icon">info</span>
-                    Ver receta
-                </button>
+                {slug && (
+                    <a class="btn-outline-sm" href={`/cocteles/${slug}`}>
+                        <span class="material-symbols-outlined btn-icon">info</span>
+                        Ver receta
+                    </a>
+                )}
             </div>
         )}
     </div>
@@ -80,15 +88,30 @@ const {
         transform: translateY(-4px);
     }
 
-    .cocktail-image {
+    .cocktail-image-link {
+        display: block;
+        overflow: hidden;
+    }
+
+    .cocktail-image-container {
         aspect-ratio: 16 / 9;
         width: 100%;
-        background-size: cover;
-        background-position: center;
+        overflow: hidden;
+    }
+
+    .cocktail-image-file {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .cocktail-card:hover .cocktail-image-file {
+        transform: scale(1.05);
     }
 
     @media (min-width: 768px) {
-        .cocktail-image {
+        .cocktail-image-container {
             aspect-ratio: 4 / 3;
         }
     }
@@ -108,6 +131,15 @@ const {
         color: var(--color-primary);
         font-size: 1.25rem;
         font-weight: 700;
+    }
+
+    .cocktail-title a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .cocktail-title a:hover {
+        text-decoration: underline;
     }
 
     .cocktail-id {
@@ -151,6 +183,7 @@ const {
         border: 1px solid var(--color-card-border);
         color: var(--color-muted-beige);
         font-size: 0.875rem;
+        text-decoration: none;
         transition: color 0.2s;
         cursor: pointer;
     }
