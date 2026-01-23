@@ -1,0 +1,163 @@
+---
+export interface Props {
+    id: string;
+    title: string;
+    desc: string;
+    image: string;
+    alt?: string;
+    showActions?: boolean;
+    whatsappUrl?: string;
+}
+
+const {
+    id,
+    title,
+    desc,
+    image,
+    alt = title,
+    showActions = false,
+    whatsappUrl = "https://wa.me/1234567890",
+} = Astro.props;
+---
+
+<article
+    class="cocktail-card"
+    aria-labelledby={`cocktail-${id}-title`}
+>
+    <div
+        class="cocktail-image"
+        role="img"
+        aria-label={alt}
+        style={`background-image: url('${image}');`}
+    />
+    <!-- Hidden, accessible image fallback for non-CSS assistive tech -->
+    <img src={image} alt={alt} class="sr-only" />
+    
+    <div class="cocktail-content">
+        <div class="cocktail-header">
+            <h3 id={`cocktail-${id}-title`} class="cocktail-title">
+                {title}
+            </h3>
+            <span class="cocktail-id">{id}</span>
+        </div>
+        <p class="cocktail-desc">{desc}</p>
+
+        {showActions && (
+            <div class="cocktail-actions">
+                <a
+                    class="btn-primary-sm"
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Contactar por ${title}`}
+                >
+                    <span class="material-symbols-outlined btn-icon">chat</span>
+                    Reservar
+                </a>
+
+                <button class="btn-outline-sm" type="button">
+                    <span class="material-symbols-outlined btn-icon">info</span>
+                    Ver receta
+                </button>
+            </div>
+        )}
+    </div>
+</article>
+
+<style>
+    .cocktail-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-xl);
+        background-color: var(--color-card-bg);
+        border: 1px solid var(--color-card-border);
+        transition: transform 0.2s;
+    }
+
+    .cocktail-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .cocktail-image {
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    @media (min-width: 768px) {
+        .cocktail-image {
+            aspect-ratio: 4 / 3;
+        }
+    }
+
+    .cocktail-content {
+        padding: 1rem;
+    }
+
+    .cocktail-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 0.25rem;
+    }
+
+    .cocktail-title {
+        color: var(--color-primary);
+        font-size: 1.25rem;
+        font-weight: 700;
+    }
+
+    .cocktail-id {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.75rem;
+        font-family: monospace;
+    }
+
+    .cocktail-desc {
+        color: var(--color-muted-beige);
+        font-size: 0.875rem;
+    }
+
+    .cocktail-actions {
+        margin-top: 1rem;
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .btn-primary-sm {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: var(--radius-full);
+        background-color: var(--color-primary);
+        color: var(--color-background-dark);
+        font-size: 0.875rem;
+        font-weight: 600;
+        box-shadow: var(--shadow-primary-soft);
+        text-decoration: none;
+    }
+
+    .btn-outline-sm {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: var(--radius-full);
+        background-color: transparent;
+        border: 1px solid var(--color-card-border);
+        color: var(--color-muted-beige);
+        font-size: 0.875rem;
+        transition: color 0.2s;
+        cursor: pointer;
+    }
+
+    .btn-outline-sm:hover {
+        color: var(--color-primary);
+    }
+
+    .btn-icon {
+        font-size: 20px;
+    }
+</style>

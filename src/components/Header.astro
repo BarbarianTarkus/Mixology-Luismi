@@ -22,14 +22,16 @@ const {
 <header class="header">
   <div class="header-container">
     <!-- Left: icon -->
-    <div class="header-icon" aria-hidden="true">
+    <a href="/" class="header-icon" aria-label="Inicio">
       <span class="material-symbols-outlined icon-size">wine_bar</span>
-    </div>
+    </a>
 
     <!-- Center: title -->
-    <h1 class="header-title">
-      {title}
-    </h1>
+    <a href="/" class="header-title-link">
+      <h1 class="header-title">
+        {title}
+      </h1>
+    </a>
 
     <!-- Right: navigation + mobile button -->
     <div class="header-actions">
@@ -142,6 +144,13 @@ const {
 
   .icon-size {
     font-size: 32px;
+  }
+
+  .header-title-link {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
   }
 
   .header-title {

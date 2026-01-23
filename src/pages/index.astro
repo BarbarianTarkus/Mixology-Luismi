@@ -3,6 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import ServiceCard from "../components/ServiceCard.astro";
+import CocktailCard from "../components/CocktailCard.astro";
+import Footer from "../components/Footer.astro";
 
 export const prerender = true;
 
@@ -46,8 +48,7 @@ const cocktails = [
     image={heroImage}
     url="https://example.com"
 >
-    <Header title={pageTitle} nav={[{ href: '#servicios', label: 'Servicios' }, { href: '#cocteles', label: 'Cócteles' }, { href: '#contacto', label: 'Contacto' }]} />
-
+    <Header />
     <main class="main-content" role="main">
         <!-- Hero -->
         <Hero
@@ -106,73 +107,13 @@ const cocktails = [
         >
             {
                 cocktails.map((c) => (
-                    <article class="cocktail-card" key={c.id}>
-                        <div
-                            class="cocktail-image"
-                            role="img"
-                            aria-label={c.title}
-                            style={`background-image: url('${c.image}');`}
-                        />
-                        <!-- Hidden, accessible image fallback for non-CSS  assistive tech -->
-                        <img src={c.image} alt={c.title} class="sr-only" />
-                        <div class="cocktail-info">
-                            <div class="cocktail-header">
-                                <h3 class="cocktail-title">
-                                    {c.title}
-                                </h3>
-                                <span class="cocktail-id">
-                                    {c.id}
-                                </span>
-                            </div>
-                            <p class="cocktail-desc">{c.desc}</p>
-                        </div>
-                    </article>
+                    <CocktailCard {...c} />
                 ))
             }
         </section>
 
         <!-- Contact / Footer -->
-        <footer id="contacto" class="page-footer" role="contentinfo">
-            <div class="footer-container">
-                <div class="footer-cta">
-                    <h4 class="footer-cta-title">
-                        ¿Listo para tu próximo evento?
-                    </h4>
-                    <a class="footer-phone" href="tel:+1234567890">
-                        <span class="material-symbols-outlined">call</span>
-                        +1 234 567 890
-                    </a>
-                </div>
-
-                <div class="footer-socials">
-                    <a
-                        class="social-link"
-                        href="#"
-                        aria-label="Social - brand"
-                    >
-                        <span class="material-symbols-outlined social-icon">brand_awareness</span>
-                    </a>
-                    <a
-                        class="social-link"
-                        href="#"
-                        aria-label="Instagram"
-                    >
-                        <span class="material-symbols-outlined social-icon">photo_camera</span>
-                    </a>
-                    <a
-                        class="social-link"
-                        href="mailto:info@example.com"
-                        aria-label="Email"
-                    >
-                        <span class="material-symbols-outlined social-icon">mail</span>
-                    </a>
-                </div>
-
-                <p class="footer-copy">
-                    © 2024 Mixology Pro Services. Todos los derechos reservados.
-                </p>
-            </div>
-        </footer>
+        <Footer />
     </main>
 
     <!-- Floating Action Button for Mobile -->
@@ -249,123 +190,6 @@ const cocktails = [
         .cocktails-grid {
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }
-    }
-
-    .cocktail-card {
-        position: relative;
-        overflow: hidden;
-        border-radius: var(--radius-xl);
-        background-color: var(--color-card-bg);
-        border: 1px solid var(--color-card-border);
-        transition: transform 0.2s;
-    }
-
-    .cocktail-card:hover {
-        transform: translateY(-4px);
-    }
-
-    .cocktail-image {
-        aspect-ratio: 16 / 9;
-        width: 100%;
-        background-size: cover;
-        background-position: center;
-    }
-
-    @media (min-width: 768px) {
-        .cocktail-image {
-            aspect-ratio: 4 / 3;
-        }
-    }
-
-    .cocktail-info {
-        padding: 1rem;
-    }
-
-    .cocktail-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 0.25rem;
-    }
-
-    .cocktail-title {
-        color: var(--color-primary);
-        font-size: 1.25rem;
-        font-weight: 700;
-    }
-
-    .cocktail-id {
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 0.75rem;
-        font-family: monospace;
-    }
-
-    .cocktail-desc {
-        color: var(--color-muted-beige);
-        font-size: 0.875rem;
-    }
-
-    .page-footer {
-        margin-top: 2.5rem;
-        padding-inline: 1.5rem;
-        padding-block: 2.5rem;
-        border-top: 1px solid var(--color-card-bg);
-        background-color: rgba(0, 0, 0, 0.2);
-        text-align: center;
-    }
-
-    .footer-container {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        max-width: var(--max-width-2xl);
-        margin-inline: auto;
-    }
-
-    .footer-cta {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .footer-cta-title {
-        color: var(--color-white);
-        font-weight: 700;
-        font-size: 1.125rem;
-    }
-
-    .footer-phone {
-        color: var(--color-primary);
-        font-size: 1.25rem;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-    }
-
-    .footer-socials {
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-    }
-
-    .social-link {
-        color: var(--color-muted-beige);
-        transition: color 0.2s;
-    }
-
-    .social-link:hover {
-        color: var(--color-primary);
-    }
-
-    .social-icon {
-        font-size: 28px;
-    }
-
-    .footer-copy {
-        color: rgba(203, 188, 144, 0.5);
-        font-size: 0.75rem;
     }
 
     .fab-container {
