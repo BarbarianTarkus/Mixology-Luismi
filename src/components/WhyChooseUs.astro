@@ -1,0 +1,141 @@
+---
+---
+<section class="details-section" transition:animate="fade">
+    <div class="details-card">
+        <div class="details-layout">
+            <div class="details-main">
+                <h3 class="details-title">Por qué elegir Mixology Pro</h3>
+                <p class="details-desc">
+                    Combinamos ingredientes seleccionados, personal altamente formado
+                    y un enfoque de atención al detalle que asegura que cada bebida
+                    sea una experiencia. Ofrecemos coordinación logística, menús
+                    personalizados y servicio profesional acorde al tono de tu evento.
+                </p>
+                <ul class="details-list">
+                    <li>Material y equipamiento premium</li>
+                    <li>Menús personalizados y coctelería de autor</li>
+                    <li>Equipo profesional y presencia impecable</li>
+                    <li>Opciones sin alcohol y adaptaciones dietéticas</li>
+                </ul>
+            </div>
+
+            <aside class="details-aside">
+                <div class="aside-box">
+                    <h4 class="aside-title">Presupuesto rápido</h4>
+                    <p class="aside-desc">
+                        Dinos fecha, número de invitados y tipo de servicio y te
+                        devolvemos una propuesta en 24h.
+                    </p>
+                </div>
+
+                <a class="btn-primary-full" href="/contacto">
+                    <span class="material-symbols-outlined btn-icon">call</span>
+                    Solicitar presupuesto
+                </a>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<style>
+    .details-section {
+        padding-inline: 1rem;
+        margin-top: 3rem;
+    }
+
+    .details-card {
+        background-color: var(--color-card-bg);
+        border: 1px solid var(--color-card-border);
+        border-radius: var(--radius-xl);
+        padding: 1.5rem;
+    }
+
+    .details-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+
+    @media (min-width: 768px) {
+        .details-layout {
+            flex-direction: row;
+        }
+    }
+
+    .details-main {
+        width: 100%;
+    }
+
+    @media (min-width: 768px) {
+        .details-main {
+            width: 66.666667%;
+        }
+    }
+
+    .details-title {
+        color: var(--color-white);
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .details-desc {
+        margin-top: 0.75rem;
+        color: var(--color-muted-beige);
+    }
+
+    .details-list {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        color: var(--color-muted-beige);
+        list-style: disc inside;
+    }
+
+    .details-aside {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+        .details-aside {
+            width: 33.333333%;
+        }
+    }
+
+    .aside-box {
+        background-color: rgba(34, 30, 16, 0.6);
+        padding: 1rem;
+        border-radius: var(--radius-lg);
+        width: 100%;
+    }
+
+    .aside-title {
+        color: var(--color-primary);
+        font-weight: 700;
+    }
+
+    .aside-desc {
+        color: var(--color-muted-beige);
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+    }
+
+    .btn-primary-full {
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-default);
+        background-color: var(--color-primary);
+        color: var(--color-background-dark);
+        font-weight: 600;
+        text-decoration: none;
+    }
+</style>

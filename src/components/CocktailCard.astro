@@ -23,17 +23,19 @@ const {
 <article
     class="cocktail-card"
     aria-labelledby={`cocktail-${id}-title`}
+    transition:name={`cocktail-card-${id}`}
 >
     <div
         class="cocktail-image"
         role="img"
         aria-label={alt}
         style={`background-image: url('${image}');`}
+        transition:name={`cocktail-image-${id}`}
     />
     <!-- Hidden, accessible image fallback for non-CSS assistive tech -->
     <img src={image} alt={alt} class="sr-only" />
     
-    <div class="cocktail-content">
+    <div class="cocktail-content" transition:animate="fade">
         <div class="cocktail-header">
             <h3 id={`cocktail-${id}-title`} class="cocktail-title">
                 {title}

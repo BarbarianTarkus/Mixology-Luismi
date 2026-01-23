@@ -2,8 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import ServiceCard from "../components/ServiceCard.astro";
+import Services from "../components/Services.astro";
 import CocktailCard from "../components/CocktailCard.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import ContactFAB from "../components/ContactFAB.astro";
 import Footer from "../components/Footer.astro";
 
 export const prerender = true;
@@ -61,43 +63,15 @@ const cocktails = [
         />
 
         <!-- Services header -->
-        <section class="section-header" aria-labelledby="services-heading">
-            <h2 id="services-heading" class="section-title">
-                Nuestros Servicios
-            </h2>
-            <div class="title-underline"></div>
-        </section>
+        <SectionHeader id="services-heading" title="Nuestros Servicios" />
 
         <!-- Services grid -->
-        <section
-            id="servicios"
-            class="services-grid"
-            aria-label="Servicios"
-        >
-            <ServiceCard
-                icon="celebration"
-                title="Fiestas Privadas"
-                description="Barras móviles y atención personalizada para grupos selectos."
-            />
-            <ServiceCard
-                icon="favorite"
-                title="Bodas"
-                description="Servicio de coctelería premium diseñado para tu gran día."
-            />
-            <ServiceCard
-                icon="school"
-                title="Masterclasses"
-                description="Aprende a preparar los mejores cócteles con nuestros expertos."
-            />
+        <section id="servicios" aria-label="Servicios">
+            <Services />
         </section>
 
         <!-- Cocktails header -->
-        <section class="section-header" aria-labelledby="cocktails-heading">
-            <h2 id="cocktails-heading" class="section-title">
-                Top 3 Cócteles
-            </h2>
-            <div class="title-underline"></div>
-        </section>
+        <SectionHeader id="cocktails-heading" title="Top 3 Cócteles" />
 
         <!-- Cocktails grid -->
         <section
@@ -116,18 +90,7 @@ const cocktails = [
         <Footer />
     </main>
 
-    <!-- Floating Action Button for Mobile -->
-    <div class="fab-container">
-        <a
-            class="fab"
-            href="https://wa.me/1234567890"
-            aria-label="Contactar por WhatsApp"
-            rel="noopener noreferrer"
-            target="_blank"
-        >
-            <span class="material-symbols-outlined fab-icon">chat</span>
-        </a>
-    </div>
+    <ContactFAB />
 </BaseLayout>
 
 <style>
@@ -136,47 +99,6 @@ const cocktails = [
         padding-inline: 1rem;
         margin-inline: auto;
         padding-bottom: 6rem;
-    }
-
-    .section-header {
-        padding-inline: 1rem;
-        padding-top: 2.5rem;
-        padding-bottom: 0.5rem;
-    }
-
-    .section-title {
-        color: var(--color-white);
-        font-size: 24px;
-        font-weight: 800;
-        line-height: 1.25;
-        letter-spacing: -0.015em;
-    }
-
-    .title-underline {
-        height: 4px;
-        width: 3rem;
-        background-color: var(--color-primary);
-        margin-top: 0.5rem;
-        border-radius: var(--radius-full);
-    }
-
-    .services-grid {
-        display: grid;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        gap: 1rem;
-        padding: 1rem;
-    }
-
-    @media (min-width: 640px) {
-        .services-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-    }
-
-    @media (min-width: 768px) {
-        .services-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
     }
 
     .cocktails-grid {
@@ -190,39 +112,5 @@ const cocktails = [
         .cocktails-grid {
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }
-    }
-
-    .fab-container {
-        position: fixed;
-        bottom: 1.5rem;
-        right: 1.5rem;
-        z-index: 50;
-    }
-
-    @media (min-width: 768px) {
-        .fab-container {
-            display: none;
-        }
-    }
-
-    .fab {
-        background-color: var(--color-primary);
-        color: var(--color-background-dark);
-        width: 3.5rem;
-        height: 3.5rem;
-        border-radius: var(--radius-full);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 25px 50px -12px rgba(var(--color-primary-rgb), 0.4);
-        transition: transform 0.2s;
-    }
-
-    .fab:active {
-        transform: scale(0.95);
-    }
-
-    .fab-icon {
-        font-size: 32px;
     }
 </style>

@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
 import CocktailCard from "../../components/CocktailCard.astro";
+import ContactFAB from "../../components/ContactFAB.astro";
 import Footer from "../../components/Footer.astro";
 
 export const prerender = true;
@@ -107,6 +108,8 @@ const cocktails = [
 
     <Footer />
   </main>
+
+  <ContactFAB />
 </BaseLayout>
 
 <style>

@@ -35,7 +35,7 @@ const {
 <section class="hero-section">
   <div class="hero-content">
     <!-- Text Column -->
-    <div class="hero-text">
+    <div class="hero-text" transition:animate="slide">
       <span class="hero-eyebrow">
         {eyebrow}
       </span>
@@ -69,6 +69,7 @@ const {
       role="img"
       aria-label="Mixologist preparing a colorful cocktail in a dark setting"
       style={`--hero-image: url('${imageUrl}');`}
+      transition:name="hero-image"
     >
     </div>
   </div>

@@ -29,6 +29,7 @@ const {
 } = Astro.props;
 
 import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -78,9 +79,10 @@ import "../styles/global.css";
 
     <!-- Minimal favicon fallback title for crawlers -->
     <meta name="generator" content="Astro" />
+    <ClientRouter />
   </head>
 
-  <body>
+  <body transition:animate="fade">
     <!-- Page content -->
     <slot />
 

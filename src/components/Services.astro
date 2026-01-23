@@ -1,0 +1,66 @@
+---
+import ServiceCard from "./ServiceCard.astro";
+
+export interface Service {
+    icon: string;
+    title: string;
+    description: string;
+}
+
+export interface Props {
+    services?: Service[];
+}
+
+const {
+    services = [
+        {
+            icon: "celebration",
+            title: "Fiestas Privadas",
+            description: "Barras móviles y atención personalizada para grupos selectos.",
+        },
+        {
+            icon: "favorite",
+            title: "Bodas",
+            description: "Servicio de coctelería premium diseñado para tu gran día.",
+        },
+        {
+            icon: "school",
+            title: "Masterclasses",
+            description: "Aprende a preparar los mejores cócteles con nuestros expertos.",
+        },
+    ],
+} = Astro.props;
+---
+
+<div class="services-grid" transition:animate="fade">
+    {
+        services.map((s) => (
+            <ServiceCard
+                icon={s.icon}
+                title={s.title}
+                description={s.description}
+            />
+        ))
+    }
+</div>
+
+<style>
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    @media (min-width: 640px) {
+        .services-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (min-width: 768px) {
+        .services-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+</style>
