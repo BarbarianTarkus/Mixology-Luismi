@@ -1,0 +1,161 @@
+/*
+  global.css
+  Entry stylesheet for Astro + Tailwind v4 (Vite plugin)
+  Per the Astro Tailwind v4 guide, import Tailwind using the Vite plugin entry:
+    @import "tailwindcss";
+  This file then contains project-specific base and component styles.
+*/
+
+@import "tailwindcss";
+
+/* Project base styles and small design overrides */
+@layer base {
+    /* Improve font rendering and default box-sizing */
+    html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        box-sizing: border-box;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }
+
+    /* Base body styles */
+    body {
+        font-family:
+            "Plus Jakarta Sans",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            "Segoe UI",
+            Roboto,
+            "Helvetica Neue",
+            Arial,
+            "Noto Sans",
+            "Liberation Sans",
+            sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        /* Ensure the page fills the viewport on mobile reliably */
+        min-height: max(884px, 100dvh);
+        margin: 0;
+
+        /* Use Tailwind theme values with safe fallbacks (avoids build-time failures if unresolved) */
+        background-color: theme("colors.background-light", "#f8f8f5");
+        color: theme("colors.white", "#ffffff");
+    }
+
+    /* Material Symbols (icons) configuration */
+    .material-symbols-outlined {
+        font-variation-settings:
+            "FILL" 0,
+            "wght" 400,
+            "GRAD" 0,
+            "opsz" 24;
+        font-family: "Material Symbols Outlined", "Material Icons", sans-serif;
+        speak: none;
+        line-height: 1;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /* Accessibility helper - reuse Tailwind's sr-only utility */
+    .sr-only {
+        @apply sr-only;
+    }
+}
+
+/* Small utilities and component helpers used in the design */
+@layer components {
+    /* Soft primary shadow used on CTAs */
+    .shadow-primary-soft {
+        box-shadow: 0 10px 20px rgba(242, 185, 13, 0.12);
+    }
+
+    /* Card background and borders used in design (use theme tokens with fallbacks) */
+    .bg-card-bg {
+        background-color: theme("colors.card-bg", "#342d18");
+    }
+
+    .border-card-border {
+        border-color: theme("colors.card-border", "#685a31");
+    }
+
+    /* Muted beige text color used across the design */
+    .text-muted-beige {
+        color: theme("colors.muted-beige", "#cbbc90");
+    }
+
+    /* Reusable rounded radius used in the design */
+    .rounded-design {
+        border-radius: 0.5rem;
+    }
+
+    /* Utility to visually hide an image but keep it available for screen readers */
+    .img-sr-only {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+    }
+}
+
+/* Minor helpers (kept small to avoid duplicating Tailwind utilities) */
+
+/* Background cover helper fallback */
+.bg-cover-center {
+    background-size: cover;
+    background-position: center;
+}
+
+/* Focus outline fallbacks using theme with a safe hex default */
+:focus {
+    outline: 2px solid theme("colors.primary", "#f2b90d");
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(242, 185, 13, 0.12);
+}
+
+/* Make certain design tokens available as CSS variables (convenience) */
+:root {
+    --color-primary: theme("colors.primary", "#f2b90d");
+    --color-bg-light: theme("colors.background-light", "#f8f8f5");
+    --color-bg-dark: theme("colors.background-dark", "#221e10");
+    --color-muted-beige: theme("colors.muted-beige", "#cbbc90");
+}
+
+/* Dark-mode helper: when .dark is present on root, adjust small defaults */
+.dark body {
+    background-color: var(--color-bg-dark);
+    color: theme("colors.white", "#ffffff");
+}
+
+/* Utilities for responsive image aspect fallback (for browsers without aspect-* utilities) */
+.aspect-16-9 {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+.aspect-16-9 > .aspect-content {
+    position: absolute;
+    inset: 0;
+}
+.aspect-4-3 {
+    position: relative;
+    padding-bottom: 75%; /* 4:3 */
+    height: 0;
+}
+.aspect-4-3 > .aspect-content {
+    position: absolute;
+    inset: 0;
+}
+
+/* End of global styles */

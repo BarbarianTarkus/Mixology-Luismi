@@ -1,17 +1,210 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import ServiceCard from "../components/ServiceCard.astro";
 
+export const prerender = true;
+
+const pageTitle = "Mixology Pro — Coctelería Exclusiva";
+const pageDescription =
+    "Servicio de coctelería a domicilio con mixología de autor, barras móviles premium y masterclasses.";
+
+/**
+ * Local images used by the page. Make sure these exist under /public/images/
+ * - hero-large.jpg
+ * - cocktail-1.jpg
+ * - cocktail-2.jpg
+ * - cocktail-3.jpg
+ */
+const heroImage = "/images/hero-large.jpg";
+const cocktails = [
+    {
+        id: "01",
+        title: "Old Fashioned Gold",
+        desc: "Bourbon premium, amargo de angostura, terrón de azúcar y piel de naranja.",
+        image: "/images/cocktail-1.jpg",
+    },
+    {
+        id: "02",
+        title: "Signature Mojito",
+        desc: "Ron añejo, hierbabuena fresca, lima infusionada y un toque secreto del bartender.",
+        image: "/images/cocktail-2.jpg",
+    },
+    {
+        id: "03",
+        title: "Espresso Velvet",
+        desc: "Vodka premium, licor de café artesanal y un shot de espresso recién tostado.",
+        image: "/images/cocktail-3.jpg",
+    },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+    title={pageTitle}
+    description={pageDescription}
+    image={heroImage}
+    url="https://example.com"
+>
+    <Header title="Mixology Pro" />
+
+    <main class="max-w-6xl px-4 mx-auto pb-24" role="main">
+        <!-- Hero -->
+        <Hero
+            title="Coctelería Exclusiva en tu Evento"
+            eyebrow="Servicio Premium a Domicilio"
+            description="Elevamos la experiencia de tus celebraciones con mixología de autor y barras móviles de lujo."
+            ctaText="Contactar por WhatsApp"
+            ctaHref="https://wa.me/1234567890"
+            imageUrl={heroImage}
+        />
+
+        <!-- Services header -->
+        <section class="px-4 pt-10 pb-2" aria-labelledby="services-heading">
+            <h2
+                id="services-heading"
+                class="text-white text-[24px] font-extrabold leading-tight tracking-[-0.015em]"
+            >
+                Nuestros Servicios
+            </h2>
+            <div class="h-1 w-12 bg-primary mt-2 rounded-full"></div>
+        </section>
+
+        <!-- Services grid -->
+        <section
+            id="servicios"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4"
+            aria-label="Servicios"
+        >
+            <ServiceCard
+                icon="celebration"
+                title="Fiestas Privadas"
+                description="Barras móviles y atención personalizada para grupos selectos."
+            />
+            <ServiceCard
+                icon="favorite"
+                title="Bodas"
+                description="Servicio de coctelería premium diseñado para tu gran día."
+            />
+            <ServiceCard
+                icon="school"
+                title="Masterclasses"
+                description="Aprende a preparar los mejores cócteles con nuestros expertos."
+            />
+        </section>
+
+        <!-- Cocktails header -->
+        <section class="px-4 pt-10 pb-2" aria-labelledby="cocktails-heading">
+            <h2
+                id="cocktails-heading"
+                class="text-white text-[24px] font-extrabold leading-tight tracking-[-0.015em]"
+            >
+                Top 3 Cócteles
+            </h2>
+            <div class="h-1 w-12 bg-primary mt-2 rounded-full"></div>
+        </section>
+
+        <!-- Cocktails grid -->
+        <section
+            id="cocteles"
+            class="p-4 grid grid-cols-1 md:grid-cols-3 gap-6"
+            aria-label="Top cocktails"
+        >
+            {
+                cocktails.map((c) => (
+                    <article
+                        class="group relative overflow-hidden rounded-xl bg-card-bg border border-card-border"
+                        key={c.id}
+                    >
+                        <div
+                            class="aspect-[16/9] md:aspect-[4/3] w-full bg-cover bg-center"
+                            role="img"
+                            aria-label={c.title}
+                            style={`background-image: url('${c.image}');`}
+                        />
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="text-primary text-xl font-bold">
+                                    {c.title}
+                                </h3>
+                                <span class="text-white/50 text-xs font-mono">
+                                    {c.id}
+                                </span>
+                            </div>
+                            <p class="text-muted-beige text-sm">{c.desc}</p>
+                        </div>
+                    </article>
+                ))
+            }
+        </section>
+
+        <!-- Contact / Footer -->
+        <footer
+            id="contacto"
+            class="mt-10 px-6 py-10 border-t border-[#342d18] bg-black/20 text-center"
+            role="contentinfo"
+        >
+            <div class="flex flex-col gap-6 max-w-2xl mx-auto">
+                <div class="flex flex-col gap-2">
+                    <h4 class="text-white font-bold text-lg">
+                        ¿Listo para tu próximo evento?
+                    </h4>
+                    <a
+                        class="text-primary text-xl font-bold flex items-center justify-center gap-2"
+                        href="tel:+1234567890"
+                    >
+                        <span class="material-symbols-outlined">call</span>
+                        +1 234 567 890
+                    </a>
+                </div>
+
+                <div class="flex justify-center gap-6">
+                    <a
+                        class="text-[#cbbc90] hover:text-primary"
+                        href="#"
+                        aria-label="Social - brand"
+                    >
+                        <span class="material-symbols-outlined text-[28px]"
+                            >brand_awareness</span
+                        >
+                    </a>
+                    <a
+                        class="text-[#cbbc90] hover:text-primary"
+                        href="#"
+                        aria-label="Instagram"
+                    >
+                        <span class="material-symbols-outlined text-[28px]"
+                            >photo_camera</span
+                        >
+                    </a>
+                    <a
+                        class="text-[#cbbc90] hover:text-primary"
+                        href="mailto:info@example.com"
+                        aria-label="Email"
+                    >
+                        <span class="material-symbols-outlined text-[28px]"
+                            >mail</span
+                        >
+                    </a>
+                </div>
+
+                <p class="text-[#cbbc90]/50 text-xs">
+                    © 2024 Mixology Pro Services. Todos los derechos reservados.
+                </p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Floating Action Button for Mobile -->
+    <div class="fixed bottom-6 right-6 z-50 md:hidden">
+        <a
+            class="bg-primary text-background-dark size-14 rounded-full flex items-center justify-center shadow-2xl shadow-primary/40 active:scale-95 transition-transform"
+            href="https://wa.me/1234567890"
+            aria-label="Contactar por WhatsApp"
+            rel="noopener noreferrer"
+            target="_blank"
+        >
+            <span class="material-symbols-outlined text-[32px]">chat</span>
+        </a>
+    </div>
+</BaseLayout>

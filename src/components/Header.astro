@@ -1,0 +1,105 @@
+---
+export interface NavItem {
+    href: string;
+    label: string;
+}
+export let title: string = "Mixology Pro";
+/**
+ * Default navigation uses site routes (pages) instead of hash anchors.
+ * You can override `nav` by passing a `nav` prop when using this component.
+ */
+export let nav: NavItem[] = [
+    { href: "/servicios", label: "Servicios" },
+    { href: "/cocteles", label: "Cócteles" },
+    { href: "/contacto", label: "Contacto" },
+];
+---
+
+<header
+    class="sticky top-0 z-50 bg-background-dark/95 backdrop-blur-md border-b border-[#342d18]"
+>
+    <div class="flex items-center p-4 justify-between max-w-6xl mx-auto px-4">
+        <!-- Left: icon -->
+        <div
+            class="text-primary flex size-10 shrink-0 items-center justify-center"
+            aria-hidden="true"
+        >
+            <span class="material-symbols-outlined text-[32px]">wine_bar</span>
+        </div>
+
+        <!-- Center: title -->
+        <h1
+            class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center uppercase tracking-widest"
+        >
+            {title}
+        </h1>
+
+        <!-- Right: navigation + mobile button -->
+        <div class="flex items-center gap-4">
+            <nav
+                class="hidden md:flex items-center gap-6 ml-4"
+                role="navigation"
+                aria-label="Main navigation"
+            >
+                {
+                    nav.map((item) => (
+                        <a
+                            class="text-[#cbbc90] hover:text-primary"
+                            href={item.href}
+                        >
+                            {item.label}
+                        </a>
+                    ))
+                }
+            </nav>
+
+            <div class="flex items-center">
+                <button
+                    id="mobile-menu-button"
+                    aria-label="Abrir menú"
+                    aria-expanded="false"
+                    class="flex cursor-pointer items-center justify-center rounded-lg h-10 bg-transparent text-white p-0 md:hidden"
+                >
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu (hidden by default) -->
+    <nav
+        id="mobile-menu"
+        class="md:hidden hidden border-t border-[#342d18] bg-background-dark/95"
+    >
+        <div class="flex flex-col gap-2 px-4 py-3 max-w-6xl mx-auto">
+            {
+                nav.map((item) => (
+                    <a
+                        class="block w-full text-left px-3 py-2 rounded-md text-[#cbbc90] hover:text-primary hover:bg-[#342d18]/40"
+                        href={item.href}
+                    >
+                        {item.label}
+                    </a>
+                ))
+            }
+        </div>
+    </nav>
+
+    <script>
+        // lightweight mobile menu toggle
+        (function () {
+            if (typeof window === "undefined") return;
+            document.addEventListener("DOMContentLoaded", function () {
+                var btn = document.getElementById("mobile-menu-button");
+                var menu = document.getElementById("mobile-menu");
+                if (!btn || !menu) return;
+
+                btn.addEventListener("click", function () {
+                    var expanded = btn.getAttribute("aria-expanded") === "true";
+                    btn.setAttribute("aria-expanded", String(!expanded));
+                    menu.classList.toggle("hidden");
+                });
+            });
+        })();
+    </script>
+</header>

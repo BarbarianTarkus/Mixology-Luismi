@@ -1,0 +1,111 @@
+---
+/**
+ * BaseLayout.astro
+ *
+ * Provides the HTML document shell, meta tags and loads the local Tailwind CSS bundle.
+ *
+ * Notes:
+ * - This layout expects a compiled Tailwind CSS file at `src/styles.css`.
+ *   Create `src/styles.css` and include the Tailwind directives:
+ *     @tailwind base;
+ *     @tailwind components;
+ *     @tailwind utilities;
+ *
+ * - Ensure Tailwind is configured and built (dev dependencies already added in package.json).
+ *
+ * Props:
+ *  - title: Page title (default: Mixology Pro — Coctelería)
+ *  - description: Meta description (default: short summary)
+ *  - url: Canonical / page URL (used for OG tags)
+ *  - image: Social preview image path (defaults to /images/hero-large.jpg)
+ *
+ */
+export interface Props {
+    title?: string;
+    description?: string;
+    url?: string;
+    image?: string;
+}
+
+export let title: string = "Mixology Pro — Coctelería";
+export let description: string =
+    "Servicio de coctelería a domicilio con mixología de autor, barras móviles premium y masterclasses.";
+export let url: string = "https://example.com";
+export let image: string = "/images/hero-large.jpg";
+
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="es" class="dark">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>{title}</title>
+
+        <!-- Primary meta -->
+        <meta name="description" content={description} />
+        <link rel="canonical" href={url} />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={url} />
+        <meta property="og:image" content={image} />
+        <meta property="og:image:alt" content="Mixology Pro — Coctelería" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={image} />
+
+        <!-- Mobile / theme -->
+        <meta name="theme-color" content="#221e10" />
+        <meta name="color-scheme" content="dark light" />
+
+        <!-- Favicons (place appropriate files in /public) -->
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+        <!-- Fonts & Material Symbols (keep as external to match design) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Minimal favicon fallback title for crawlers -->
+        <meta name="generator" content="Astro" />
+    </head>
+
+    <body
+        class="bg-background-light dark:bg-background-dark text-white font-display"
+    >
+        <!-- Page content -->
+        <slot />
+
+        <!-- Small inline script to ensure the page starts in dark mode if html has class -->
+        <script>
+            // Keep this minimal — site uses `class="dark"` in the root HTML by default.
+            (function () {
+                try {
+                    // If user has a saved preference, apply it
+                    const saved = localStorage.getItem("theme");
+                    if (saved === "dark")
+                        document.documentElement.classList.add("dark");
+                    if (saved === "light")
+                        document.documentElement.classList.remove("dark");
+                } catch (e) {
+                    // no-op
+                }
+            })();
+        </script>
+    </body>
+</html>
