@@ -1,8 +1,9 @@
 {
   "languages": {
     "Astro": {
-      "language_servers": ["eslint"]
-    }
+      "language_servers": ["eslint"],
+    },
   },
-  "formatter": "prettier"
+  "formatter": "prettier",
+  "format_on_save": "on",
 }

@@ -13,7 +13,9 @@ import keystatic from "@keystatic/astro";
 
 export default defineConfig({
   output: "static",
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    imageService: "compile",
+  }),
 
   integrations: [react(), markdoc(), keystatic()],
 });
