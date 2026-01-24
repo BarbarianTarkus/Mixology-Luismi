@@ -24,3 +24,8 @@ pnpm-debug.log*
 .idea/
 
 .tmp
+
+**/AGENTS.md
+
+node_modules
+.env

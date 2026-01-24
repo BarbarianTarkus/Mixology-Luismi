@@ -6,9 +6,10 @@ desc: >-
   de limón verde. Aunque su origen consensuado se atribuye a la ciudad de
   Santiago de Cuba, ciertamente el Daiquirí fue popularizado en el bar Floridita
   de La Habana, apodado «la cuna del Daiquirí».
-image: '@assets/images/cocktails/daikiri/image.jpg'
+image: "/src/assets/images/cocktails/daikiri/image.jpg"
 alt: Copa de Daiquirí clásico con limón" o "Bar El Floridita en La Habana
 ---
+
 ## Cómo preparar un Daiquirí Clásico (Receta Original)
 
 Si quieres disfrutar del sabor auténtico del Caribe, sigue estos pasos:
@@ -24,9 +25,9 @@ Si quieres disfrutar del sabor auténtico del Caribe, sigue estos pasos:
 
 1. Vierte el azúcar y el zumo de limón en una coctelera y mezcla hasta que el azúcar se disuelva.
 1. Añade el ron blanco y abundante hielo.
-1. Agita enérgicamente (o utiliza una batidora si prefieres la versión *frappé*).
+1. Agita enérgicamente (o utiliza una batidora si prefieres la versión _frappé_).
 1. Cuela la mezcla en una **copa martinera** previamente enfriada.
-1. *Opcional:* Decora con una rodaja de lima en el borde.
+1. _Opcional:_ Decora con una rodaja de lima en el borde.
 
 ## Variantes populares
 

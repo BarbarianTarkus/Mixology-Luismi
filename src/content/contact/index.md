@@ -1,3 +1,4 @@
+---
 phone: "+1 234 567 890"
 phoneUrl: "tel:+1234567890"
 whatsappUrl: "https://wa.me/1234567890"
@@ -9,3 +10,4 @@ schedule: |-
   Lun - Vie: 09:00 - 18:00
   Sáb: 10:00 - 14:00
 instagramUrl: "#"
+---
