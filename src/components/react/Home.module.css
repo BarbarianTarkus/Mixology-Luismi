@@ -1,0 +1,19 @@
+.mainContent {
+    max-width: var(--max-width-6xl);
+    padding-inline: 1rem;
+    margin-inline: auto;
+    padding-bottom: 6rem;
+}
+
+.cocktailsGrid {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .cocktailsGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}

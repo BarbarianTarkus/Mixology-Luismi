@@ -3,6 +3,7 @@ export default [
   // add more generic rule sets here, such as:
   ts.configs.recommended,
   js.configs.recommended,
+  tsx.configs.recommended,
   ...eslintPluginAstro.configs.recommended,
   {
     rules: {

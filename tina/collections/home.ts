@@ -20,6 +20,15 @@ export const HomeCollection: Collection = {
       required: true,
     },
     {
+      type: "string",
+      name: "heroDescription",
+      label: "Hero Description",
+      required: true,
+      ui: {
+        component: "textarea",
+      },
+    },
+    {
       type: "image",
       name: "heroImage",
       label: "Hero Image",

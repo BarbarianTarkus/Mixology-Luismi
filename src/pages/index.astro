@@ -1,30 +1,32 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
-import Services from "../components/Services.astro";
-import CocktailCard from "../components/CocktailCard.astro";
-import SectionHeader from "../components/SectionHeader.astro";
 import ContactFAB from "../components/ContactFAB.astro";
 import Footer from "../components/Footer.astro";
 import { getEntry, getCollection } from "astro:content";
+import HomeReact from "../components/react/Home";
+import { client } from "../../tina/__generated__/client";
 
 export const prerender = true;
 
-const homeEntry = await getEntry("home", "index");
+const tinaProps = await client.queries.home({ relativePath: "index.mdx" });
 const contactEntry = await getEntry("contact", "index");
 
-if (!homeEntry || !contactEntry) {
+if (!tinaProps.data || !contactEntry) {
     throw new Error("Missing home or contact content");
 }
-
-const homeData = homeEntry.data;
-const contactData = contactEntry.data;
 
 const cocktails = await getCollection("cocktails");
 const topCocktails = cocktails
     .sort((a, b) => a.id.localeCompare(b.id))
     .slice(0, 3);
+
+const servicesCollection = await getCollection("services");
+const services = servicesCollection.map((s) => ({
+    icon: s.data.icon,
+    title: s.data.title,
+    description: s.data.description,
+}));
 
 const pageTitle = "Luismi Mixology";
 const pageDescription =
@@ -34,54 +36,18 @@ const pageDescription =
 <BaseLayout
     title={pageTitle}
     description={pageDescription}
-    image={homeData.heroImage}
+    image={tinaProps.data.home.heroImage}
     url="https://example.com"
 >
     <Header />
     <main class="main-content" role="main">
-        <!-- Hero -->
-        <Hero
-            title={homeData.heroTitle}
-            eyebrow={homeData.heroEyebrow}
-            description={homeData.heroDescription}
-            ctaText="Contactar por WhatsApp"
-            ctaHref={contactData.whatsappUrl}
-            imageUrl={homeData.heroImage}
+        <HomeReact
+            client:load
+            tinaProps={tinaProps}
+            contactEntry={contactEntry}
+            services={services}
+            cocktails={topCocktails}
         />
-
-        <!-- Services header -->
-        <SectionHeader id="services-heading" title="Nuestros Servicios" />
-
-        <!-- Services grid -->
-        <section id="servicios" aria-label="Servicios">
-            <Services />
-        </section>
-
-        <!-- Cocktails header -->
-        <SectionHeader id="cocktails-heading" title="Top 3 Cócteles" />
-
-        <!-- Cocktails grid -->
-        <section
-            id="cocteles"
-            class="cocktails-grid"
-            aria-label="Top cocktails"
-        >
-            {
-                topCocktails.map((c) => (
-                    <CocktailCard
-                        id={c.id}
-                        title={c.data.title}
-                        desc={c.data.desc}
-                        image={c.data.image || ""}
-                        alt={c.data.alt}
-                        whatsappUrl={contactData.whatsappUrl}
-                        slug={c.id.replace(/\.[^/.]+$/, "")}
-                    />
-                ))
-            }
-        </section>
-
-        <!-- Contact / Footer -->
         <Footer />
     </main>
 
@@ -94,18 +60,5 @@ const pageDescription =
         padding-inline: 1rem;
         margin-inline: auto;
         padding-bottom: 6rem;
-    }
-
-    .cocktails-grid {
-        padding: 1rem;
-        display: grid;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        gap: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-        .cocktails-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
     }
 </style>

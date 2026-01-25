@@ -1,0 +1,64 @@
+.serviceCard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-card-border);
+    background-color: rgba(52, 45, 24, 0.5);
+    padding: 1.25rem;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.serviceCard:hover {
+    transform: translateY(-5px);
+    background-color: rgba(var(--color-primary-rgb), 0.15);
+    border-color: var(--color-primary);
+    box-shadow: 0 10px 25px -5px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.serviceIconContainer {
+    background-color: rgba(var(--color-primary-rgb), 0.1);
+    padding: 0.75rem;
+    border-radius: var(--radius-lg);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.serviceCard:hover .serviceIconContainer {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.serviceIcon {
+    color: var(--color-primary);
+    font-size: 32px;
+}
+
+.serviceContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.serviceTitle {
+    color: var(--color-white);
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.25;
+    transition: color 0.3s ease;
+}
+
+.serviceCard:hover .serviceTitle {
+    color: var(--color-primary);
+}
+
+.serviceDescription {
+    color: var(--color-muted-beige);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
