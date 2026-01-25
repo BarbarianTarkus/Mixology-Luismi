@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tinacms dev -c \"astro dev\"",
-    "dev:github": "set TINA_PUBLIC_IS_LOCAL=false&& tinacms dev -c \"astro dev\"",
-    "build": "astro build",
+    "build": "tinacms build && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "format": "pnpm exec prettier . --write",
