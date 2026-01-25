@@ -29,6 +29,10 @@ export const CocktailsCollection: Collection = {
       name: "image",
       label: "Image",
       required: false,
+      // @ts-ignore
+      ui: {
+        uploadDir: "cocktails",
+      },
     },
     {
       type: "string",
