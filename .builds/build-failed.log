@@ -1,0 +1,89 @@
+Initializing build environment...
+Success: Finished initializing build environment
+Cloning repository...
+Detected the following tools from environment: pnpm@10.11.1, nodejs@22.16.0
+Installing project dependencies: pnpm install --frozen-lockfile
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +1406
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 1406, reused 0, downloaded 14, added 0
+Progress: resolved 1406, reused 0, downloaded 133, added 120
+Progress: resolved 1406, reused 0, downloaded 236, added 220
+Progress: resolved 1406, reused 0, downloaded 273, added 259
+Progress: resolved 1406, reused 0, downloaded 285, added 270
+Progress: resolved 1406, reused 0, downloaded 362, added 357
+Progress: resolved 1406, reused 0, downloaded 444, added 431
+Progress: resolved 1406, reused 0, downloaded 477, added 468
+Progress: resolved 1406, reused 0, downloaded 612, added 600
+Progress: resolved 1406, reused 0, downloaded 760, added 753
+Progress: resolved 1406, reused 0, downloaded 820, added 816
+Progress: resolved 1406, reused 0, downloaded 835, added 826
+Progress: resolved 1406, reused 0, downloaded 883, added 871
+Progress: resolved 1406, reused 0, downloaded 897, added 883
+Progress: resolved 1406, reused 0, downloaded 1015, added 1009
+Progress: resolved 1406, reused 0, downloaded 1167, added 1154
+Progress: resolved 1406, reused 0, downloaded 1308, added 1305
+Progress: resolved 1406, reused 0, downloaded 1324, added 1309
+Progress: resolved 1406, reused 0, downloaded 1358, added 1347
+Progress: resolved 1406, reused 0, downloaded 1406, added 1406, done
+.../node_modules/workerd postinstall$ node install.js
+.../esbuild@0.27.0/node_modules/esbuild postinstall$ node install.js
+.../node_modules/better-sqlite3 install$ prebuild-install || node-gyp rebuild --release
+.../esbuild@0.18.20/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.24.2/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.24.2/node_modules/esbuild postinstall: Done
+.../esbuild@0.27.0/node_modules/esbuild postinstall: Done
+.../node_modules/workerd postinstall: Done
+.../esbuild@0.18.20/node_modules/esbuild postinstall: Done
+.../sharp@0.34.5/node_modules/sharp install$ node install/check.js || npm run build
+.../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js
+.../sharp@0.34.5/node_modules/sharp install: Done
+.../esbuild@0.25.12/node_modules/esbuild postinstall: Done
+.../node_modules/better-sqlite3 install: Done
+.../node_modules/workerd postinstall$ node install.js
+.../esbuild@0.25.4/node_modules/esbuild postinstall$ node install.js
+.../sharp@0.33.5/node_modules/sharp install$ node install/check
+.../node_modules/workerd postinstall: Done
+.../esbuild@0.25.4/node_modules/esbuild postinstall: Done
+.../sharp@0.33.5/node_modules/sharp install: Done
+
+dependencies:
++ @astrojs/cloudflare 12.6.12
++ @astrojs/markdoc 0.15.10
++ @astrojs/mdx 4.3.13
++ @astrojs/react 4.4.2
++ astro 5.16.15
++ react 18.3.1
++ react-dom 18.3.1
++ sharp 0.34.5
++ tinacms 0.0.0-50de57c-20260123013908
+
+devDependencies:
++ @astrojs/check 0.9.6
++ @tinacms/cli 2.1.1
++ @types/node 25.0.10
++ @typescript-eslint/parser 8.53.1
++ eslint 9.39.2
++ eslint-plugin-astro 1.5.0
++ prettier 3.8.1
++ prettier-plugin-astro 0.14.1
++ typescript 5.9.3
++ wrangler 4.60.0
+
+Done in 21.7s
+Executing user build command: pnpm run build
+
+> mixology-luismi@1.0.0 build /opt/buildhome/repo
+> tinacms build && astro build
+
+Starting Tina build
+Error: Client not configured properly. Missing clientId, token. Please visit https://tina.io/docs/r/what-is-tinacloud for more information
+    at Codegen._createApiUrl (file:///opt/buildhome/repo/node_modules/.pnpm/@tinacms+cli@2.1.1_@codemirror+language@6.0.0_@types+node@25.0.10_@types+react-dom@19.2.3_@ty_2lmbwb5cmjuz4sxxsznyidegdi/node_modules/@tinacms/cli/dist/index.js:599:13)
+    at Codegen.execute (file:///opt/buildhome/repo/node_modules/.pnpm/@tinacms+cli@2.1.1_@codemirror+language@6.0.0_@types+node@25.0.10_@types+react-dom@19.2.3_@ty_2lmbwb5cmjuz4sxxsznyidegdi/node_modules/@tinacms/cli/dist/index.js:505:53)
+    at async BuildCommand.execute (file:///opt/buildhome/repo/node_modules/.pnpm/@tinacms+cli@2.1.1_@codemirror+language@6.0.0_@types+node@25.0.10_@types+react-dom@19.2.3_@ty_2lmbwb5cmjuz4sxxsznyidegdi/node_modules/@tinacms/cli/dist/index.js:3037:20)
+    at async BuildCommand.validateAndExecute (/opt/buildhome/repo/node_modules/.pnpm/clipanion@3.2.1_typanion@3.13.0/node_modules/clipanion/lib/advanced/Command.js:73:26)
+    at async Cli.run (/opt/buildhome/repo/node_modules/.pnpm/clipanion@3.2.1_typanion@3.13.0/node_modules/clipanion/lib/advanced/Cli.js:223:24)
+    at async Cli.runExit (/opt/buildhome/repo/node_modules/.pnpm/clipanion@3.2.1_typanion@3.13.0/node_modules/clipanion/lib/advanced/Cli.js:232:28)
+ ELIFECYCLE  Command failed with exit code 1.
+Failed: error occurred while running build command
