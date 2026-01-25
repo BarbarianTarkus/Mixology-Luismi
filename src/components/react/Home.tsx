@@ -59,18 +59,20 @@ export default function Home({ tinaProps, contactEntry, services, cocktails }: P
           className={styles.cocktailsGrid}
           aria-label="Top cocktails"
       >
-          {cocktails.map((c: any) => (
+          {cocktails.map((c: any) => {
+              const imageSrc = typeof c.data.image === 'object' && c.data.image !== null ? c.data.image.src : c.data.image;
+              return (
               <CocktailCard
                   key={c.id}
                   id={c.id}
                   title={c.data.title}
                   desc={c.data.desc}
-                  image={c.data.image || ""}
+                  image={imageSrc || ""}
                   alt={c.data.alt}
                   whatsappUrl={contactEntry.data.whatsappUrl}
                   slug={c.id.replace(/\.[^/.]+$/, "")}
               />
-          ))}
+          )})}
       </section>
     </>
   );
