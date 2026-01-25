@@ -13,52 +13,51 @@ const tinaProps = await client.queries.home({ relativePath: "index.mdx" });
 const contactEntry = await getEntry("contact", "index");
 
 if (!tinaProps.data || !contactEntry) {
-    throw new Error("Missing home or contact content");
+  throw new Error("Missing home or contact content");
 }
 
 const cocktails = await getCollection("cocktails");
 const topCocktails = cocktails
-    .sort((a, b) => a.id.localeCompare(b.id))
-    .slice(0, 3);
+  .sort((a, b) => a.id.localeCompare(b.id))
+  .slice(0, 3);
 
 const servicesCollection = await getCollection("services");
 const services = servicesCollection.map((s) => ({
-    icon: s.data.icon,
-    title: s.data.title,
-    description: s.data.description,
+  icon: s.data.icon,
+  title: s.data.title,
+  description: s.data.description,
 }));
 
 const pageTitle = "Luismi Mixology";
 const pageDescription =
-    "Servicio de coctelería a domicilio con mixología de autor, barras móviles premium y masterclasses.";
+  "Servicio de coctelería a domicilio con mixología de autor, barras móviles premium y masterclasses.";
 ---
 
 <BaseLayout
-    title={pageTitle}
-    description={pageDescription}
-    image={tinaProps.data.home.heroImage}
-    url="https://example.com"
+  title={pageTitle}
+  description={pageDescription}
+  image={tinaProps.data.home.heroImage}
+  url="https://example.com"
 >
-    <Header />
-    <main class="main-content" role="main">
-        <HomeReact
-            client:tina
-            tinaProps={tinaProps}
-            contactEntry={contactEntry}
-            services={services}
-            cocktails={topCocktails}
-        />
-        <Footer />
-    </main>
-
-    <ContactFAB />
+  <Header />
+  <main class="main-content" role="main">
+    <HomeReact
+      client:tina
+      tinaProps={tinaProps}
+      contactEntry={contactEntry}
+      services={services}
+      cocktails={topCocktails}
+    />
+    <Footer />
+  </main>
+  <ContactFAB />
 </BaseLayout>
 
 <style>
-    .main-content {
-        max-width: var(--max-width-6xl);
-        padding-inline: 1rem;
-        margin-inline: auto;
-        padding-bottom: 6rem;
-    }
+  .main-content {
+    max-width: var(--max-width-6xl);
+    padding-inline: 1rem;
+    margin-inline: auto;
+    padding-bottom: 6rem;
+  }
 </style>

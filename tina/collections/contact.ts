@@ -11,6 +11,21 @@ export const ContactCollection: Collection = {
   fields: [
     {
       type: "string",
+      name: "introTitle",
+      label: "Intro Title",
+      required: true,
+    },
+    {
+      type: "string",
+      name: "introDesc",
+      label: "Intro Description",
+      required: true,
+      ui: {
+        component: "textarea",
+      },
+    },
+    {
+      type: "string",
       name: "phone",
       label: "Phone",
       required: false,

@@ -4,6 +4,7 @@ export const CocktailsCollection: Collection = {
   name: "cocktails",
   label: "Cocktails",
   path: "src/content/cocktails",
+  format: "md",
   ui: {
     router: ({ document }) => {
       return `/cocteles/${document._sys.filename}`;
@@ -34,6 +35,12 @@ export const CocktailsCollection: Collection = {
       name: "alt",
       label: "Alt Text",
       required: true,
+    },
+    {
+      type: "rich-text",
+      name: "body",
+      label: "Body",
+      isBody: true,
     },
   ],
 };
