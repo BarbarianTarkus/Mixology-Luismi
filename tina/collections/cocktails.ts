@@ -4,6 +4,11 @@ export const CocktailsCollection: Collection = {
   name: "cocktails",
   label: "Cocktails",
   path: "src/content/cocktails",
+  ui: {
+    router: ({ document }) => {
+      return `/cocteles/${document._sys.filename}`;
+    },
+  },
   fields: [
     {
       type: "string",

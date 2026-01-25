@@ -5,6 +5,9 @@ export const HomeCollection: Collection = {
   label: "Home",
   path: "src/content/home",
   format: "mdx",
+  ui: {
+    router: () => "/",
+  },
   fields: [
     {
       type: "string",

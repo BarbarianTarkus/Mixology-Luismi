@@ -5,6 +5,9 @@ export const ContactCollection: Collection = {
   label: "Contact",
   path: "src/content/contact",
   format: "mdx",
+  ui: {
+    router: () => "/contacto",
+  },
   fields: [
     {
       type: "string",

@@ -3,7 +3,7 @@ import cloudflare from "@astrojs/cloudflare";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import markdoc from "@astrojs/markdoc";
-import tinaDirective from "./astro-tina-directive/register";
+import tinaDirective from "./astro-tina-directive/register.js";
 
 /**
  * Astro configuration
