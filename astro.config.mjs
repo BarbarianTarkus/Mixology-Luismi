@@ -9,7 +9,7 @@ import tinaDirective from "./astro-tina-directive/register.js";
  * Astro configuration
  *
  * This file configures Astro to produce a hybrid site.
- * - `output: 'hybrid'` allows for static pages and server-side routes (like Keystatic).
+ * - `output: 'hybrid'` allows for static pages and server-side routes
  */
 
 export default defineConfig({
