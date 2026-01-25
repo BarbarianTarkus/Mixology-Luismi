@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
 import react from "@astrojs/react";
 import markdoc from "@astrojs/markdoc";
-import keystatic from "@keystatic/astro";
+import tinaDirective from "./astro-tina-directive/register";
 
 /**
  * Astro configuration
@@ -17,5 +17,5 @@ export default defineConfig({
     imageService: "compile",
   }),
 
-  integrations: [react(), markdoc(), keystatic()],
+  integrations: [react(), markdoc(), tinaDirective()],
 });
