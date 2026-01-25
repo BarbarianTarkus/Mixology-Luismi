@@ -1,6 +1,6 @@
 import type { Collection } from "tinacms";
 
-export const cocktailsCollection: Collection = {
+export const CocktailsCollection: Collection = {
   name: "cocktails",
   label: "Cocktails",
   path: "src/content/cocktails",
@@ -14,32 +14,20 @@ export const cocktailsCollection: Collection = {
     },
     {
       type: "string",
-      name: "slug",
-      label: "Slug",
-      required: true,
-    },
-    {
-      type: "string",
-      name: "description",
+      name: "desc",
       label: "Description",
-      required: true,
+      required: false,
     },
     {
       type: "image",
       name: "image",
       label: "Image",
-      required: true,
+      required: false,
     },
     {
       type: "string",
-      name: "ingredients",
-      label: "Ingredients",
-      required: true,
-    },
-    {
-      type: "string",
-      name: "instructions",
-      label: "Instructions",
+      name: "alt",
+      label: "Alt Text",
       required: true,
     },
   ],

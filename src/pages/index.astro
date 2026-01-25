@@ -23,7 +23,7 @@ const contactData = contactEntry.data;
 
 const cocktails = await getCollection("cocktails");
 const topCocktails = cocktails
-    .sort((a, b) => a.slug.localeCompare(b.slug))
+    .sort((a, b) => a.id.localeCompare(b.id))
     .slice(0, 3);
 
 const pageTitle = "Luismi Mixology";
@@ -69,13 +69,13 @@ const pageDescription =
             {
                 topCocktails.map((c) => (
                     <CocktailCard
-                        id={c.data.id}
+                        id={c.id}
                         title={c.data.title}
                         desc={c.data.desc}
                         image={c.data.image || ""}
                         alt={c.data.alt}
                         whatsappUrl={contactData.whatsappUrl}
-                        slug={c.slug}
+                        slug={c.id.replace(/\.[^/.]+$/, "")}
                     />
                 ))
             }

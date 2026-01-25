@@ -1,7 +1,7 @@
 import { defineConfig } from "tinacms";
-import { homeCollection } from "./collections/home";
-import { contactCollection } from "./collections/contact";
-import { cocktailsCollection } from "./collections/cocktails";
+import { HomeCollection } from "./collections/home";
+import { ContactCollection } from "./collections/contact";
+import { CocktailsCollection } from "./collections/cocktails";
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
@@ -30,30 +30,6 @@ export default defineConfig({
   },
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/r/content-modelling-collections/
   schema: {
-    collections: [
-      {
-        name: "post",
-        label: "Posts",
-        path: "src/content/posts",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-          },
-        ],
-      },
-      cocktailsCollection,
-      homeCollection,
-      contactCollection,
-    ],
+    collections: [CocktailsCollection, HomeCollection, ContactCollection],
   },
 });

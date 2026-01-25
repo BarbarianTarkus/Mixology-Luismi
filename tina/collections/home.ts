@@ -1,9 +1,10 @@
 import type { Collection } from "tinacms";
 
-export const homeCollection: Collection = {
+export const HomeCollection: Collection = {
   name: "home",
   label: "Home",
   path: "src/content/home",
+  format: "mdx",
   fields: [
     {
       type: "string",

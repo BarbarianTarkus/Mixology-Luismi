@@ -1,7 +1,9 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { glob, file } from "astro/loaders";
+import { z } from "astro/zod";
 
 const cocktails = defineCollection({
-  type: "content",
+  loader: glob({ base: "src/content/cocktails", pattern: "*.{md,mdx}" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -12,16 +14,17 @@ const cocktails = defineCollection({
 });
 
 const services = defineCollection({
-  type: "data",
+  loader: glob({ base: "src/content/services", pattern: "*.{md,mdx}" }),
   schema: z.object({
     title: z.string(),
     icon: z.string(),
     description: z.string(),
+    heroImage: z.string().optional(),
   }),
 });
 
 const home = defineCollection({
-  type: "data",
+  loader: glob({ base: "src/content/home", pattern: "*.{md,mdx}" }),
   schema: ({ image }) =>
     z.object({
       heroEyebrow: z.string(),
@@ -32,7 +35,7 @@ const home = defineCollection({
 });
 
 const contact = defineCollection({
-  type: "data",
+  loader: glob({ base: "src/content/contact", pattern: "*.{md,mdx}" }),
   schema: z.object({
     phone: z.string(),
     phoneUrl: z.string(),

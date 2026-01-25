@@ -15,13 +15,13 @@ const pageUrl = "/";
 
 const cocktailsEntries = await getCollection("cocktails");
 const cocktails = cocktailsEntries
-  .sort((a, b) => a.slug.localeCompare(b.slug))
+  .sort((a, b) => a.id.localeCompare(b.id))
   .map(c => ({
     title: c.data.title,
     desc: c.data.desc,
     image: c.data.image || "",
     alt: c.data.alt,
-    slug: c.slug,
+    slug: c.id.replace(/\.[^/.]+$/, ""),
   }));
 
 const homeEntry = await getEntry("home", "index");

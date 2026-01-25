@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
+import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import markdoc from "@astrojs/markdoc";
 import tinaDirective from "./astro-tina-directive/register";
@@ -17,5 +18,5 @@ export default defineConfig({
     imageService: "compile",
   }),
 
-  integrations: [react(), markdoc(), tinaDirective()],
+  integrations: [react(), markdoc(), tinaDirective(), mdx()],
 });

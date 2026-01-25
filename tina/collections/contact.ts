@@ -1,19 +1,10 @@
 import type { Collection } from "tinacms";
 
-/*
-phone
-phoneUrl
-whatsappUrl
-email
-address
-schedule
-instagramUrl
-*/
-
-export const contactCollection: Collection = {
+export const ContactCollection: Collection = {
   name: "contact",
   label: "Contact",
   path: "src/content/contact",
+  format: "mdx",
   fields: [
     {
       type: "string",
