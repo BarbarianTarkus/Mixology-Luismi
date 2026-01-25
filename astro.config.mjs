@@ -19,4 +19,10 @@ export default defineConfig({
   }),
 
   integrations: [react(), markdoc(), tinaDirective(), mdx()],
+
+  vite: {
+    ssr: {
+      external: ["node:fs", "node:path", "node:os", "node:crypto"],
+    },
+  },
 });

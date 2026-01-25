@@ -159,12 +159,12 @@ var CocktailsCollection = {
 };
 
 // tina/config.ts
-var branch = process.env.GITHUB_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || process.env.HEAD || "master";
+var branch = process.env.NEXT_PUBLIC_TINA_BRANCH || process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF || process.env.HEAD || "master";
 var config_default = defineConfig({
   branch,
   // Get these from tina.io (Tina Cloud dashboard)
   token: process.env.TINA_TOKEN,
-  clientId: process.env.PUBLIC_TINA_CLIENT_ID,
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   build: {
     outputFolder: "admin",
     publicFolder: "public"
