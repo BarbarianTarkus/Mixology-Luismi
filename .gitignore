@@ -31,7 +31,14 @@ pnpm-debug.log*
 public/assets
 
 # TinaCMS
-tina/__generated__/**
+tina/__generated__/
+tina-lock.json
 
 # Cloudflare
-.wangler
+.wrangler/
+
+# Build and Temp
+.builds/
+.tmp/
+.vscode/
+.zed/
