@@ -30,5 +30,8 @@ pnpm-debug.log*
 # Public
 public/assets
 
+# TinaCMS
+tina/__generated__/**
+
 # Cloudflare
 .wangler
