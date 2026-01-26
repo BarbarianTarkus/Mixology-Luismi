@@ -6,7 +6,7 @@ desc: >-
   de limón verde. Aunque su origen consensuado se atribuye a la ciudad de
   Santiago de Cuba, ciertamente el Daiquirí fue popularizado en el bar Floridita
   de La Habana, apodado «la cuna del Daiquirí».
-image: "/src/assets/images/cocktails/daikiri/image.jpg"
+image: '/src/assets/images/cocktails/daikiri/image.jpg'
 alt: Copa de Daiquirí clásico con limón" o "Bar El Floridita en La Habana
 ---
 

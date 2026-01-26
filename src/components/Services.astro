@@ -1,58 +1,50 @@
 ---
-import ServiceCard from "./ServiceCard.astro";
-import { getCollection } from "astro:content";
+import ServiceCard from './ServiceCard.astro';
+import { getCollection } from 'astro:content';
 
 export interface Service {
-    icon: string;
-    title: string;
-    description: string;
+  icon: string;
+  title: string;
+  description: string;
 }
 
 export interface Props {
-    services?: Service[];
+  services?: Service[];
 }
 
 let { services } = Astro.props;
 
 if (!services) {
-    const servicesCollection = await getCollection("services");
-    services = servicesCollection.map((s) => ({
-        icon: s.data.icon,
-        title: s.data.title,
-        description: s.data.description,
-    }));
+  const servicesCollection = await getCollection('services');
+  services = servicesCollection.map((s) => ({
+    icon: s.data.icon,
+    title: s.data.title,
+    description: s.data.description,
+  }));
 }
 ---
 
 <div class="services-grid" transition:animate="fade">
-    {
-        services.map((s) => (
-            <ServiceCard
-                icon={s.icon}
-                title={s.title}
-                description={s.description}
-            />
-        ))
-    }
+  {services.map((s) => <ServiceCard icon={s.icon} title={s.title} description={s.description} />)}
 </div>
 
 <style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  @media (min-width: 640px) {
     .services-grid {
-        display: grid;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        gap: 1rem;
-        padding: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+  }
 
-    @media (min-width: 640px) {
-        .services-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
-
-    @media (min-width: 768px) {
-        .services-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-    }
+  }
 </style>

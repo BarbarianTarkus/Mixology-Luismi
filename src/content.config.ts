@@ -1,9 +1,9 @@
-import { defineCollection } from "astro:content";
-import { glob, file } from "astro/loaders";
-import { z } from "astro/zod";
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const cocktails = defineCollection({
-  loader: glob({ base: "src/content/cocktails", pattern: "*.{md,mdx}" }),
+  loader: glob({ base: 'src/content/cocktails', pattern: '*.{md,mdx}' }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -14,7 +14,7 @@ const cocktails = defineCollection({
 });
 
 const services = defineCollection({
-  loader: glob({ base: "src/content/services", pattern: "*.{md,mdx}" }),
+  loader: glob({ base: 'src/content/services', pattern: '*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
     icon: z.string(),
@@ -24,7 +24,7 @@ const services = defineCollection({
 });
 
 const home = defineCollection({
-  loader: glob({ base: "src/content/home", pattern: "*.{md,mdx}" }),
+  loader: glob({ base: 'src/content/home', pattern: '*.{md,mdx}' }),
   schema: ({ image }) =>
     z.object({
       heroEyebrow: z.string(),
@@ -35,7 +35,7 @@ const home = defineCollection({
 });
 
 const contact = defineCollection({
-  loader: glob({ base: "src/content/contact", pattern: "*.{md,mdx}" }),
+  loader: glob({ base: 'src/content/contact', pattern: '*.{md,mdx}' }),
   schema: z.object({
     phone: z.string(),
     phoneUrl: z.string(),

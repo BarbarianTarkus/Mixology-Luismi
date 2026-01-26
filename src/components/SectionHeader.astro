@@ -1,39 +1,39 @@
 ---
 export interface Props {
-    id: string;
-    title: string;
+  id: string;
+  title: string;
 }
 
 const { id, title } = Astro.props;
 ---
 
 <header class="section-header" aria-labelledby={id} transition:animate="fade">
-    <h2 id={id} class="section-title">
-        {title}
-    </h2>
-    <div class="title-underline"></div>
+  <h2 id={id} class="section-title">
+    {title}
+  </h2>
+  <div class="title-underline"></div>
 </header>
 
 <style>
-    .section-header {
-        padding-inline: 1rem;
-        padding-top: 2.5rem;
-        padding-bottom: 0.5rem;
-    }
+  .section-header {
+    padding-inline: 1rem;
+    padding-top: 2.5rem;
+    padding-bottom: 0.5rem;
+  }
 
-    .section-title {
-        color: var(--color-white);
-        font-size: 24px;
-        font-weight: 800;
-        line-height: 1.25;
-        letter-spacing: -0.015em;
-    }
+  .section-title {
+    color: var(--color-white);
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
 
-    .title-underline {
-        height: 4px;
-        width: 3rem;
-        background-color: var(--color-primary);
-        margin-top: 0.5rem;
-        border-radius: var(--radius-full);
-    }
+  .title-underline {
+    height: 4px;
+    width: 3rem;
+    background-color: var(--color-primary);
+    margin-top: 0.5rem;
+    border-radius: var(--radius-full);
+  }
 </style>

@@ -11,8 +11,7 @@
   --color-black: #000000;
 
   /* Fonts */
-  --font-display:
-    "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
   /* Border Radius */
   --radius-default: 0.25rem;

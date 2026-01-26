@@ -1,55 +1,53 @@
---- 
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import ContactFAB from "../../components/ContactFAB.astro";
-import CocktailDetail from "../../components/react/CocktailDetail";
-import { getCollection, getEntry } from "astro:content";
-import { client } from "../../../tina/__generated__/client";
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ContactFAB from '../../components/ContactFAB.astro';
+import CocktailDetail from '../../components/react/CocktailDetail';
+import { getCollection, getEntry } from 'astro:content';
+import { client } from '../../../tina/__generated__/client';
 
 export async function getStaticPaths() {
-  const cocktails = await getCollection("cocktails");
+  const cocktails = await getCollection('cocktails');
   return cocktails.map((entry) => ({
-    params: { slug: entry.id.replace(/\.[^/.]+$/, "") },
+    params: { slug: entry.id.replace(/\.[^/.]+$/, '') },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const contactEntry = await getEntry("contact", "index");
+const contactEntry = await getEntry('contact', 'index');
 
 if (!contactEntry) {
-    throw new Error("Missing contact content");
+  throw new Error('Missing contact content');
 }
 
-console.log("DEBUG: entry.id =", entry.id);
+console.log('DEBUG: entry.id =', entry.id);
 let safeRelativePath = entry.id.replace(/\\/g, '/');
 if (!safeRelativePath.endsWith('.md')) {
   safeRelativePath += '.md';
 }
-console.log("DEBUG: safeRelativePath =", safeRelativePath);
+console.log('DEBUG: safeRelativePath =', safeRelativePath);
 
 // Fetch data from Tina for the specific cocktail
-const tinaProps = await client.queries.cocktails({ relativePath: safeRelativePath });
+const tinaProps = await client.queries.cocktails({
+  relativePath: safeRelativePath,
+});
 
 if (!tinaProps.data) {
-  throw new Error("Missing cocktail content from Tina");
+  throw new Error('Missing cocktail content from Tina');
 }
 ---
 
-<BaseLayout 
-  title={tinaProps.data.cocktails.title} 
-  description={tinaProps.data.cocktails.desc} 
+<BaseLayout
+  title={tinaProps.data.cocktails.title}
+  description={tinaProps.data.cocktails.desc}
   image={tinaProps.data.cocktails.image}
 >
   <Header />
 
   <main>
-    <CocktailDetail 
-      client:tina 
-      tinaProps={tinaProps} 
-      contactEntry={contactEntry} 
-    />
+    <CocktailDetail client:tina tinaProps={tinaProps} contactEntry={contactEntry} />
   </main>
 
   <Footer />

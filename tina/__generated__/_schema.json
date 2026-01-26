@@ -1,1 +1,214 @@
-{"version":{"fullVersion":"2.0.6","major":"2","minor":"0","patch":"6"},"meta":{"flags":["experimentalData"]},"collections":[{"name":"cocktails","label":"Cocktails","path":"src/content/cocktails","format":"md","ui":{},"fields":[{"type":"string","name":"title","label":"Title","isTitle":true,"required":true,"namespace":["cocktails","title"],"searchable":true,"uid":false},{"type":"string","name":"desc","label":"Description","required":false,"namespace":["cocktails","desc"],"searchable":true,"uid":false},{"type":"image","name":"image","label":"Image","required":false,"ui":{"uploadDir":"cocktails"},"namespace":["cocktails","image"],"searchable":false,"uid":false},{"type":"string","name":"alt","label":"Alt Text","required":true,"namespace":["cocktails","alt"],"searchable":true,"uid":false},{"type":"rich-text","name":"body","label":"Body","isBody":true,"namespace":["cocktails","body"],"searchable":true,"parser":{"type":"markdown"},"uid":false}],"namespace":["cocktails"]},{"name":"home","label":"Home","path":"src/content/home","format":"mdx","ui":{},"fields":[{"type":"string","name":"heroEyebrow","label":"Hero Eyebrow","required":false,"namespace":["home","heroEyebrow"],"searchable":true,"uid":false},{"type":"string","name":"heroTitle","label":"Hero Title","isTitle":true,"required":true,"namespace":["home","heroTitle"],"searchable":true,"uid":false},{"type":"string","name":"heroDescription","label":"Hero Description","required":true,"ui":{"component":"textarea"},"namespace":["home","heroDescription"],"searchable":true,"uid":false},{"type":"image","name":"heroImage","label":"Hero Image","required":true,"namespace":["home","heroImage"],"searchable":false,"uid":false}],"namespace":["home"]},{"name":"contact","label":"Contact","path":"src/content/contact","format":"mdx","ui":{},"fields":[{"type":"string","name":"introTitle","label":"Intro Title","required":true,"namespace":["contact","introTitle"],"searchable":true,"uid":false},{"type":"string","name":"introDesc","label":"Intro Description","required":true,"ui":{"component":"textarea"},"namespace":["contact","introDesc"],"searchable":true,"uid":false},{"type":"string","name":"phone","label":"Phone","required":false,"namespace":["contact","phone"],"searchable":true,"uid":false},{"type":"string","name":"phoneUrl","label":"Phone URL","required":false,"namespace":["contact","phoneUrl"],"searchable":true,"uid":false},{"type":"string","name":"whatsappUrl","label":"WhatsApp URL","required":false,"namespace":["contact","whatsappUrl"],"searchable":true,"uid":false},{"type":"string","name":"email","label":"Email","required":false,"namespace":["contact","email"],"searchable":true,"uid":false},{"type":"string","name":"address","label":"Address","required":false,"namespace":["contact","address"],"searchable":true,"uid":false},{"type":"string","name":"schedule","label":"Schedule","required":false,"namespace":["contact","schedule"],"searchable":true,"uid":false},{"type":"string","name":"instagramUrl","label":"Instagram URL","required":false,"namespace":["contact","instagramUrl"],"searchable":true,"uid":false}],"namespace":["contact"]}],"config":{"media":{"tina":{"publicFolder":"","mediaRoot":"src/assets/images"}}}}
+{
+  "version": {
+    "fullVersion": "2.0.6",
+    "major": "2",
+    "minor": "0",
+    "patch": "6"
+  },
+  "meta": { "flags": ["experimentalData"] },
+  "collections": [
+    {
+      "name": "cocktails",
+      "label": "Cocktails",
+      "path": "src/content/cocktails",
+      "format": "md",
+      "ui": {},
+      "fields": [
+        {
+          "type": "string",
+          "name": "title",
+          "label": "Title",
+          "isTitle": true,
+          "required": true,
+          "namespace": ["cocktails", "title"],
+          "searchable": true,
+          "uid": false
+        },
+        {
+          "type": "string",
+          "name": "desc",
+          "label": "Description",
+          "required": false,
+          "namespace": ["cocktails", "desc"],
+          "searchable": true,
+          "uid": false
+        },
+        {
+          "type": "image",
+          "name": "image",
+          "label": "Image",
+          "required": false,
+          "ui": { "uploadDir": "cocktails" },
+          "namespace": ["cocktails", "image"],
+          "searchable": false,
+          "uid": false
+        },
+        {
+          "type": "string",
+          "name": "alt",
+          "label": "Alt Text",
+          "required": true,
+          "namespace": ["cocktails", "alt"],
+          "searchable": true,
+          "uid": false
+        },
+        {
+          "type": "rich-text",
+          "name": "body",
+          "label": "Body",
+          "isBody": true,
+          "namespace": ["cocktails", "body"],
+          "searchable": true,
+          "parser": { "type": "markdown" },
+          "uid": false
+        }
+      ],
+      "namespace": ["cocktails"]
+    },
+    {
+      "name": "home",
+      "label": "Home",
+      "path": "src/content/home",
+      "format": "mdx",
+      "ui": {},
+      "fields": [
+        {
+          "type": "string",
+          "name": "heroEyebrow",
+          "label": "Hero Eyebrow",
+          "required": false,
+          "namespace": ["home", "heroEyebrow"],
+          "searchable": true,
+          "uid": false
+        },
+        {
+          "type": "string",
+          "name": "heroTitle",
+          "label": "Hero Title",
+          "isTitle": true,
+          "required": true,
+          "namespace": ["home", "heroTitle"],
+          "searchable": true,
+          "uid": false
+        },
+        {
+          "type": "string",
+          "name": "heroDescription",
+          "label": "Hero Description",
+          "required": true,
+          "ui": { "component": "textarea" },
+          "namespace": ["home", "heroDescription"],
+          "searchable": true,
+          "uid": false
+        },
+        {
+          "type": "image",
+          "name": "heroImage",
+          "label": "Hero Image",
+          "required": true,
+          "namespace": ["home", "heroImage"],
+          "searchable": false,
+          "uid": false
+        }
+      ],
+      "namespace": ["home"]
+    },
+    {
+      "name": "contact",
+      "label": "Contact",
+      "path": "src/content/contact",
+      "format": "mdx",
+      "ui": {},
+      "fields": [
+        {
+          "type": "string",
+          "name": "introTitle",
+          "label": "Intro Title",
+          "required": true,
+          "namespace": ["contact", "introTitle"],
+          "searchable": true,
+          "uid": false
+        },
+        {
+          "type": "string",
+          "name": "introDesc",
+          "label": "Intro Description",
+          "required": true,
+          "ui": { "component": "textarea" },
+          "namespace": ["contact", "introDesc"],
+          "searchable": true,
+          "uid": false
+        },
+        {
+          "type": "string",
+          "name": "phone",
+          "label": "Phone",
+          "required": false,
+          "namespace": ["contact", "phone"],
+          "searchable": true,
+          "uid": false
+        },
+        {
+          "type": "string",
+          "name": "phoneUrl",
+          "label": "Phone URL",
+          "required": false,
+          "namespace": ["contact", "phoneUrl"],
+          "searchable": true,
+          "uid": false
+        },
+        {
+          "type": "string",
+          "name": "whatsappUrl",
+          "label": "WhatsApp URL",
+          "required": false,
+          "namespace": ["contact", "whatsappUrl"],
+          "searchable": true,
+          "uid": false
+        },
+        {
+          "type": "string",
+          "name": "email",
+          "label": "Email",
+          "required": false,
+          "namespace": ["contact", "email"],
+          "searchable": true,
+          "uid": false
+        },
+        {
+          "type": "string",
+          "name": "address",
+          "label": "Address",
+          "required": false,
+          "namespace": ["contact", "address"],
+          "searchable": true,
+          "uid": false
+        },
+        {
+          "type": "string",
+          "name": "schedule",
+          "label": "Schedule",
+          "required": false,
+          "namespace": ["contact", "schedule"],
+          "searchable": true,
+          "uid": false
+        },
+        {
+          "type": "string",
+          "name": "instagramUrl",
+          "label": "Instagram URL",
+          "required": false,
+          "namespace": ["contact", "instagramUrl"],
+          "searchable": true,
+          "uid": false
+        }
+      ],
+      "namespace": ["contact"]
+    }
+  ],
+  "config": {
+    "media": {
+      "tina": { "publicFolder": "", "mediaRoot": "src/assets/images" }
+    }
+  }
+}

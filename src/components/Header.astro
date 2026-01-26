@@ -10,11 +10,11 @@ export interface Props {
 }
 
 const {
-  title = "Luismi Mixology",
+  title = 'Luismi Mixology',
   nav = [
-    { href: "/servicios", label: "Servicios" },
-    { href: "/cocteles", label: "Cócteles" },
-    { href: "/contacto", label: "Contacto" },
+    { href: '/servicios', label: 'Servicios' },
+    { href: '/cocteles', label: 'Cócteles' },
+    { href: '/contacto', label: 'Contacto' },
   ],
 } = Astro.props;
 ---
@@ -74,24 +74,24 @@ const {
   <script>
     // lightweight mobile menu toggle
     (function () {
-      if (typeof window === "undefined") return;
-      document.addEventListener("DOMContentLoaded", function () {
-        var btn = document.getElementById("mobile-menu-button");
-        var menu = document.getElementById("mobile-menu");
+      if (typeof window === 'undefined') return;
+      document.addEventListener('DOMContentLoaded', function () {
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
         if (!btn || !menu) return;
 
-        btn.addEventListener("click", function () {
-          var expanded = btn!.getAttribute("aria-expanded") === "true";
-          btn!.setAttribute("aria-expanded", String(!expanded));
-          menu!.classList.toggle("hidden");
+        btn.addEventListener('click', function () {
+          const expanded = btn!.getAttribute('aria-expanded') === 'true';
+          btn!.setAttribute('aria-expanded', String(!expanded));
+          menu!.classList.toggle('hidden');
         });
 
         // Close menu when a link is clicked
-        var links = menu.querySelectorAll(".mobile-nav-link");
+        const links = menu.querySelectorAll('.mobile-nav-link');
         links.forEach(function (link) {
-          link.addEventListener("click", function () {
-            btn!.setAttribute("aria-expanded", "false");
-            menu!.classList.add("hidden");
+          link.addEventListener('click', function () {
+            btn!.setAttribute('aria-expanded', 'false');
+            menu!.classList.add('hidden');
           });
         });
       });
@@ -104,21 +104,9 @@ const {
       alt="Mixologist preparing a colorful cocktail in a dark setting"
       class="sr-only"
     />
-    <img
-      src="/images/cocktail-1.jpg"
-      alt="Old Fashioned Gold closeup"
-      class="sr-only"
-    />
-    <img
-      src="/images/cocktail-2.jpg"
-      alt="Signature Mojito with mint and lime"
-      class="sr-only"
-    />
-    <img
-      src="/images/cocktail-3.jpg"
-      alt="Espresso Velvet in a coupe glass"
-      class="sr-only"
-    />
+    <img src="/images/cocktail-1.jpg" alt="Old Fashioned Gold closeup" class="sr-only" />
+    <img src="/images/cocktail-2.jpg" alt="Signature Mojito with mint and lime" class="sr-only" />
+    <img src="/images/cocktail-3.jpg" alt="Espresso Velvet in a coupe glass" class="sr-only" />
   </noscript>
 </header>
 

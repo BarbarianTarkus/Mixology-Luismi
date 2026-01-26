@@ -1,4 +1,4 @@
-@import "./variables.css";
+@import './variables.css';
 
 /* Modern CSS Reset */
 *,
@@ -71,11 +71,11 @@ html.dark body {
 /* Material Symbols (icons) configuration */
 .material-symbols-outlined {
   font-variation-settings:
-    "FILL" 0,
-    "wght" 400,
-    "GRAD" 0,
-    "opsz" 24;
-  font-family: "Material Symbols Outlined", sans-serif;
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+  font-family: 'Material Symbols Outlined', sans-serif;
   speak: none;
   line-height: 1;
   display: inline-block;

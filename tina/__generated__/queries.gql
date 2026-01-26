@@ -16,7 +16,14 @@ query cocktails($relativePath: String!) {
   }
 }
 
-query cocktailsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: CocktailsFilter) {
+query cocktailsConnection(
+  $before: String
+  $after: String
+  $first: Float
+  $last: Float
+  $sort: String
+  $filter: CocktailsFilter
+) {
   cocktailsConnection(
     before: $before
     after: $after
@@ -71,7 +78,14 @@ query home($relativePath: String!) {
   }
 }
 
-query homeConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: HomeFilter) {
+query homeConnection(
+  $before: String
+  $after: String
+  $first: Float
+  $last: Float
+  $sort: String
+  $filter: HomeFilter
+) {
   homeConnection(
     before: $before
     after: $after
@@ -126,7 +140,14 @@ query contact($relativePath: String!) {
   }
 }
 
-query contactConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ContactFilter) {
+query contactConnection(
+  $before: String
+  $after: String
+  $first: Float
+  $last: Float
+  $sort: String
+  $filter: ContactFilter
+) {
   contactConnection(
     before: $before
     after: $after

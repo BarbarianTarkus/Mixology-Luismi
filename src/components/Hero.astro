@@ -1,5 +1,6 @@
 ---
-import { Image } from "astro:assets";
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 
 /**
  * Hero.astro
@@ -21,22 +22,22 @@ export interface Props {
   description?: string;
   ctaText?: string;
   ctaHref?: string;
-  imageUrl?: any;
+  imageUrl?: ImageMetadata | string;
 }
 
 const {
-  title = "Coctelería Exclusiva en tu Evento",
-  eyebrow = "Servicio Premium a Domicilio",
-  description = "Elevamos la experiencia de tus celebraciones con mixología de autor y barras móviles de lujo.",
-  ctaText = "Contactar por WhatsApp",
-  ctaHref = "https://wa.me/1234567890",
+  title = 'Coctelería Exclusiva en tu Evento',
+  eyebrow = 'Servicio Premium a Domicilio',
+  description = 'Elevamos la experiencia de tus celebraciones con mixología de autor y barras móviles de lujo.',
+  ctaText = 'Contactar por WhatsApp',
+  ctaHref = 'https://wa.me/1234567890',
   imageUrl,
 } = Astro.props;
 
-const bgImageUrl = typeof imageUrl === "string" ? imageUrl : imageUrl?.src;
+const bgImageUrl = typeof imageUrl === 'string' ? imageUrl : imageUrl?.src;
 ---
 
-<section class="hero-section" style={bgImageUrl ? `--hero-bg-url: url('${bgImageUrl}')` : ""}>
+<section class="hero-section" style={bgImageUrl ? `--hero-bg-url: url('${bgImageUrl}')` : ''}>
   <div class="hero-content">
     <!-- Text Column -->
     <div class="hero-text" transition:animate="slide">
@@ -67,18 +68,8 @@ const bgImageUrl = typeof imageUrl === "string" ? imageUrl : imageUrl?.src;
     </div>
 
     <!-- Image Column for md+ -->
-    <div
-      id="hero-image"
-      class="hero-image-col"
-      transition:name="hero-image"
-    >
-      {imageUrl && (
-        <Image 
-          src={imageUrl} 
-          alt={title} 
-          class="hero-image-file"
-        />
-      )}
+    <div id="hero-image" class="hero-image-col" transition:name="hero-image">
+      {imageUrl && <Image src={imageUrl} alt={title} class="hero-image-file" />}
     </div>
   </div>
 </section>

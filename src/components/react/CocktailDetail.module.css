@@ -1,85 +1,85 @@
 .container {
-    max-width: var(--max-width-4xl);
-    margin-inline: auto;
-    padding: 2rem 1rem;
-    min-height: 80vh;
+  max-width: var(--max-width-4xl);
+  margin-inline: auto;
+  padding: 2rem 1rem;
+  min-height: 80vh;
 }
 
 .card {
-    background-color: var(--color-card-bg);
-    border: 1px solid var(--color-card-border);
-    border-radius: var(--radius-xl);
-    overflow: hidden;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
 }
 
 .imageContainer {
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    overflow: hidden;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  overflow: hidden;
 }
 
 .image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .content {
-    padding: 2rem;
+  padding: 2rem;
 }
 
 .title {
-    color: var(--color-primary);
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
+  color: var(--color-primary);
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
 }
 
 .desc {
-    color: var(--color-muted-beige);
-    font-size: 1.125rem;
-    margin-bottom: 2rem;
+  color: var(--color-muted-beige);
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
 }
 
 .recipeContent {
-    color: var(--color-white);
-    line-height: 1.6;
+  color: var(--color-white);
+  line-height: 1.6;
 }
 
 .recipeContent h2 {
-    color: var(--color-primary);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    margin-top: 2rem;
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
 }
 
 .actions {
-    margin-top: 3rem;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .btnPrimary {
-    background-color: var(--color-primary);
-    color: var(--color-background-dark);
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--radius-full);
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-block;
+  background-color: var(--color-primary);
+  color: var(--color-background-dark);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btnOutline {
-    border: 1px solid var(--color-card-border);
-    color: var(--color-muted-beige);
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--radius-full);
-    text-decoration: none;
-    transition: color 0.2s;
-    display: inline-block;
+  border: 1px solid var(--color-card-border);
+  color: var(--color-muted-beige);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: color 0.2s;
+  display: inline-block;
 }
 
 .btnOutline:hover {
-    color: var(--color-primary);
+  color: var(--color-primary);
 }

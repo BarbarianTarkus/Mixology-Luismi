@@ -17,9 +17,9 @@ export interface Props {
 }
 
 const {
-  icon = "celebration",
-  title = "Servicio",
-  description = "Descripción breve del servicio.",
+  icon = 'celebration',
+  title = 'Servicio',
+  description = 'Descripción breve del servicio.',
 } = Astro.props;
 
 /**
@@ -27,12 +27,17 @@ const {
  */
 const id = String(title)
   .toLowerCase()
-  .replace(/[^a-z0-9\s-]/g, "")
+  .replace(/[^a-z0-9\s-]/g, '')
   .trim()
-  .replace(/\s+/g, "-");
+  .replace(/\s+/g, '-');
 ---
 
-<article class="service-card" role="article" aria-labelledby={`service-${id}`} transition:name={`service-card-${id}`}>
+<article
+  class="service-card"
+  role="article"
+  aria-labelledby={`service-${id}`}
+  transition:name={`service-card-${id}`}
+>
   <div class="service-icon-container" aria-hidden="true" transition:name={`service-icon-${id}`}>
     <span class="material-symbols-outlined service-icon">{icon}</span>
   </div>

@@ -1,7 +1,7 @@
 ---
 title: Smoky Negroni
 desc: Versión ahumada del clásico Negroni con bitter artesanal y vermut envejecido.
-image: "/src/assets/images/cocktails/smoky-negroni/image.jpg"
+image: '/src/assets/images/cocktails/smoky-negroni/image.jpg'
 alt: Smoky Negroni with a large ice cube and orange twist
 ---
 

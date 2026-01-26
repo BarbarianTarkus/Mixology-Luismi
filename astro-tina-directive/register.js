@@ -1,15 +1,15 @@
-import { fileURLToPath } from "url";
+import { fileURLToPath } from 'url';
 
 /**
  * @type {() => import('astro').AstroIntegration}
  */
 export default () => ({
-  name: "client:tina",
+  name: 'client:tina',
   hooks: {
-    "astro:config:setup": ({ addClientDirective }) => {
+    'astro:config:setup': ({ addClientDirective }) => {
       addClientDirective({
-        name: "tina",
-        entrypoint: fileURLToPath(new URL("./tina.js", import.meta.url)),
+        name: 'tina',
+        entrypoint: fileURLToPath(new URL('./tina.js', import.meta.url)),
       });
     },
   },

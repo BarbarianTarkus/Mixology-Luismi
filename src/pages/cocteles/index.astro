@@ -1,45 +1,40 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Header from "../../components/Header.astro";
-import CocktailCard from "../../components/CocktailCard.astro";
-import ContactFAB from "../../components/ContactFAB.astro";
-import Footer from "../../components/Footer.astro";
-import { getCollection, getEntry } from "astro:content";
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import CocktailCard from '../../components/CocktailCard.astro';
+import ContactFAB from '../../components/ContactFAB.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, getEntry } from 'astro:content';
 
 export const prerender = true;
 
-const title = "Luismi Mixology";
+const title = 'Luismi Mixology';
 const description =
-  "Descubre nuestros cócteles estrella: recetas de autor para eventos y celebraciones. Old Fashioned, Mojito y Espresso Martini, entre otros.";
-const pageUrl = "/";
+  'Descubre nuestros cócteles estrella: recetas de autor para eventos y celebraciones. Old Fashioned, Mojito y Espresso Martini, entre otros.';
+const pageUrl = '/';
 
-const cocktailsEntries = await getCollection("cocktails");
+const cocktailsEntries = await getCollection('cocktails');
 const cocktails = cocktailsEntries
   .sort((a, b) => a.id.localeCompare(b.id))
-  .map(c => ({
+  .map((c) => ({
     title: c.data.title,
     desc: c.data.desc,
-    image: c.data.image || "",
+    image: c.data.image || '',
     alt: c.data.alt,
-    slug: c.id.replace(/\.[^/.]+$/, ""),
+    slug: c.id.replace(/\.[^/.]+$/, ''),
   }));
 
-const homeEntry = await getEntry("home", "index");
-const contactEntry = await getEntry("contact", "index");
+const homeEntry = await getEntry('home', 'index');
+const contactEntry = await getEntry('contact', 'index');
 
 if (!homeEntry || !contactEntry) {
-    throw new Error("Missing home or contact content");
+  throw new Error('Missing home or contact content');
 }
 
 const pageImage = homeEntry.data.heroImage;
 ---
 
-<BaseLayout
-  title={title}
-  description={description}
-  url={pageUrl}
-  image={pageImage || ""}
->
+<BaseLayout title={title} description={description} url={pageUrl} image={pageImage || ''}>
   <Header />
 
   <main class="page-container" role="main">
@@ -47,18 +42,13 @@ const pageImage = homeEntry.data.heroImage;
     <section class="intro-section">
       <h1 class="intro-title">Top Cócteles</h1>
       <p class="intro-desc">
-        Nuestra selección de cócteles de autor, pensada para eventos y
-        celebraciones. Cada receta puede adaptarse a tus gustos y a las
-        necesidades de tu evento.
+        Nuestra selección de cócteles de autor, pensada para eventos y celebraciones. Cada receta
+        puede adaptarse a tus gustos y a las necesidades de tu evento.
       </p>
     </section>
 
     <!-- Cocktails grid -->
-    <section
-      id="cocteles"
-      class="cocktails-grid"
-      aria-label="Listado de cócteles"
-    >
+    <section id="cocteles" class="cocktails-grid" aria-label="Listado de cócteles">
       {
         cocktails.map((c) => (
           <CocktailCard {...c} showActions={true} whatsappUrl={contactEntry.data.whatsappUrl} />
@@ -71,8 +61,7 @@ const pageImage = homeEntry.data.heroImage;
       <div class="cta-box">
         <h2 class="cta-title">¿Quieres estos cócteles en tu evento?</h2>
         <p class="cta-desc">
-          Contacta con nosotros para una propuesta personalizada y presupuesto
-          en 24 horas.
+          Contacta con nosotros para una propuesta personalizada y presupuesto en 24 horas.
         </p>
         <a
           class="btn-primary-lg"
@@ -139,13 +128,13 @@ const pageImage = homeEntry.data.heroImage;
     }
   }
 
-    @media (min-width: 768px) {
-      .cocktails-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
+  @media (min-width: 768px) {
+    .cocktails-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+  }
 
-    .cta-section {
+  .cta-section {
     margin-top: 3rem;
     text-align: center;
     padding-inline: 1rem;

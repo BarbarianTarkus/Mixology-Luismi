@@ -1,129 +1,128 @@
 ---
-import { getEntry } from "astro:content";
-const contactEntry = await getEntry("contact", "index");
+import { getEntry } from 'astro:content';
+const contactEntry = await getEntry('contact', 'index');
 if (!contactEntry) {
-    throw new Error("Missing contact content");
+  throw new Error('Missing contact content');
 }
 const { phone, phoneUrl, whatsappUrl, email, address, schedule } = contactEntry.data;
 ---
+
 <aside class="contact-info-card">
-    <h2 class="info-card-title">Información de contacto</h2>
+  <h2 class="info-card-title">Información de contacto</h2>
 
-    <p class="info-card-desc">
-        Llámanos, envíanos un WhatsApp o un correo y te responderemos en menos
-        de 24h.
+  <p class="info-card-desc">
+    Llámanos, envíanos un WhatsApp o un correo y te responderemos en menos de 24h.
+  </p>
+
+  <ul class="contact-list">
+    <li class="contact-item">
+      <span class="material-symbols-outlined contact-icon">call</span>
+      <a class="contact-link-primary" href={phoneUrl}>{phone}</a>
+    </li>
+
+    <li class="contact-item">
+      <span class="material-symbols-outlined contact-icon">chat</span>
+      <a class="contact-link-primary" href={whatsappUrl} target="_blank" rel="noopener noreferrer"
+        >Contactar por WhatsApp</a
+      >
+    </li>
+
+    <li class="contact-item">
+      <span class="material-symbols-outlined contact-icon">mail</span>
+      <a class="contact-link-secondary" href={`mailto:${email}`}>{email}</a>
+    </li>
+
+    <li class="contact-item-align-start">
+      <span class="material-symbols-outlined contact-icon">place</span>
+      <address class="contact-address">
+        {
+          address.split('\n').map((line, i) => (
+            <Fragment key={i}>
+              {line}
+              <br />
+            </Fragment>
+          ))
+        }
+      </address>
+    </li>
+  </ul>
+
+  <div class="schedule-section">
+    <h3 class="schedule-title">Horario</h3>
+    <p class="schedule-desc">
+      {schedule}
     </p>
-
-    <ul class="contact-list">
-        <li class="contact-item">
-            <span class="material-symbols-outlined contact-icon">call</span>
-            <a class="contact-link-primary" href={phoneUrl}>{phone}</a>
-        </li>
-
-        <li class="contact-item">
-            <span class="material-symbols-outlined contact-icon">chat</span>
-            <a
-                class="contact-link-primary"
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                >Contactar por WhatsApp</a
-            >
-        </li>
-
-        <li class="contact-item">
-            <span class="material-symbols-outlined contact-icon">mail</span>
-            <a class="contact-link-secondary" href={`mailto:${email}`}
-                >{email}</a
-            >
-        </li>
-
-        <li class="contact-item-align-start">
-            <span class="material-symbols-outlined contact-icon">place</span>
-            <address class="contact-address">
-                {address.split('\n').map((line, i) => (
-                    <Fragment key={i}>{line}<br /></Fragment>
-                ))}
-            </address>
-        </li>
-    </ul>
-
-    <div class="schedule-section">
-        <h3 class="schedule-title">Horario</h3>
-        <p class="schedule-desc">
-            {schedule}
-        </p>
-    </div>
+  </div>
 </aside>
 
 <style>
-    .contact-info-card {
-        background-color: var(--color-card-bg);
-        border: 1px solid var(--color-card-border);
-        border-radius: var(--radius-xl);
-        padding: 1.5rem;
-    }
+  .contact-info-card {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+  }
 
-    .info-card-title {
-        color: var(--color-white);
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-    }
+  .info-card-title {
+    color: var(--color-white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
 
-    .info-card-desc {
-        color: var(--color-muted-beige);
-        margin-bottom: 1rem;
-    }
+  .info-card-desc {
+    color: var(--color-muted-beige);
+    margin-bottom: 1rem;
+  }
 
-    .contact-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 
-    .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
 
-    .contact-item-align-start {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-    }
+  .contact-item-align-start {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
 
-    .contact-icon {
-        color: var(--color-primary);
-    }
+  .contact-icon {
+    color: var(--color-primary);
+  }
 
-    .contact-link-primary {
-        color: var(--color-primary);
-        font-weight: 600;
-    }
+  .contact-link-primary {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
 
-    .contact-link-secondary {
-        color: var(--color-muted-beige);
-    }
+  .contact-link-secondary {
+    color: var(--color-muted-beige);
+  }
 
-    .contact-address {
-        font-style: normal;
-        color: var(--color-muted-beige);
-    }
+  .contact-address {
+    font-style: normal;
+    color: var(--color-muted-beige);
+  }
 
-    .schedule-section {
-        margin-top: 1.5rem;
-    }
+  .schedule-section {
+    margin-top: 1.5rem;
+  }
 
-    .schedule-title {
-        color: var(--color-white);
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-    }
+  .schedule-title {
+    color: var(--color-white);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
 
-    .schedule-desc {
-        color: var(--color-muted-beige);
-        font-size: 0.875rem;
-    }
+  .schedule-desc {
+    color: var(--color-muted-beige);
+    font-size: 0.875rem;
+  }
 </style>

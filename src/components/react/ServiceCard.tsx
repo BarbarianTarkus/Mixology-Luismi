@@ -8,15 +8,15 @@ interface Props {
 }
 
 export default function ServiceCard({
-  icon = "celebration",
-  title = "Servicio",
-  description = "Descripción breve del servicio.",
+  icon = 'celebration',
+  title = 'Servicio',
+  description = 'Descripción breve del servicio.',
 }: Props) {
   const id = String(title)
     .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/[^a-z0-9\s-]/g, '')
     .trim()
-    .replace(/\s+/g, "-");
+    .replace(/\s+/g, '-');
 
   return (
     <article className={styles.serviceCard} role="article" aria-labelledby={`service-${id}`}>
@@ -28,9 +28,7 @@ export default function ServiceCard({
         <h3 id={`service-${id}`} className={styles.serviceTitle}>
           {title}
         </h3>
-        <p className={styles.serviceDescription}>
-          {description}
-        </p>
+        <p className={styles.serviceDescription}>{description}</p>
       </div>
     </article>
   );

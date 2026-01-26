@@ -1,21 +1,21 @@
 .sectionHeader {
-    padding-inline: 1rem;
-    padding-top: 2.5rem;
-    padding-bottom: 0.5rem;
+  padding-inline: 1rem;
+  padding-top: 2.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .sectionTitle {
-    color: var(--color-white);
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 1.25;
-    letter-spacing: -0.015em;
+  color: var(--color-white);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
 }
 
 .titleUnderline {
-    height: 4px;
-    width: 3rem;
-    background-color: var(--color-primary);
-    margin-top: 0.5rem;
-    border-radius: var(--radius-full);
+  height: 4px;
+  width: 3rem;
+  background-color: var(--color-primary);
+  margin-top: 0.5rem;
+  border-radius: var(--radius-full);
 }

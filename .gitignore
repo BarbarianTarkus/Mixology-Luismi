@@ -22,9 +22,13 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
-
+# Temp files
 .tmp
-
+# AI AGENTS
 **/AGENTS.md
 
-!tina/__generated__
+# Public
+public/assets
+
+# Cloudflare
+.wangler

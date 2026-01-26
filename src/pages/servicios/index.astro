@@ -1,34 +1,29 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Header from "../../components/Header.astro";
-import Services from "../../components/Services.astro";
-import WhyChooseUs from "../../components/WhyChooseUs.astro";
-import ContactFAB from "../../components/ContactFAB.astro";
-import Footer from "../../components/Footer.astro";
-import { getEntry } from "astro:content";
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Services from '../../components/Services.astro';
+import WhyChooseUs from '../../components/WhyChooseUs.astro';
+import ContactFAB from '../../components/ContactFAB.astro';
+import Footer from '../../components/Footer.astro';
+import { getEntry } from 'astro:content';
 
 export const prerender = true;
 
-const homeEntry = await getEntry("home", "index");
-const contactEntry = await getEntry("contact", "index");
+const homeEntry = await getEntry('home', 'index');
+const contactEntry = await getEntry('contact', 'index');
 
 if (!homeEntry || !contactEntry) {
-    throw new Error("Missing home or contact content");
+  throw new Error('Missing home or contact content');
 }
 
-const title = "Servicios — Mixology Pro";
+const title = 'Servicios — Mixology Pro';
 const description =
-  "Servicios de coctelería a domicilio: barras móviles, bodas, masterclasses y soluciones corporativas con mixología de autor.";
-const pageUrl = "https://example.com/servicios";
+  'Servicios de coctelería a domicilio: barras móviles, bodas, masterclasses y soluciones corporativas con mixología de autor.';
+const pageUrl = 'https://example.com/servicios';
 const pageImage = homeEntry.data.heroImage;
 ---
 
-<BaseLayout
-  title={title}
-  description={description}
-  url={pageUrl}
-  image={pageImage || ""}
->
+<BaseLayout title={title} description={description} url={pageUrl} image={pageImage || ''}>
   <Header />
 
   <main class="page-container" role="main">
@@ -36,9 +31,8 @@ const pageImage = homeEntry.data.heroImage;
     <section class="intro-section">
       <h1 class="intro-title">Nuestros Servicios</h1>
       <p class="intro-desc">
-        Ofrecemos soluciones completas de mixología para eventos privados,
-        corporativos y formaciones. Elige el servicio que mejor se adapta a tu
-        experiencia.
+        Ofrecemos soluciones completas de mixología para eventos privados, corporativos y
+        formaciones. Elige el servicio que mejor se adapta a tu experiencia.
       </p>
       <div class="intro-actions">
         <a
@@ -55,11 +49,7 @@ const pageImage = homeEntry.data.heroImage;
     </section>
 
     <!-- Services Grid -->
-    <section
-      id="servicios-list"
-      aria-labelledby="servicios-heading"
-      class="services-section"
-    >
+    <section id="servicios-list" aria-labelledby="servicios-heading" class="services-section">
       <h2 id="servicios-heading" class="sr-only">Listado de Servicios</h2>
 
       <Services />

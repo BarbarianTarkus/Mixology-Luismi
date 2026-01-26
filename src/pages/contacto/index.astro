@@ -1,34 +1,27 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Header from "../../components/Header.astro";
-import ContactFAB from "../../components/ContactFAB.astro";
-import Footer from "../../components/Footer.astro";
-import ContactReact from "../../components/react/Contact";
-import { client } from "../../../tina/__generated__/client";
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import ContactFAB from '../../components/ContactFAB.astro';
+import Footer from '../../components/Footer.astro';
+import ContactReact from '../../components/react/Contact';
+import { client } from '../../../tina/__generated__/client';
 
 export const prerender = true;
 
-const tinaProps = await client.queries.contact({ relativePath: "index.mdx" });
+const tinaProps = await client.queries.contact({ relativePath: 'index.mdx' });
 
 if (!tinaProps.data) {
-    throw new Error("Missing contact content");
+  throw new Error('Missing contact content');
 }
 
-const contact = tinaProps.data.contact;
-
-const title = "Contacto — Luismi Mixology";
+const title = 'Contacto — Luismi Mixology';
 const description =
-  "Contacta con Luismi Mixology para reservas, presupuestos y consultas sobre nuestros servicios de coctelería a domicilio.";
-const pageUrl = "https://example.com/contacto";
-const pageImage = "/images/hero-large.jpg";
+  'Contacta con Luismi Mixology para reservas, presupuestos y consultas sobre nuestros servicios de coctelería a domicilio.';
+const pageUrl = 'https://example.com/contacto';
+const pageImage = '/images/hero-large.jpg';
 ---
 
-<BaseLayout
-  title={title}
-  description={description}
-  url={pageUrl}
-  image={pageImage}
->
+<BaseLayout title={title} description={description} url={pageUrl} image={pageImage}>
   <Header />
 
   <main role="main">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTina } from "tinacms/dist/react";
+import { useTina } from 'tinacms/dist/react';
 import Hero from './Hero';
 import Services from './Services';
 import CocktailCard from './CocktailCard';
@@ -8,13 +8,25 @@ import styles from './Home.module.css';
 
 interface Props {
   tinaProps: {
-    data: any;
+    data: Record<string, unknown>;
     query: string;
     variables: object;
   };
-  contactEntry: any;
-  services: any[];
-  cocktails: any[];
+  contactEntry: {
+    data: {
+      whatsappUrl: string;
+    };
+  };
+  services: Record<string, unknown>[];
+  cocktails: {
+    id: string;
+    data: {
+      title: string;
+      desc: string;
+      image: string | { src: string };
+      alt?: string;
+    };
+  }[];
 }
 
 export default function Home({ tinaProps, contactEntry, services, cocktails }: Props) {
@@ -24,7 +36,12 @@ export default function Home({ tinaProps, contactEntry, services, cocktails }: P
     data: tinaProps.data,
   });
 
-  const homeData = data.home;
+  const homeData = data.home as {
+    heroTitle?: string;
+    heroEyebrow?: string;
+    heroDescription?: string;
+    heroImage?: string;
+  };
 
   const resolveImage = (image: string | undefined) => {
     if (!image) return undefined;
@@ -32,7 +49,7 @@ export default function Home({ tinaProps, contactEntry, services, cocktails }: P
       return image.replace('../../', '/src/');
     }
     return image;
-  }
+  };
 
   return (
     <>
@@ -54,25 +71,24 @@ export default function Home({ tinaProps, contactEntry, services, cocktails }: P
 
       <SectionHeader id="cocktails-heading" title="Top 3 Cócteles" />
 
-      <section
-          id="cocteles"
-          className={styles.cocktailsGrid}
-          aria-label="Top cocktails"
-      >
-          {cocktails.map((c: any) => {
-              const imageSrc = typeof c.data.image === 'object' && c.data.image !== null ? c.data.image.src : c.data.image;
-              return (
-              <CocktailCard
-                  key={c.id}
-                  id={c.id}
-                  title={c.data.title}
-                  desc={c.data.desc}
-                  image={imageSrc || ""}
-                  alt={c.data.alt}
-                  whatsappUrl={contactEntry.data.whatsappUrl}
-                  slug={c.id.replace(/\.[^/.]+$/, "")}
-              />
-          )})}
+      <section id="cocteles" className={styles.cocktailsGrid} aria-label="Top cocktails">
+        {cocktails.map((c) => {
+          const imageSrc =
+            typeof c.data.image === 'object' && c.data.image !== null
+              ? c.data.image.src
+              : c.data.image;
+          return (
+            <CocktailCard
+              key={c.id}
+              title={c.data.title}
+              desc={c.data.desc}
+              image={imageSrc || ''}
+              alt={c.data.alt}
+              whatsappUrl={contactEntry.data.whatsappUrl}
+              slug={c.id.replace(/\.[^/.]+$/, '')}
+            />
+          );
+        })}
       </section>
     </>
   );

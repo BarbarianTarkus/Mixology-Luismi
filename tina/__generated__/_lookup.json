@@ -1,1 +1,50 @@
-{"DocumentConnection":{"type":"DocumentConnection","resolveType":"multiCollectionDocumentList","collections":["cocktails","home","contact"]},"Node":{"type":"Node","resolveType":"nodeDocument"},"DocumentNode":{"type":"DocumentNode","resolveType":"multiCollectionDocument","createDocument":"create","updateDocument":"update"},"Cocktails":{"type":"Cocktails","resolveType":"collectionDocument","collection":"cocktails","createCocktails":"create","updateCocktails":"update"},"CocktailsConnection":{"type":"CocktailsConnection","resolveType":"collectionDocumentList","collection":"cocktails"},"Home":{"type":"Home","resolveType":"collectionDocument","collection":"home","createHome":"create","updateHome":"update"},"HomeConnection":{"type":"HomeConnection","resolveType":"collectionDocumentList","collection":"home"},"Contact":{"type":"Contact","resolveType":"collectionDocument","collection":"contact","createContact":"create","updateContact":"update"},"ContactConnection":{"type":"ContactConnection","resolveType":"collectionDocumentList","collection":"contact"}}
+{
+  "DocumentConnection": {
+    "type": "DocumentConnection",
+    "resolveType": "multiCollectionDocumentList",
+    "collections": ["cocktails", "home", "contact"]
+  },
+  "Node": { "type": "Node", "resolveType": "nodeDocument" },
+  "DocumentNode": {
+    "type": "DocumentNode",
+    "resolveType": "multiCollectionDocument",
+    "createDocument": "create",
+    "updateDocument": "update"
+  },
+  "Cocktails": {
+    "type": "Cocktails",
+    "resolveType": "collectionDocument",
+    "collection": "cocktails",
+    "createCocktails": "create",
+    "updateCocktails": "update"
+  },
+  "CocktailsConnection": {
+    "type": "CocktailsConnection",
+    "resolveType": "collectionDocumentList",
+    "collection": "cocktails"
+  },
+  "Home": {
+    "type": "Home",
+    "resolveType": "collectionDocument",
+    "collection": "home",
+    "createHome": "create",
+    "updateHome": "update"
+  },
+  "HomeConnection": {
+    "type": "HomeConnection",
+    "resolveType": "collectionDocumentList",
+    "collection": "home"
+  },
+  "Contact": {
+    "type": "Contact",
+    "resolveType": "collectionDocument",
+    "collection": "contact",
+    "createContact": "create",
+    "updateContact": "update"
+  },
+  "ContactConnection": {
+    "type": "ContactConnection",
+    "resolveType": "collectionDocumentList",
+    "collection": "contact"
+  }
+}

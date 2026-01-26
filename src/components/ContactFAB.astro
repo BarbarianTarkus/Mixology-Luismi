@@ -1,72 +1,62 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry } from 'astro:content';
 
 export interface Props {
-    href?: string;
-    ariaLabel?: string;
-    icon?: string;
+  href?: string;
+  ariaLabel?: string;
+  icon?: string;
 }
 
-let {
-    href,
-    ariaLabel = "Contactar por WhatsApp",
-    icon = "chat",
-} = Astro.props;
+let { href, ariaLabel = 'Contactar por WhatsApp', icon = 'chat' } = Astro.props;
 
 if (!href) {
-    const contactEntry = await getEntry("contact", "index");
-    if (!contactEntry) {
-        throw new Error("Missing contact content");
-    }
-    href = contactEntry.data.whatsappUrl;
+  const contactEntry = await getEntry('contact', 'index');
+  if (!contactEntry) {
+    throw new Error('Missing contact content');
+  }
+  href = contactEntry.data.whatsappUrl;
 }
 ---
 
 <div class="fab-container" transition:persist>
-    <a
-        class="fab"
-        href={href}
-        aria-label={ariaLabel}
-        rel="noopener noreferrer"
-        target="_blank"
-    >
-        <span class="material-symbols-outlined fab-icon">{icon}</span>
-    </a>
+  <a class="fab" href={href} aria-label={ariaLabel} rel="noopener noreferrer" target="_blank">
+    <span class="material-symbols-outlined fab-icon">{icon}</span>
+  </a>
 </div>
 
 <style>
+  .fab-container {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 50;
+  }
+
+  @media (min-width: 768px) {
     .fab-container {
-        position: fixed;
-        bottom: 1.5rem;
-        right: 1.5rem;
-        z-index: 50;
+      display: none;
     }
+  }
 
-    @media (min-width: 768px) {
-        .fab-container {
-            display: none;
-        }
-    }
+  .fab {
+    background-color: var(--color-primary);
+    color: var(--color-background-dark);
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 25px 50px -12px rgba(var(--color-primary-rgb), 0.4);
+    transition: transform 0.2s;
+    text-decoration: none;
+  }
 
-    .fab {
-        background-color: var(--color-primary);
-        color: var(--color-background-dark);
-        width: 3.5rem;
-        height: 3.5rem;
-        border-radius: var(--radius-full);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 25px 50px -12px rgba(var(--color-primary-rgb), 0.4);
-        transition: transform 0.2s;
-        text-decoration: none;
-    }
+  .fab:active {
+    transform: scale(0.95);
+  }
 
-    .fab:active {
-        transform: scale(0.95);
-    }
-
-    .fab-icon {
-        font-size: 32px;
-    }
+  .fab-icon {
+    font-size: 32px;
+  }
 </style>
