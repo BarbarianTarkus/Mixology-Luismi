@@ -17,8 +17,11 @@ Static page, hosted on Cloudflare workers or GitHub pages.
 - Using Zed with Zed AI completions and Opencode Free Tier for coding assistance.
 
 ### Preview
-**Cloudflare Pages**: https://mixology-luismi.ricardoverduguez.workers.dev
-<img width="2424" height="3150" alt="mixology-luismi ricardoverduguez workers dev_" src="https://github.com/user-attachments/assets/4265fde2-507d-4ee2-80d9-d6e0717a6229" />
+
+| **Cloudflare Pages** |
+|---|
+| https://mixology-luismi.ricardoverduguez.workers.dev  |
+|<img width="250" height="400" alt="mixology-luismi ricardoverduguez workers dev_" src="https://github.com/user-attachments/assets/4265fde2-507d-4ee2-80d9-d6e0717a6229" />|
 
 
 ## Headless CMS Integration
@@ -32,6 +35,8 @@ Also, I experienced all kinds of Headless-CMS's for Astro.
 - Although it has a Self-Hosting option, feature I like a lot, this time I choose to use TinaCMS Cloud, lets you connect your Static Page with it, and edit and collaborate safely with no rare domain, or nothing complicated that scares non-technical users.
 
 ### TinaCMS in action
+Log-in Required can't provide a preview or demo.
+
 |   |   |   |
 |---|---|---|
 |<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/174f6fb5-6f11-4391-9b14-c142bf68dfa4" />| <img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/24f332a0-0223-4c99-8ae0-1febefa16fcc" />| <img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/c14c9f53-2399-4c5f-813e-d6def2ea0ab5" /> |
